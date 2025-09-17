@@ -4,12 +4,12 @@ let c =document.getElementById("cam")
 let cuerpo = document.body;
 let myarray=["Jose","Vicente","Aitor","luis"];
 p.addEventListener("click" , () =>{
-    console.log("boton pulsado")
-    cuerpo.style.background="blue";
+	console.log("boton pulsado")
+	cuerpo.style.background="blue";
 
 })
 c.addEventListener("click", () => {
-    cuerpo.style.background="white";
+	cuerpo.style.background="white";
 })
 
 myarray.push("Alvaro");
