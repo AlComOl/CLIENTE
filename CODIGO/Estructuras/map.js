@@ -1,4 +1,5 @@
 //Map es una estructura para poder almacenar un conjunto de datos .Coleccion de elementos, estan formados par de datos CLAVE Y VALOR 
+
 //Declaración
 let myMap=new Map();
 
@@ -19,7 +20,7 @@ console.log(myMap);
 
 //metodos y propiedades
 
-//set
+//set ACTUALIZAR/AGREGAR
 //si la clave no existe añade
 myMap.set("Alias", "Alvaret");
 //si la clave no existe modifica 
@@ -28,12 +29,12 @@ myMap.set("name","Noelia");
 console.log(myMap);
 
 
-//get 
+//get  RECUPERAR EL VALOR
 //lo busca por clave 
 console.log(myMap.get("Alias"));
 
 //has
-//comprueba si esta la clave devuelve tru o false 
+//comprueba si esta la clave devuelve true o false 
 let item=myMap.has("Apellidos");
 
 console.log(item);
