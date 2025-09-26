@@ -13,9 +13,13 @@ const number1 = new Number(4);
 const decimal1 = new Number(15.8);
 const letter = new Number("A");
 
+
+
 console.log(number);
 console.log(decimal);
 console.log(legibleNumber);
 console.log(number1);
 console.log(decimal1);
 console.log(letter);
+
+
