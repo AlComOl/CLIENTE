@@ -52,7 +52,10 @@ console.log(b);
 
 //Postfijo (x++)	b++	   valor viejo	  b       aumenta después de usarse
 
-let c=
+let c=10
 
+let d= c++;
+
+console.log(d);
 
 
