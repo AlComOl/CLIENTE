@@ -48,14 +48,43 @@ console.log(" \t \n" -2); //convierte a número 0 -2 =-2
 
 let a = 50;
 let b = ++a;
-console.log(b);
+console.log(a);
 
 //Postfijo (x++)	b++	   valor viejo	  b       aumenta después de usarse
 
 let c=10
 
-let d= c++;
+let d= c++;//toma el valor de c antes de incrementarla 
 
 console.log(d);
+
+let f = 2;
+let n = 1 + (f *= 2);
+
+console.log(n);
+
+console.log("4" - 2);
+console.log("4px" - 2);
+
+let w = 2;
+w *= 3 + 5;
+console.log(w);
+
+
+let Pre = 1;
+console.log(2 * ++Pre);
+
+
+let Post = 1;
+console.log(2 * Post++);
+
+
+
+let a1 = 1, b1 = 1;
+let c1 = ++a1;
+let d1 = b1++;
+
+console.log(a1+","+b1+","+c1+","+d1);
+
 
 
