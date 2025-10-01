@@ -1,17 +1,32 @@
 //github.io/styleguide/jsguide
-console.log("hola")
+// console.log("hola")
 //repasar bucles
 //numero primo
 
-let i=3;
+//bucles while
+//Mientras la condiccion sea verdara el cosigo del cuerpo del bucle será ejecutado.
+let i=0;
+// while(n<=3){
+//     console.log("hola");
+//     n++;
+// }
 
+// while(n){
+//     n--;
+//     console.log(n);
+// }
+// for (let i = 0; i < 3; i++) {
+//   console.log(`número ${i}!`);
+// }
 
+while(true){
 
-for (let i=0;i<5;++i){
-    console.log(i);
+    let n=prompt("Introduce un numero menor de 100");
+
+    
+
+    if(n<100||n==null) break;
+
 }
-console.log(i);
-for (let i=0;i<5;i++){
-    console.log(i);
-}
-console.log("Hola, Node está funcionando");
+
+
