@@ -19,14 +19,26 @@ let i=0;
 //   console.log(`número ${i}!`);
 // }
 
-while(true){
+// while(true){
 
-    let n=prompt("Introduce un numero menor de 100");
+//     let n=prompt("Introduce un numero menor de 100");
 
     
 
-    if(n<100||n==null) break;
+//     if(n<100||n==null) break;
 
-}
+// }
+
+const character = "#";
+const count = 8;
+const rows = [];
+
+// for (let i = 0; i < count; i = i + 1) {
+//   console.log(i);
+// }
+
+// for (let i = 0; i < count; i++) {
+//   console.log(i);
+// }
 
 
