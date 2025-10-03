@@ -3,6 +3,7 @@
 //repasar bucles
 //numero primo
 
+
 //bucles while
 //Mientras la condiccion sea verdara el cosigo del cuerpo del bucle será ejecutado.
 let i=0;
