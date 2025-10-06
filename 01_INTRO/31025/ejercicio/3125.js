@@ -31,3 +31,8 @@ for(let i=0;i<5;i++){
   a=a+"#";
   console.log(a);
 }
+
+
+let sentence = "JavaScript is awesome, and JavaScript is powerful!";
+let position = sentence.indexOf("Alvaro", 10);
+console.log(position); // 27
