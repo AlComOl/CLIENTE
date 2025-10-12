@@ -73,3 +73,32 @@ console.log(Boolean("")); // false
 
 console.log(String(true));  // "true"
 console.log(String(false)); // "false"
+
+//primero convierte a strig "true" despues typeof el tipo de "true es string"
+let value=true;
+console.log (typeof String(value));
+
+
+// 4️⃣ Operador AND (&&)
+
+// Devuelve el primer valor falsy si existe.
+
+// Si todos son truthy, devuelve el último valor.
+
+console.log("Cat" && "" && "Dog");  // ""  → se detiene en el primer falsy
+true && "Hello"        // "Hello" → todos truthy, devuelve último
+
+//✅ Tip: && no convierte automáticamente a boolean, devuelve el valor real evaluado.
+
+// 5️⃣ Operador OR (||)
+
+// Devuelve el primer valor truthy.
+
+// Si todos son falsy, devuelve el último valor.
+
+
+// 6️⃣ Negación (!)
+
+// !valor → convierte a boolean y niega: truthy → false, falsy → true
+
+// !!valor → convierte a boolean sin cambiar el valor:
