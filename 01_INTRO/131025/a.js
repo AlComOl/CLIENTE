@@ -3,9 +3,12 @@
 
 let a=[1,2,7,4,"a",6,]
 
-//for(let i of a){
-   // console.log(i);
-//}
+
+  console.log("hola");
+
+for(let i of a){
+   console.log(i);
+}
 
 a.forEach(i=>console.log(i));
 
@@ -57,6 +60,16 @@ console.log("********Métodos y propiedades de los arrays********");
     c.pop();
     
 })();
+
+function anonima(){
+    let fle=[6,7,8];
+    
+}
+
+
+
+
+
 
 
 (() => {
