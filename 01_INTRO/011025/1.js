@@ -42,4 +42,22 @@ const rows = [];
 //   console.log(i);
 // }
 
+//let - ambito del scope {} , puede reasignarse, No puede redeclararse.
 
+// var dentro de una funcion scope{} si se declara fuera global, Si rasignar y Si redeclarar
+
+//const No puede redeclararse , No puede redeclararse ni reasignarse.
+function test() {// ReferenceError
+
+      
+  console.log(x); 
+  var x = 10;
+  var x=20;
+
+  
+}
+
+
+test();
+
+pro
