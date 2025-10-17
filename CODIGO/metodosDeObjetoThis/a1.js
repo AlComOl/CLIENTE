@@ -97,7 +97,7 @@ let cliente=[
   descuento : 20,
   idioma:"English",
   sayHi(){
-    console.log(cliente.nombre);
+    console.log(this.nombre);
   }
 
 },
@@ -109,7 +109,7 @@ let cliente=[
   descuento : 30,
   idioma:"Español",
   sayHi(){
-    console.log(cliente.nombre);
+    console.log(.nombre);
   }
 }
 
@@ -117,7 +117,7 @@ let cliente=[
 
 //si hermano hace referencia a cliente
 let hermano = cliente;
-// cliente no se borra de la memoria porque hermano apunta a el sigue en la memoria
+// cliente no se borra de la memoria porque cliente apunta a hermano
 cliente=null;
 
 //pero al intentar acceder al cliente como apunta a null no saca nada.
@@ -127,41 +127,41 @@ hermano[1].sayHi();
 
 
 
-let arr=[
+// let arr=[
 
- { 
-  nombre : "Alvaro Comenge de la Flor", 
-  empresa : "AgroCondicion",
-  trabajadores: 3,
-  antiguedad: 5 ,
-  descuento : 20,
-  idioma:"English",
-  sayHi(){
-    console.log(this.nombre);
-  }
+//  { 
+//   nombre : "Alvaro Comenge de la Flor", 
+//   empresa : "AgroCondicion",
+//   trabajadores: 3,
+//   antiguedad: 5 ,
+//   descuento : 20,
+//   idioma:"English",
+//   sayHi(){
+//     console.log(this.nombre);
+//   }
 
-},
-{
-  nombre : "Alejandro Comenge de la Flor", 
-  empresa : "Texmetal",
-  trabajadores: 13,
-  antiguedad: 10 ,
-  descuento : 30,
-  idioma:"Español",
-  sayHi(){
-    console.log(this.nombre);
-  }
-}
+// },
+// {
+//   nombre : "Alejandro Comenge de la Flor", 
+//   empresa : "Texmetal",
+//   trabajadores: 13,
+//   antiguedad: 10 ,
+//   descuento : 30,
+//   idioma:"Español",
+//   sayHi(){
+//     console.log(this.nombre);
+//   }
+// }
 
-];
+// ];
 
-//si hermano hace referencia a cliente
-let arr1 = arr;
-// cliente no se borra de la memoria porque hermano apunta a el sigue en la memoria
-arr=null;
+// //si hermano hace referencia a cliente
+// let arr1 = arr;
+// // cliente no se borra de la memoria porque hermano apunta a el sigue en la memoria
+// arr=null;
 // aqui al poner el this en nombre el this hace referencia al arr todavia y nois sacaria el nombre gi
-arr1[0].sayHi();
-arr1[1].sayHi();
+// arr1[0].sayHi();
+// arr1[1].sayHi();
 
 
 
