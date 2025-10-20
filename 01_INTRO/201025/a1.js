@@ -68,3 +68,5 @@ const a = {id: 2, name: 'object 2', address: {street: 'Rue del Percebe', num: 13
 const b =  structuredClone(a)       // ahora ambos objetos contienen lo mismo pero
 
  //https://marcosruiz.github.io/posts/clases-javascript/
+
+ //lo ultimo el metodo to string
