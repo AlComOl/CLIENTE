@@ -187,18 +187,31 @@ let jose= {
 
 }
 
-let restJose={...jose}
-restJose.age=30;
+let restJose={...jose} //son objetos diferentes
 
-let copiaJose=jose;
+//restJose.age=30;
+
+let copiaJose=jose;//apuntan al misma posicion de memoria
 
 console.log(restJose.sobrina===jose.sobrina);
 console.log(restJose.age);
 console.log(copiaJose.sobrina===jose.sobrina);
-
-console.log(restJose===jose);
-
 console.log(copiaJose===jose);
+console.log(jose===restJose);
+restJose.age=40;
+console.log(restJose.age);
+console.log(jose.age);
+
+//restJose.sobrina.edad= "500"
+copiaJose.sobrina=5;
+
+//console.log(restJose===jose);
+console.log("ana.edad ", ana.edad);
+console.log("sobrina de copiajose ", copiaJose.sobrina);
+console.log("sobrina de jose", jose.sobrina);
+console.log(ana);
+
+//console.log(copiaJose===jose);
 
 
 
