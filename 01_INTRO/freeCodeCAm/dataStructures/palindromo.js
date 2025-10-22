@@ -1,17 +1,20 @@
 function palindromo(str){
 
-     res=str.toLowerCase();
+    let res=str.toLowerCase();
      res=res.replace(/[^a-z0-9]/g, "");
      res=res.trim();
      
     let myArray= Array.from(res);
      myArray.reverse();
      myArray.join();
-     console.log(myArray);
-     console.log(res);
-   
+    
+     let cadena1=myArray.join("");
+ 
+     let palindromo=cadena1===res?true:false;
 
-    return myArray;
+    
+
+    return palindromo;
 }
 
-console.log(palindromo("race*Car  "));
+console.log(palindromo("eye"));
