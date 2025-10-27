@@ -11,7 +11,7 @@ myMap=new Map([
     ["name", "Alvaro"],
     ["Apellidos", "Comenge Oliver"],
     ["Dirección", "C/Escritor Rafael Ferreres n4"],
-    ["Codigo POstal", "46013"],
+    ["Codigo Postal", "46013"],
     ["Ciudad", "Valencia"]
     
 ]);
@@ -64,5 +64,33 @@ console.log(myMap.entries());
 //size nos dice las claves que hay dentro 
 
 console.log(myMap.size);
+
+
+// Los métodos y propiedades son:
+
+//     new Map()– crea el mapa.
+console.log("***************************************************************");
+    Myproperties=new Map([
+        ["Valencia","c/Escritor Ferreres n4"],
+        ["L'Alcudia0", "c/San Roque n 11"],
+        ["L'Alcudia1" ,"c/Ernest LLuc s/n"],
+        ["L'Alcudia2" , "c/ poligono 10"],
+
+    ]);
+//     map.set(key, value)– almacena el valor por la clave.
+
+       console.log(Myproperties.set("Sevilla","c/Escritor Ferreres n5"));
+
+//     map.get(key)– devuelve el valor por la clave, undefinedSi keyNo existe en el mapa.
+        console.log(Myproperties.get("Sevilla"));
+//     map.has(key)– retornos trueSi el keyExiste, falseDe lo contrario.
+        console.log(Myproperties.has("L'Alcudia0"));
+//     map.delete(key)– elimina el elemento (el par clave/valor) por la clave.
+        console.log(Myproperties.delete("L'Alcudia0"));
+            console.log(Myproperties);
+//     map.clear()– elimina todo del mapa.
+//     map.size– devuelve el recuento de elementos actual.
+        console.log(Myproperties.size);
+
 
 
