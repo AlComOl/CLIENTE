@@ -77,6 +77,11 @@ console.log("***************************************************************");
         ["L'Alcudia2" , "c/ poligono 10"],
 
     ]);
+    myMovies=([
+        {"titulo":"hola","raiting":"1","duracion":"3h"},
+        {"titulo":"Adios","raiting":"2","duracion":"4h"},
+        {"titulo":"hello","raiting":"3","duracion":"5h"}
+    ]);
 //     map.set(key, value)– almacena el valor por la clave.
 
        console.log(Myproperties.set("Sevilla","c/Escritor Ferreres n5"));
@@ -91,6 +96,17 @@ console.log("***************************************************************");
 //     map.clear()– elimina todo del mapa.
 //     map.size– devuelve el recuento de elementos actual.
         console.log(Myproperties.size);
+
+//construir el array con las propiedades que yo quiero
+const arr=myMovies.map(valor =>{
+    return {
+        titulo:valor.titulo,
+        raiting:valor.raiting,
+
+    };
+});
+
+    console.log(arr);
 
 
 
