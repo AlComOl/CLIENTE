@@ -1,14 +1,21 @@
 function Converter(numero){
     let romano;
-    let arr=Array(numero);
+    let phrase=String(numero);
+    const a=phrase.split(",");
+    
+    phrase.forEach(phrase,index)=>{
+    
+    });
 
-        arr.forEach(
+    console.log(element);
 
 
 
-    return arr;
+    return numero;
 
 }
 
 
-console.log(1234);
+console.log(Converter(1975));
+
+
