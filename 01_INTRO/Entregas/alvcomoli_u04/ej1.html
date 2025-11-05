@@ -1,0 +1,31 @@
+<!-- https://cipfpbatoi.github.io/materials/daw/dwc/01-js/04-DOM.html#atributos-de-datos -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <div data-widget-name="menu">Elige el genero</div>
+
+    <script>
+       let element =document.querySelector('div');
+
+       console.log(element.dataset.widgetName);
+    </script>
+  </body>
+</html>
+
+
+<!-- Atributos de datos
+
+HTML5 permite agregar atributos personalizados no visuales a las etiquetas utilizando data-*. Estos atributos pueden ser accesibles a través de JavaScript usando dataset.
+
+<article
+    id="electriccars"
+    data-columns="3"
+    data-index-number="12314"
+    data-parent="cars">
+    ...
+</article>
+
+let article = document.getElementById('electriccars');
+console.log(article.dataset.columns); // 3
+console.log(article.dataset.indexNumber); // 12314 -->
+
