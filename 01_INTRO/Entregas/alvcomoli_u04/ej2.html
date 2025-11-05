@@ -28,9 +28,12 @@ Un link es externo si:
   
   for(let i=0;i<internal.length;i++){
 
-      let contenido = internal[i].innerText;
+      let contenido = internal[i].href;
+
+      contenido.includes("//");
 
       alert(contenido);
+   
     
     
   }
