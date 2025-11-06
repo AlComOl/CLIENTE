@@ -112,14 +112,80 @@ b.length = 3  // ahora a = ['Lunes', 'Martes', 2]
  console.log(subsd);
 
 
+ //Arrays y strings
+// Cada objeto tiene definido un metodo toString() que lo convierte a cadena, este es llamado automaticamente , por ejemplo cuanmdo 
+// queremos mostrar algo en consola.Cada
+//JOIN
+//para pasar un array a cadena utilizamos join(), especificando el caracter separador
+
+const a = ['Lunes', 'Martes', 2, 4, 6]
+const cadena = a.join('-')   
+console.log(cadena);
+const hola=["h","o","l","a"];
+const holaCadena=hola.join("");
+console.log(holaCadena);
+//SPLIT
+//Lo contrario de join es split() lo que hace es convertir una cadena en array
+const array=cadena.split("");//sino ponemos espacios lo separará por letras
+// const array=cadena.split(" ");//si ponemos espacio lo separara por espacion 
+console.log(array);
+console.log(array.length);
+cadena.split("-");
+console.log(array);
 
 
+let cadena1="adios";
+console.log(cadena1);
+
+const array1=cadena1.split("-");
+console.log(array1);
 
 
+//SORT 
+//Oredena alfabeticamente los elementos del array , cambia el array ademaás de devolverlo
 
+const d = ['hola','adios','bien','mal'];
 
+let c = d.sort();
 
+console.log(c);
 
+//si son numeros los ordena alfabeticamente OJO CON LOS NÚMEROS
+
+const n=[10,30,50,1,4,50,2];
+
+let o=n.sort();
+console.log(o);
+
+//habria que pasar una funcion a sort 
+//callback es una funcion que se le pasa por argumento otra
+//expresion como funcion 
+let callback =function(a,b){
+  return a-b;
+}
+ o=n.sort(callback);
+
+ console.log("expresion como funcion => "+o);
+
+ //funcion flecha 
+
+ let o1=n.sort((a,b)=>a-b);
+
+ console.log("flecha => "+o1);
+
+// Mas funciones sort para ordenar un array de numeros y cadenas con mayusculas NO SIRVE PARA NUMEROS
+
+let a1 = ['hola', 'adios', 'Bien', 'Mal'];
+let b1 = a1.sort(function(elem1, elem2) {
+  let e1 = elem1.toLocaleLowerCase();  
+  let e2 = elem2.toLocaleLowerCase();  
+
+  if (e1 < e2) return -1;  // e1 va antes que e2
+  if (e1 > e2) return 1;   // e1 va después que e2
+  return 0;
+});     
+
+console.log(b1);
 //OPERACIONES CON ARRAYS DE OBJETOS
 // const alumnos = [
 //   {
@@ -135,6 +201,108 @@ b.length = 3  // ahora a = ['Lunes', 'Martes', 2]
 //     age: 23
 //   },
 // ]
+
+//DONDE MAS SE USA ES PARA ORDENAR OBJETOS 
+// por ejemplo un objetos de personas con nombre y edad, ordenarlos por edad
+
+const alumnos=[
+  {
+    nombre: "Alvaro",
+    edad:"50"
+  },
+  {
+    nombre:"Juan",
+    edad:"54"
+  },
+  {
+    nombre:"Andres",
+    edad:"20"
+  },
+  {
+    nombre:"Luis",
+    edad:"23"
+  }
+]
+//expresion como funcion
+// let edad=alumnos.sort(function(alumno1,alumno2){
+   
+//    return alumno1.edad - alumno2.edad ;
+  
+
+// })
+
+// console.log(edad);
+//prueba
+
+const alumOrdEdad= alumnos.sort(function(alu1,alu2){
+  if(alu1.edad>alu2.edad)return 1;
+  if(alu1.edad<alu2)return -1;
+  return 0;
+});
+
+console.log("PRUEBA");
+console.log(alumOrdEdad);
+
+
+
+
+//funcion flecha
+// let edad1=alumnos.sort()
+
+// let edad2=alumnos.sort((alumno1,alumno2)=>alumno1.edad-alumno2.edad);
+
+// console.log(edad2);
+//EJEMPLOS 
+// Ordena los coches por precio de menor a mayor usando FUNCIÓN FLECHA
+const coches = [
+  { marca: "Toyota", precio: 15000 },
+  { marca: "BMW", precio: 32000 },
+  { marca: "Seat", precio: 12000 },
+  { marca: "Audi", precio: 28000 }
+];
+
+const cochesOrd = coches.sort((coches1,coches2)=>coches1.precio-coches2.precio); 
+
+console.log(cochesOrd);
+
+// Ordena los coches por marca A-Z usando FUNCIÓN EXPRESIÓN
+
+let cochesOrdLetra=coches.sort(function(coches1,coches2){
+
+    let a1=coches1.marca.toLowerCase();
+    console.log(a1);
+   
+    let a2=coches2.marca.toLowerCase();
+    console.log(a2);
+  if(a1 > a2) return 1;
+  if(a1 < a2) return -1;
+  return 0;
+  
+});
+
+console.log(cochesOrdLetra);
+
+//Funcion Flecha
+
+let cochesOrdLetraFlecha=coches.sort((a1,a2)=>{
+ let m1=a1.marca.toLowerCase();
+ let m2=a2.marca.toLowerCase();
+ 
+   if(m1>m2)return 1;
+   if(m1<m2)return -1;
+   return 0;
+});
+    
+console.log(cochesOrdLetraFlecha);
+
+// EJERCICIO: Haz una función que ordene las notas de un array pasado como parámetro.
+//  Si le pasamos [4,8,3,10,5] debe devolver [3,4,5,8,10]. Pruébalo en la consola
+
+let notas=[4,8,3,10,5];
+
+let notasOrd=notas.sort((n1,n2)=>n1-n2);
+
+console.log(notasOrd);
 
 
 
