@@ -8,6 +8,7 @@ Un link es externo si:
     Pero no comienza con http://internal.com. -->
 
 
+
 <a name="list">the list</a>
 <ul>
   <li><a href="http://google.com">http://google.com</a></li>
@@ -21,21 +22,29 @@ Un link es externo si:
 <script>
     
   // establecer un estilo para un enlace
-  let link = document.querySelector('a');
-  link.style.color = 'orange';
+  let links = document.querySelectorAll('a');
 
-  let internal=document.links;
+  for(let i=0 ; i < links.length; i++) {
+    let aux = links[i];
+    let aux2 = aux.getAttribute('name');
+
+// si me sale null el href, hago un continue
+    
+    console.log(aux2)
+    let href=links[i].getAttribute('href');
+    if (href && 
+      href.include(̈́)
+    )
+
+    console.log(href);
+    if(href.include('http://')){
+       href.style.color="orange";
+    }
+  }
   
-  for(let i=0;i<internal.length;i++){
-
-      let contenido = internal[i].href;
-
-      contenido.includes("//").href;
-
-      alert(contenido);
    
     
     
-  }
+  
 
 </script>

@@ -81,7 +81,7 @@ b.length = 3  // ahora a = ['Lunes', 'Martes', 2]
 
     ar.splice(2, 1, "php"); // desde el índice 1, remover 1 elemento
 
-    console.log( ar ); // ["Yo", "JavaScript"]
+    console.log("AQUI "+ar ); // ["Yo", "estudio"]
 
 
     let comunidad=["Jorge","Conrada","Cristian","Alejandro","Señor"];
@@ -303,6 +303,9 @@ let notas=[4,8,3,10,5];
 let notasOrd=notas.sort((n1,n2)=>n1-n2);
 
 console.log(notasOrd);
+
+
+    
 
 
 
