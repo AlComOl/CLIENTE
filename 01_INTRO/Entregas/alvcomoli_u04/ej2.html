@@ -7,7 +7,11 @@ Un link es externo si:
     Su href tiene ://.
     Pero no comienza con http://internal.com. -->
 
-
+<style>
+  .link-externo{
+    color: orange;
+  }
+</style>
 
 <a name="list">the list</a>
 <ul>
@@ -25,21 +29,15 @@ Un link es externo si:
   let links = document.querySelectorAll('a');
 
   for(let i=0 ; i < links.length; i++) {
-    let aux = links[i];
-    let aux2 = aux.getAttribute('name');
 
-// si me sale null el href, hago un continue
-    
-    console.log(aux2)
     let href=links[i].getAttribute('href');
-    if (href && 
-      href.include(̈́)
-    )
+    if(!href || !href.includes('://') || href.startsWith('http://internal.com')) continue;
+    //Busco enlaces malos cuando los encuentro salto para que no me de null, cuando encuentra el bueno "no continue"
 
-    console.log(href);
-    if(href.include('http://')){
-       href.style.color="orange";
-    }
+    // links[i].style.color='orange';
+
+    links[i].classList.add('link-externo');
+
   }
   
    
