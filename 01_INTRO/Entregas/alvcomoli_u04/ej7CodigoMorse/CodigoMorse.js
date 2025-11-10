@@ -2,20 +2,9 @@
 function codigoMorse(phrase){
 
     let phraseArray=phrase.toUpperCase().split('');// sin uppercase no funciona
-    let morse=0;
-    let abcedario=0;  
+  
     for (let i = 0; i < phraseArray.length; i++) {
-
-        // let element = phraseArray[i];
-        // element ==='.'|| element==='-' ? morse++ : abcedario++; //contador
-
-        // if(phraseArray[i] === '.' || phraseArray[i] === '-') {//cambiar
-        //     morse++;
-        // } else {
-        //     abcedario++;
-        // }
-
-     
+      //si la letra es de a =>z / o 0 => 9  / \ o /
       if ((phraseArray[i].toLowerCase() >= 'a' && phraseArray[i].toLowerCase() <= 'z') ||
           (phraseArray[i] >= '0' && phraseArray[i] <= '9') || ( phraseArray[i] === '\'' || phraseArray[i]==='/') ){
 
@@ -26,17 +15,6 @@ function codigoMorse(phrase){
             return aEspañol(phraseArray);
         }
         
-    }
-//identifica si es morse o letras
-    if(abcedario>(phraseArray.length/2)+1){ //mitad+1 de caracteres son morse 
-
-      return aMorse(phraseArray);
-
-        
-
-    }else if(morse>(phraseArray.length/2)+1){
-
-       return aEspañol(phraseArray);
     }
 
 }
@@ -150,13 +128,17 @@ const morse = {
   "/": "—··—·"
 }
 
-let arrayMorse=Object.entries(morse);
+let arrayMorse=Object.entries(morse);//convertimo el objeto en array de clave valor ej [a,-]
 
-let reverse=arrayMorse.map((letra)=>)
+const MorseEspañol=arrayMorse.map((clave)=>{let reverse=[];
+  reverse[0]=clave[1];
+  reverse[1]=clave[0];
+  return reverse  
+});
 
-// console.log(arrayMorse);
+console.log(MorseEspañol);
 
-
+}
 
 // let newphrase=phraseArray.entries();
 
@@ -166,7 +148,7 @@ let reverse=arrayMorse.map((letra)=>)
 
 //  return arrayMorse;
 
-// }
+ }
 
 
 
