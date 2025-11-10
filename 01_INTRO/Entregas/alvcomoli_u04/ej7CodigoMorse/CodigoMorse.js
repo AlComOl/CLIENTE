@@ -129,22 +129,20 @@ function aEspañol(phraseMorse) {
     "/": "-..-."
   };
 
-  // Invertimos el objeto: clave = código Morse, valor = letra
+  //necesito invertir el objeto
   const morseToAlfabeto = {};
   for (let letra in morse) {
-    morseToAlfabeto[morse[letra]] = letra;
+    morseToAlfabeto[morse[letra]] = letra; //ej morse letra es .... letra es A
   }
 
-  console.log(morseToAlfabeto);
 
-  // Separar la frase Morse en códigos (por espacios)
-  const codes = phraseMorse.split(' ');
+  const codes = phraseMorse.split(' '); //pongo sepacion
 
-  // Traducir cada código
-  const result = codes.map(code => morseToAlfabeto[code] || '?');
+  
+  const traduccion = codes.map(code => morseToAlfabeto[code]);//cada codigo lo convierto en el correspondiente del alf morse
 
-  // Devolver la frase traducida
-  return result.join('');
+  
+  return traduccion.join('');// convierto a string
 }
 
 
