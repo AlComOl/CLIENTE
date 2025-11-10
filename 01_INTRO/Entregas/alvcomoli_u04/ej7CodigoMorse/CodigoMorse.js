@@ -12,7 +12,9 @@ function codigoMorse(phrase){
 
           }else if(phraseArray[i]==='.'|| phraseArray[i]==='_'){
 
-            return aEspañol(phraseArray);
+            
+
+            return aEspañol(phraseArray.join(''));//hay que convertir a cadena con el join();
         }
         
     }
@@ -79,76 +81,75 @@ function aMorse(phraseArray){
 }
 
 
-function aEspañol(phraseArray){
+function aEspañol(phraseMorse) {
+  // Objeto Morse: clave = letra, valor = código Morse
+  const morse = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "CH": "---",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "Ñ": "--.--",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "0": "-----",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+    ".": ".-.-.-",
+    ",": "--..--",
+    "?": "..--..",
+    "\"": ".-..-.",
+    "/": "-..-."
+  };
 
+  // Invertimos el objeto: clave = código Morse, valor = letra
+  const morseToAlfabeto = {};
+  for (let letra in morse) {
+    morseToAlfabeto[morse[letra]] = letra;
+  }
 
-const morse = {
-  "A": "·—",
-  "B": "—···",
-  "C": "——·—·",
-  "CH": "———",
-  "D": "—··",
-  "E": "·",
-  "F": "··—·",
-  "G": "——·",
-  "H": "····",
-  "I": "··",
-  "J": "·———",
-  "K": "—·—",
-  "L": "·—··",
-  "M": "——",
-  "N": "—·",
-  "Ñ": "——·——",
-  "O": "———",
-  "P": "·——·",
-  "Q": "——·—",
-  "R": "·—·",
-  "S": "···",
-  "T": "—",
-  "U": "··—",
-  "V": "···—",
-  "W": "·——",
-  "X": "—··—",
-  "Y": "—·——",
-  "Z": "——··",
-  "0": "—————",
-  "1": "·————",
-  "2": "··———",
-  "3": "···——",
-  "4": "····—",
-  "5": "·····",
-  "6": "—····",
-  "7": "——···",
-  "8": "———··",
-  "9": "————·",
-  ".": "·—·—·—",
-  ",": "——··——",
-  "?": "··——··",
-  "\"": "·—··—·",
-  "/": "—··—·"
+  console.log(morseToAlfabeto);
+
+  // Separar la frase Morse en códigos (por espacios)
+  const codes = phraseMorse.split(' ');
+
+  // Traducir cada código
+  const result = codes.map(code => morseToAlfabeto[code] || '?');
+
+  // Devolver la frase traducida
+  return result.join('');
 }
 
-let arrayMorse=Object.entries(morse);//convertimo el objeto en array de clave valor ej [a,-]
 
-const MorseEspañol=arrayMorse.map((clave)=>{let reverse=[];
-  reverse[0]=clave[1];
-  reverse[1]=clave[0];
-  return reverse  
-});
 
-console.log(MorseEspañol);
-
-}
-
-// let newphrase=phraseArray.entries();
-
-// newphrase.map
-
-//  console.log(newphrase); 
-
-//  return arrayMorse;
-
- }
+ 
 
 
 
