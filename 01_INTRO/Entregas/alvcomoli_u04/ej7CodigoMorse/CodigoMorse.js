@@ -145,23 +145,30 @@ function aEspañol(phraseMorse) {
   return traduccion.join('');// convierto a string
 }
 
+let phrase=window.prompt("Introduce una frase para traducirla");
 
+window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
 
+localStorage.test=codigoMorse(phrase);
+
+window.document.getElementById('memoria').innerHTML= localStorage.test;
+
+ console.log(localStorage.strore);
  
 
-if(localStorage.test){
- delete localStorage.test;
-  window.document.getElementById('resultado').innerHTML= localStorage.test;
+// if(localStorage.test){
+//  delete localStorage.test;
+//   window.document.getElementById('resultado').innerHTML= localStorage.test;
 
 
-}else{
- let phrase=window.prompt("Introduce una frase para traducirla");
-  window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
-  localStorage.test=codigoMorse(phrase);
+// }else{
+//  let phrase=window.prompt("Introduce una frase para traducirla");
+//   window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
+//   localStorage.test=codigoMorse(phrase);
  
 
  
-}
+// }
 
 
 
