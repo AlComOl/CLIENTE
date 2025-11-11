@@ -149,15 +149,34 @@ function aEspañol(phraseMorse) {
 
  
 
+if(localStorage.test){
+ delete localStorage.test;
+  window.document.getElementById('resultado').innerHTML= localStorage.test;
 
 
-let phrase=window.prompt("Introduce una frase para traducirla");
+}else{
+ let phrase=window.prompt("Introduce una frase para traducirla");
+  window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
+  localStorage.test=codigoMorse(phrase);
+ 
+
+ 
+}
+
+
 
 // alert(codigoMorse(phrase));
 // let resultado=codigoMorse(phrase);
 
 
-window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
+
+
+// codigoMorse(phrase);
+
+
+
+
+
 
 
 
