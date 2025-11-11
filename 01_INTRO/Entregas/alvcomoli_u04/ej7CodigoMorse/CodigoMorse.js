@@ -24,7 +24,7 @@ function codigoMorse(phrase){
 function aMorse(phrase,morse){
     
     let phraseArray = phrase.split(''); // convertimos string a array
-    return phraseArray.map(letra => morse[letra] || '').join(' ');
+    return phraseArray.map(letra => morse[letra] || '').join(' ');//Crea un nuevo array en el que cada elemento es el código Morse correspondiente a cada letra del array phraseArray y luego los une en una cadena separada por espacios.
 }
 
 function aAbcdario(phraseMorse,morse){
@@ -34,8 +34,8 @@ function aAbcdario(phraseMorse,morse){
         morseToAlfabeto[morse[letra]] = letra;
     }
 
-    const codigo = phraseMorse.trim().split(' '); // separa cada código Morse
-    const traduccion = codes.map(codigo => morseToAlfabeto[codigo] || ''); // traduce
+    const codigo = phraseMorse.trim().split(' '); // divide cadena usando espacio como separador , trim quita espacios(prin,fin)
+    const traduccion = codigo.map(letra => morseToAlfabeto[letra] || ''); //crea un nuevo array en el que cada elemento (letra) es la letra correspondiente al código Morse del array codigo.
     return traduccion.join('');
 }
 
@@ -43,21 +43,22 @@ function aAbcdario(phraseMorse,morse){
 let anterior = localStorage.getItem('ultimaTraduccion');
 document.getElementById('memoria').innerHTML = anterior ? anterior : 'No hay datos guardados';
 
-// ✅ Pedir nueva frase
+
 let phrase = window.prompt("Introduce una frase o Morse:");
 
-// ✅ Si el usuario escribió algo
-if (phrase && phrase.trim() !== "") {
+//  Si escribo algo
+if (phrase) {
+
     let resultado = codigoMorse(phrase);
 
-    // Mostrar la traducción
-    document.getElementById('resultado').innerHTML = resultado;
+    
+    document.getElementById('resultado').innerHTML = resultado;// Mostrar la traducción
 
-    // Guardar en localStorage
-    localStorage.setItem('ultimaTraduccion', resultado);
+   
+    localStorage.setItem('ultimaTraduccion', resultado); // Guardar en localStorage co setItem
 
-    // Mostrar memoria actualizada
-    document.getElementById('memoria').innerHTML = resultado;
+   
+    document.getElementById('memoria').innerHTML = resultado; // Mostrar memoria actualizada
 }
 
 
@@ -65,8 +66,38 @@ if (phrase && phrase.trim() !== "") {
 
 
 
+// const codigo = phraseMorse.trim().split(' '); 
+// // 1. trim() quita espacios al inicio y final
+// // 2. split(' ') convierte el string en un array usando el espacio como separador
+// // Ejemplo: ".- -... -.-." → [".-", "-...", "-.-."]
+
+// const traduccion = codigo.map(letra => morseToAlfabeto[letra] || ''); 
+// // 3. map recorre cada código Morse (letra) y busca su correspondencia en morseToAlfabeto
+// // 4. Si no encuentra la letra, devuelve una cadena vacía
+// // Ejemplo: [".-", "-...", "-.-."] → ["A", "B", "C"]
+
+// return traduccion.join('');
+// // 5. join('') une todas las letras sin espacios para formar la palabra final
+// // Resultado: "ABC"
 
 
 
 
+// let phraseArray = phrase.split(''); 
+// // 1. split('') convierte el string en un array de letras
+// // Ejemplo: "ABC" → ["A", "B", "C"]
 
+// return phraseArray.map(letra => morse[letra] || '').join(' ');
+// // 2. map recorre cada letra y busca su código Morse en el objeto morse
+// // 3. Si no encuentra el código, devuelve una cadena vacía
+// // Ejemplo: ["A", "B", "C"] → [".-", "-...", "-.-."]
+
+// // 4. join(' ') une todos los códigos Morse con un espacio entre ellos
+// // Resultado: ".- -... -.-."
+
+
+
+// | De     | A      | join                                                |
+// | ------ | ------ | --------------------------------------------------- |
+// | Morse  | Letras | `join('')` → reconstruye la palabra sin espacios    |
+// | Letras | Morse  | `join(' ')` → separa los códigos Morse con espacios |
