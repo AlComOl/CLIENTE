@@ -34,59 +34,33 @@ function aAbcdario(phraseMorse,morse){
         morseToAlfabeto[morse[letra]] = letra;
     }
 
-    const codes = phraseMorse.trim().split(' '); // separa cada código Morse
-    const traduccion = codes.map(code => morseToAlfabeto[code] || ''); // traduce
+    const codigo = phraseMorse.trim().split(' '); // separa cada código Morse
+    const traduccion = codes.map(codigo => morseToAlfabeto[codigo] || ''); // traduce
     return traduccion.join('');
 }
 
-// Ejemplo de uso
+
+let anterior = localStorage.getItem('ultimaTraduccion');
+document.getElementById('memoria').innerHTML = anterior ? anterior : 'No hay datos guardados';
+
+// ✅ Pedir nueva frase
 let phrase = window.prompt("Introduce una frase o Morse:");
-window.document.getElementById('resultado').innerHTML = codigoMorse(phrase);
+
+// ✅ Si el usuario escribió algo
+if (phrase && phrase.trim() !== "") {
+    let resultado = codigoMorse(phrase);
+
+    // Mostrar la traducción
+    document.getElementById('resultado').innerHTML = resultado;
+
+    // Guardar en localStorage
+    localStorage.setItem('ultimaTraduccion', resultado);
+
+    // Mostrar memoria actualizada
+    document.getElementById('memoria').innerHTML = resultado;
+}
 
 
-
-// if(localStorage){
-// window.document.getElementById('memoria').innerHTML=localStorage.setItem();
-// }else{
-// let phrase=window.prompt("Introduce una frase para traducirla");
-// }
-// window.document.getElementById('resultado').innerHTML=codigoMorse(phrase);
-
-
-// localStorage.test=codigoMorse(phrase);
-
-
-
-// window.document.getElementById('memoria').innerHTML=localStorage.setItem('texto morse', JSON.stringify(codigoMorse(phrase)));
-
- 
-
-// if(localStorage.test){
-
-//  delete localStorage.test;
-
-//   window.document.getElementById('resultado').innerHTML= localStorage.test;
-
-
-// }else{
-
-
-  
-//   localStorage.test=codigoMorse(phrase);
- 
-
- 
-// }
-
-
-
-// alert(codigoMorse(phrase));
-// let resultado=codigoMorse(phrase);
-
-
-
-
-// codigoMorse(phrase);
 
 
 
