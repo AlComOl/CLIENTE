@@ -20,13 +20,12 @@ function codigoMorse(phrase){
 }
 
 
-// Cada letra → Morse y se necesitan espacios entre los códigos
 function aMorse(phrase,morse){
     
     let phraseArray = phrase.split(''); // convertimos string a array
     return phraseArray.map(letra => morse[letra] || '').join(' ');//Crea un nuevo array en el que cada elemento es el código Morse correspondiente a cada letra del array phraseArray y luego los une en una cadena separada por espacios.
 }
-// Cada código Morse → letra y queremos reconstruir la palabra sin espacios
+
 function aAbcdario(phraseMorse,morse){
     // Invertimos objeto
     const morseToAlfabeto = {};
