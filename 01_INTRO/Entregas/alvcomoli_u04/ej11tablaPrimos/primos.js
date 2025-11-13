@@ -6,7 +6,7 @@ function primos(numero){
     let n=parseInt(numero);
 
         if(isNaN(n)){
-            return "Intorduce un número valido";
+            return "Intorduce un número valido"
           }
     
     if(n>2){
@@ -25,6 +25,8 @@ function primos(numero){
                 
             }
         }
+    }else{
+        return "el numero tiene que ser mayor de 1"
     }
 
     return primo;
