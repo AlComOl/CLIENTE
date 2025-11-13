@@ -1,20 +1,50 @@
-function palindromo(str){
-
-    let res=str.toLowerCase();
-     res=res.replace(/[^a-z0-9]/g, "");
-     res=res.trim();
-     
-    let myArray= Array.from(res);
-     myArray.reverse();
-     myArray.join();
-    
-     let cadena1=myArray.join("");
- 
-     let palindromo=cadena1===res?true:false;
+function primos(numero){        
+    let primo=[];
+    let flag=true;
 
     
+    let n=parseInt(numero);
 
-    return palindromo;
+        if(isNaN(n)){
+            return "Intorduce un número valido";
+          }
+    
+    if(n>2){
+        for (let i = 2; i < n; i++) { 
+
+                flag=true;
+
+            for(let z = 2; z < i ; z++){ 
+
+                    if(i%z===0){
+                        flag=false;
+                    }
+            }
+            if(flag){
+               primo.push(i);
+                
+            }
+        }
+    }
+
+    return primo;
 }
 
-console.log(palindromo("eye"));
+
+let entrada=prompt("Introduce numero hasta el cual quieres verificar si los anteriores son primos");
+
+let salida=document.getElementById('salida');
+
+let res=primos(entrada);
+
+salida.innerHTML=res;
+
+
+    
+
+
+
+
+
+    
+
