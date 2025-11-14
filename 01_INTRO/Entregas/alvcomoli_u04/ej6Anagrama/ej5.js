@@ -37,4 +37,3 @@ let palabra2 = window.prompt("Introduce la segunda palabra:");
 alert (anagrama(palabra1,palabra2));
 
 
-alert(resultado);
