@@ -129,7 +129,7 @@ function procesarPreguntas(event){
                     <h4>Tu nombre menos las 3 primeras letras es: ${res}</h4>
                     <h4>Tu nombre todo en mayúsculas es: ${mayusculas} </42>
                     <h4>Tu edad es: ${salidaEdad} años.</h4>
-                    <h4>Naciste un feliz ${nacimiento1.getDay()} del año ${nacimiento1.getFullYear()} .</h4>
+                    <h4>Naciste un feliz ${dia} del año ${ano} .</h4>
                     <h4>El coseno de 180 es: ${coseno}</h4>
                     <h4>El número mayor de (34,67,23,75,35,19) es: ${mayor}</42>
                     <h4>Ejemplo de número al azar: ${azar} </h4>
