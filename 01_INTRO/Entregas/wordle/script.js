@@ -1,5 +1,5 @@
 let salidaGanador = document.querySelector('.result')
-let palabra= "index";
+let palabra= "aprobado";
 let palabraArray=palabra.toUpperCase().split('');
 let filaId=1;
 let mainContainer=document.querySelector('.main-container');
@@ -37,13 +37,12 @@ function escucharEntradas(filaActual){
             });
             //estilos si acertamos todas las letras
             if(indicesCorrectos.length == palabraArray.length){
-
                 muestraResultado('GANASTE');
 
                  let reiniciarBtn= document.querySelector('.boton');
                  reiniciarBtn.addEventListener('click',()=>{
-                 location.reload();
-              });
+                     location.reload();
+                  });
 
                return;
 
@@ -60,13 +59,6 @@ function escucharEntradas(filaActual){
             dibujarCuadros(filaActual);
             escucharEntradas(filaActual);
             agregarFocus(filaActual);
-       
-           
-
-            
-
-
-            //añadimos nuevas lineas
        
       
         }
@@ -120,7 +112,16 @@ function crearFila(){
         nuevaFila.setAttribute('id',filaId);
         mainContainer.appendChild(nuevaFila);
         return nuevaFila;
+    }else{
+         muestraResultado('INTENTALO DE NUEVO');
+          let reiniciarBtn= document.querySelector('.boton');
+                 reiniciarBtn.addEventListener('click',()=>{
+                     location.reload();
+                  });
+            
+         
     }
+
 }
 
 //dibujar cuadros 
@@ -145,6 +146,80 @@ function agregarFocus(filaActual){
 }
 
 function muestraResultado(mensajeTexto){
-     salidaGanador.innerHTML=`<h1 style='color:red'>${mensajeTexto}</h1>
-                <button class="boton">Reiniciar</button>`
+     salidaGanador.innerHTML=`<div><h1 style='color:red'>${mensajeTexto}</h1></div>
+              <div class="reinicio"><button class="boton">Reiniciar</button></div>`
 }
+
+
+
+
+// TECLADO EN PANTALLA 
+
+
+const tecladoContainer = document.querySelector('.teclado');
+const letras = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
+
+// Dibujar
+function dibujarTeclado() {
+    letras.forEach(letra => {
+        tecladoContainer.innerHTML += `<button class="tecla">${letra}</button>`;
+    });
+}
+dibujarTeclado();
+
+// Escucha teclado
+function escucharTecladoVirtual() {
+    document.querySelectorAll('.tecla').forEach(tecla => {
+        tecla.addEventListener('click', () => {
+            // Tomar el input con clase 'focus' en la última fila
+            const ultimaFila = document.querySelector('.row:last-child');
+            let elementoFocus = ultimaFila.querySelector('.cuadrado.focus') ||
+                                Array.from(ultimaFila.querySelectorAll('.cuadrado'))
+                                     .find(i => i.value === '');
+            if (!elementoFocus) return;
+
+            // Poner la letra
+            elementoFocus.value = tecla.innerText.toUpperCase();
+
+            // Disparar evento 
+            elementoFocus.dispatchEvent(new Event('input', { bubbles: true }));
+// new Event('input', { bubbles: true }) crea un evento de tipo input.
+// { bubbles: true } significa que el evento se propaga hacia arriba en el DOM, pasando de hijo a padre.
+
+            // siguiente input de la fila
+            const next = elementoFocus.nextElementSibling;
+            if (next) {
+                elementoFocus.classList.remove('focus');
+                next.classList.add('focus');
+                next.focus();
+            }
+        });
+    });
+}
+
+escucharTecladoVirtual();
+
+// Botón para mostrar
+let tecladoActivo = true;
+document.getElementById('cambiarTeclado').addEventListener('click', () => {
+    tecladoActivo = !tecladoActivo;
+
+    if(tecladoActivo){
+        tecladoContainer.style.display = "grid"; // mostrar teclado virtual
+        // Poner focus en el primer input vacío 
+        const ultimaFila = document.querySelector('.row:last-child');
+        const primerInput = Array.from(ultimaFila.querySelectorAll('.cuadrado'))
+                                  .find(i => i.value === '');
+        if(primerInput){
+            document.querySelectorAll('.cuadrado.focus').forEach(i => i.classList.remove('focus'));
+            primerInput.classList.add('focus');
+            primerInput.focus();
+        }
+    } else {
+        tecladoContainer.style.display = "none"; // ocultar teclado virtual
+        
+    }
+});
+
+
+

@@ -1,25 +1,24 @@
-body{
+body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-.main-container{
-   
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.row{
+.row {
     display: flex;
-    gap:10px;
-    margin:3px;
-
+    gap: 10px;
+    margin: 3px;
 }
-.cuadrado{
+
+.cuadrado {
     width: 80px;
     height: 80px;
     background-color: #94a8b2;
@@ -29,39 +28,96 @@ h1{
     color: #fff;
     text-align: center;
 }
-.resultado{
+
+.resultado {
     text-align: center;
     font-size: 36px;
 }
 
-.boton{
+.boton {
     width: 170px;
     height: 60px;
     border-radius: 16px;
-    border:none;
+    border: none;
     font-size: 32px;
-    background-color: #6AAA64;
-    
-
+    background-color: #0764cf;
 }
 
-.boton:hover{
-    border: 3px solid rgb(230, 127, 10);
+.reinicio {
+    display: flex;
+    justify-content: center;
+}
+
+.boton:hover {
+    border: 3px solid rgb(40, 55, 229);
     background-color: #fff;
-    color: #6AAA64;
+    color: #224fe1;
     cursor: pointer;
 }
-  /* Si cambiamos el orden de los estilos tapa el amarillo al verde */
-.gold{
+
+.gold {
     background-color: #e7d31e;
 }
 
-
-.green{
-    background-color:#6AAA64;
+.green {
+    background-color: #6AAA64;
 }
 
-
-.grey{
+.grey {
     background-color: #94a8b2;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 8px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.tecla {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.tecla:active {
+    transform: scale(0.95);
+    background-color: #357ABD;
+}
+
+@media (max-width: 400px) {
+    .tecla {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+}
+
+#cambiarTeclado {
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    margin: 10px 0;
+}
+
+#cambiarTeclado:hover {
+    background-color: #ff4c3b;
+    transform: scale(1.05);
+}
+
+#cambiarTeclado:active {
+    transform: scale(0.95);
 }
