@@ -28,27 +28,45 @@ cuadrados.forEach(element=>{
        if(event.target.nextElementSibling){ // envento->target->nextElementSibling(hace señale sig input(cuadrado))Si existe next
             event.target.nextElementSibling.focus()//focus ,pasa al siguinete
        }else{
-            //comparamos los arrays para cambiar estilos(verde, amarillo)
+            //comparamos los arrays para cambiar estilos(verde, amarillo,gris)
             let indicesCorrectos = compararPalabras(palabraArray,entradaUsuario)
             indicesCorrectos.forEach(element =>{
                 cuadrados[element].classList.add('green');//cada elemento del array cuadrados le añade la clase green
             });
+            //estilos si acertamos todas las letras
             if(indicesCorrectos.length == palabraArray.length){
                 salidaGanador.innerHTML=`<h1 style='color:red'>GANASTE</h1>
                 <button class="boton">Reiniciar</button>`
             }
 
+            //boton reiniciar
+            // let reiniciarBtn= document.querySelector('.boton');
+            //     reiniciarBtn.addEventListener('click',()=>{
+            //         location.reload();
+            //     });
+        
+            //si existe la letra pero no estan en la posicion correcta
+            let letrasexistenentes= existenLetras(palabraArray,entradaUsuario);
+            letrasexistenentes.forEach(elemento=>{
+                cuadrados[elemento].classList.add('gold');
+            })
+            console.log(letrasexistenentes);
+            
+
 
             //añadimos nuevas lineas
        
-          
-                
-
       
         }
         
     });
 })
+
+//boton reiniciar
+            // let reiniciarBtn= document.querySelector('.boton');
+            //     reiniciarBtn.addEventListener('click',()=>{
+            //         location.reload();
+            //     });
 
 
 ///FUNCIONES///
@@ -65,5 +83,19 @@ function compararPalabras(array1,array2){
     });
 
 return indicesIguales;
+}
+
+
+//si existen las palabras pero no en el lugar adecuando
+
+function existenLetras(array1,array2){
+ let pExistentesArray=[];
+    array2.forEach((element,index)=>{
+        if(array1.includes(element)){
+           pExistentesArray.push(index);
+        }
+    });
+    return pExistentesArray;
+
 }
 
