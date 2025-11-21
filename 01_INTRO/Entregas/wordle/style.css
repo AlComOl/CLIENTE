@@ -51,13 +51,16 @@ h1{
     color: #6AAA64;
     cursor: pointer;
 }
+  /* Si cambiamos el orden de los estilos tapa el amarillo al verde */
+.gold{
+    background-color: #e7d31e;
+}
+
 
 .green{
     background-color:#6AAA64;
 }
-.gold{
-    background-color: #e7d31e;
-}
+
 
 .grey{
     background-color: #94a8b2;
