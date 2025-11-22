@@ -1,0 +1,28 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+.tarea{
+  text-align: center;  
+}
+div{
+    margin: 40px;
+}
+.boton{
+    margin: 40px;
+    text-align: center;
+    width: 100px;
+    height: 60px;
+    border-radius: 16px;
+    border: none;
+    font-size: 32px;
+    background-color: #0764cf;
+}
+.guardado{
+    height: 400px;
+    width: 1000px;
+    border: 3px black solid;
+}
