@@ -1,92 +1,65 @@
-// let formulario = document.getElementById('mi-tarea');//seleciona el formulario 
-
-// formulario.addEventListener("submit", function(event) { //evita que se recargue la pagina
-//   event.preventDefault();
-
-//     const fecha = document.getElementById('fecha').value;
-//     const texto =document.getElementById('tarea').value;
-
-
-
-//   let nuevaTarea = { fecha: fecha, texto: texto };
-//   let tareas=[];
-
-//   tareas.push(nuevaTarea);
-
-//   localStorage.setItem('tareas', JSON.stringify(tareas));
-
-//   // Mostrar la tarea en HTML
-//   let li = document.getElementById('tareas-guardadas')
-
-//   tareas.forEach(element =>{ li.textContent=`${element.fecha} ${element.texto}`
-
-//   })
-
- 
-
-//   formulario.reset(); // limpiar formulario
-
-
-// });
-
-
-// 1️⃣ Seleccionamos el formulario y el contenedor de tareas
 let formulario = document.getElementById('mi-tarea');
 let lista = document.getElementById('tareas-guardadas');
+let indiceEditar = null; // Índice de tarea que se está editando
 
-// 2️⃣ Función para mostrar todas las tareas en HTML
+// Función para mostrar todas las tareas
 function mostrarTareas() {
-    lista.innerHTML = ''; // limpiar lista antes de renderizar
+    lista.innerHTML = '';
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
-   tareas.forEach((tarea, index) => {
-    let li = document.createElement('li');
-    li.textContent = `${tarea.fecha} - ${tarea.texto} `;
+    tareas.forEach((tarea, index) => {
+        let li = document.createElement('li');
+        li.textContent = `${tarea.fecha} - ${tarea.texto}`;
 
-    // Botón de borrar
-    let btnBorrar = document.createElement('button');
-    btnBorrar.textContent = 'Borrar';
-    btnBorrar.setAttribute('data-index', index);
+        // Botón Borrar
+        let btnBorrar = document.createElement('button');
+        btnBorrar.textContent = 'Borrar';
+        btnBorrar.onclick = () => {
+            tareas.splice(index, 1);
+            localStorage.setItem('tareas', JSON.stringify(tareas));
+            mostrarTareas();
+        };
 
-    btnBorrar.onclick = () => {
-        // Eliminar usando el índice guardado
-        tareas.splice(btnBorrar.getAttribute('data-index'), 1);
-        localStorage.setItem('tareas', JSON.stringify(tareas));
-        mostrarTareas();
-    };
+        // Botón Editar
+        let btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.onclick = () => {
+            document.getElementById('fecha').value = tarea.fecha;
+            document.getElementById('tarea').value = tarea.texto;
+            indiceEditar = index; // Guardamos el índice a editar
+        };
 
-    li.appendChild(btnBorrar);
-    lista.appendChild(li);
-});
-
+        li.appendChild(btnEditar);
+        li.appendChild(btnBorrar);
+        lista.appendChild(li);
+    });
 }
 
-// 3️⃣ Mostrar tareas al cargar la página
+// Mostrar tareas al cargar la página
 mostrarTareas();
 
-// 4️⃣ Capturamos el submit del formulario
-formulario.addEventListener("submit", function(event) {
+// Capturar submit del formulario
+formulario.addEventListener('submit', function(event) {
     event.preventDefault();
 
     const fecha = document.getElementById('fecha').value;
     const texto = document.getElementById('tarea').value;
 
-    let nuevaTarea = { fecha: fecha, texto: texto };
-
-    // Recuperar tareas existentes de localStorage
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
-    // Añadir la nueva tarea al array
-    tareas.push(nuevaTarea);
+    if (indiceEditar !== null) {
+        // Editar tarea existente
+        tareas[indiceEditar].fecha = fecha;
+        tareas[indiceEditar].texto = texto;
+        indiceEditar = null; // Reset
+    } else {
+        // Crear nueva tarea
+        let nuevaTarea = { fecha: fecha, texto: texto, completada: false };
+        tareas.push(nuevaTarea);
+    }
 
-    // Guardar el array completo en localStorage
     localStorage.setItem('tareas', JSON.stringify(tareas));
-
-    // Mostrar todas las tareas
     mostrarTareas();
-
-    // Limpiar formulario
     formulario.reset();
 });
-
 
