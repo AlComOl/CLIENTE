@@ -26,3 +26,6 @@ div{
     width: 1000px;
     border: 3px black solid;
 }
+.completada {
+      color: green;
+}

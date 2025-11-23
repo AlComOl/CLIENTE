@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tareas</h1>
+
+    <form method="post" id="formulario">
+        <div>
+        <input type="date" name="" id="fecha">
+        </div>
+        <div>
+        </textarea><textarea name="" id="texto" cols="200" rows="20"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    <div style="border:solid blue 4px; width: 800px; height: 300px;">
+        <h1>GUARDADOS</h1>
+
+        <h3 id="tareas-guardadas"></h3>
+    </div>
+    
+</body>
+<script>
+
+    let tareas=JSON.parse(localStorage.getItem('tareas')) || [];
+    let tguardas = document.getElementById('tareas-guardadas');
+    tareas.forEach(tarea => {
+    tguardas.innerHTML += `<p>${tarea.fecha} - ${tarea.tarea}</p>`;
+});
+    
+    let container=document.getElementById('texto');
+  
+
+    document.addEventListener('submit',(event)=>{
+        event.preventDefault();
+         let fecha=document.getElementById('fecha').value;
+         let texto= document.getElementById('texto').value;
+
+    tarea= {
+            id:Date.now(),
+            fecha:fecha,
+            tarea:texto,
+            estado:false
+        };
+        tareas.push(tarea);
+
+        localStorage.setItem('tareas',JSON.stringify(tareas));
+
+    //    
+ 
+
+        tguardas.innerHTML=JSON.stringify(localStorage.getItem('tareas'));
+
+        container=innerHTML="";
+        
+    });
+
+
+
+
+</script>
+</html>
