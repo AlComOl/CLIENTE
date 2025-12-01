@@ -4,11 +4,11 @@ class Libro{
 
 constructor(titulo,autor,genero,paginas){
 
-    titulo=this.titulo;
-    autor=this.autor;
-    genero= "novela","ensayo","ciencia";
-    paginas= this.paginas;
-    
+    this.titulo= titulo;
+    this.autor=autor;
+    this.genero= "novela","ensayo","ciencia";
+    this.paginas= this.paginas;
+
 
 
 }
@@ -17,7 +17,7 @@ constructor(titulo,autor,genero,paginas){
 
     info(){
 
-        return `El tutulo del libro es ${this.nombre} ,el autor ${this.autor}, el genero ${this.genero}, las paginas ${this.paginas}`;
+        return `El tutulo del libro es ${this.titulo} ,el autor ${this.autor}, el genero ${this.genero}, las paginas ${this.paginas}`;
     }
 
 
@@ -27,13 +27,13 @@ class ClubLectura{
 
 constructor(libro){
 
-   this.biblioteca=this.biblioteca=[];
+   this.biblioteca[];
    libro=this.libro;
 }
 
 
   agregarLibro(libro){
-        biblioteca.push(libro);
+   biblioteca.push(libro);
      }
 
   eliminarLibro(libro){
@@ -68,6 +68,6 @@ info(biblioteca){
 
 
 
-const Libro1 = new Libro('libro','autor','novela',100);
+const Libro1 = new Libro('pepe','autor','novela',100);
 
 console.log(Libro1.info());

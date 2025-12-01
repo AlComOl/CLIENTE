@@ -54,7 +54,7 @@
       // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
       incrementar(e) {
         console.log("Llamando incrementarConDelay()");
-        console.log("Id del botón pulsado: ",this.botones);
+        console.log("Id del botón pulsado: ",e.target.id);
         this.cuenta++;
         console.log("incrementar() actualiza cuenta:  ", this.cuenta);
       }
@@ -63,11 +63,11 @@
       // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
       incrementarConDelay(e) {
         console.log("Llamando incrementarConDelay()");
-        console.log("Id del botón pulsado: ", this.id.bind(this))
+        console.log("Id del botón pulsado: ", e.this.id)
 
         setTimeout(function () {
           this.cuenta++;
-          console.log("incrementarConDelay() dentro del timeout:", this.cuenta.bind(this));
+          console.log("incrementarConDelay() dentro del timeout:",e.this.cuenta);
         }, 1000);
       }
       // --------------------------------------------------------------------------
