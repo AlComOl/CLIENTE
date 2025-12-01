@@ -34,6 +34,6 @@ for(let i=0;i<5;i++){
 
 
 let sentence = "JavaScript is awesome, and JavaScript is powerful!";
-let position = sentence.indexOf("Alvaro", 10);
+let position = sentence.indexOf("and", 10);
 console.log(position); // 27
 
