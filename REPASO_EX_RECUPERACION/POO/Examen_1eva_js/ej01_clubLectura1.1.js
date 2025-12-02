@@ -80,3 +80,6 @@ clubIntrepidos.agregarlibro(libro4);
 //listar con info() y metodo map
 console.log(clubIntrepidos.listar());
 
+
+
+
