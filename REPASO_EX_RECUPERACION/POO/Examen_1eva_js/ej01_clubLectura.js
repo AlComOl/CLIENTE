@@ -26,11 +26,15 @@ class ClubLectura{
             this.#biblioteca.push(libro);
         }
         eliminarlibro(titulo){
-            this.#biblioteca.find(item=>
-                {if(item.titulo===titulo){
-                    console.log(item.autor);// me quedo aqui hay que borrar el array , de esta manera no se borra tengo que investigar como se borra el array
-                }
-            })
+            // this.#biblioteca.find(item=>
+            //     {if(item.titulo===titulo){
+            //         console.log(item.autor);// me quedo aqui hay que borrar el array , de esta manera no se borra tengo que investigar como se borra el array
+            //     }
+            // })
+
+            let index=this.#biblioteca.findIndex(item=>item.titulo==titulo)
+
+            console.log(index);
                         
                 
         
@@ -61,6 +65,6 @@ clubIntrepidos.agregarlibro(libro2);
 
 console.log(clubIntrepidos.listar());
 
-clubIntrepidos.eliminarlibro("1984");
+clubIntrepidos.eliminarlibro("Donde tus sueños te lleven");
 
 // console.log(clubIntrepidos.listar());
