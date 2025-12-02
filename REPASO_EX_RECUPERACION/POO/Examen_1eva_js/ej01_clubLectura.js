@@ -27,6 +27,7 @@ class ClubLectura{
             this.#biblioteca.push(libro);
         }
 
+
         eliminarlibro(titulo){
            let index =this.#biblioteca.findIndex(item=>item.titulo == titulo);
             console.log(index);
