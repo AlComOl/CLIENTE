@@ -14,7 +14,6 @@ class Libro{
 
 }
 
-
 class ClubLectura{
 
   #biblioteca;
@@ -40,13 +39,16 @@ class ClubLectura{
             console.log(g);
         }
 
-        listar(){
-          return  this.#biblioteca.forEach(((libro ,index)=>{ 
-                console.log(`${index}_${libro.titulo}, ${libro.autor}, ${libro.genero}, ${libro.paginas}`)}));
-        }
-        info(){
+        // listar(){
+        //   return  this.#biblioteca.forEach(((libro ,index)=>{ 
+        //         console.log(`${index}_${libro.titulo}, ${libro.autor}, ${libro.genero}, ${libro.paginas}`)}));
+        // }
 
+        listar(){
+           return this.#biblioteca.map(item => item.info());
         }
+
+      
     }
 
 libro1=new Libro({titulo:"1984",autor:"Orwell",genero:"novela",paginas:300});
@@ -58,17 +60,23 @@ libro4=new Libro({titulo:"Philadelphia",autor:"Andres Medina",genero:"Biografias
 // console.log(libro2.info());
 
 clubIntrepidos= new ClubLectura();
-
+//añado libros
 clubIntrepidos.agregarlibro(libro1);
 clubIntrepidos.agregarlibro(libro2);
 clubIntrepidos.agregarlibro(libro3);
 clubIntrepidos.agregarlibro(libro4);
 
+//listo libros
+// console.log(clubIntrepidos.listar());
 
-console.log(clubIntrepidos.listar());
-
+//elimino libros
 // clubIntrepidos.eliminarlibro("El camino del despertar");
 
 // console.log(clubIntrepidos.listar());
 
-console.log(clubIntrepidos.filtrarPorGenero('novela'));
+//filtro libros por genero
+// console.log(clubIntrepidos.filtrarPorGenero('Biografias'));
+
+//listar con info() y metodo map
+console.log(clubIntrepidos.listar());
+
