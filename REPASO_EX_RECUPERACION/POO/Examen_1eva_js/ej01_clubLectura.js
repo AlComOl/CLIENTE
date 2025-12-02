@@ -20,27 +20,26 @@ class ClubLectura{
   #biblioteca;
 
     constructor(){
+
         this.#biblioteca=[];
     }
         agregarlibro(libro){
             this.#biblioteca.push(libro);
         }
-        eliminarlibro(titulo){
-            this.#biblioteca.find(item=>
-                {if(item.titulo===titulo){
-                    console.log(item.autor);// me quedo aqui hay que borrar el array , de esta manera no se borra tengo que investigar como se borra el array
-                }
-            })
-                        
-                
-        
 
+        eliminarlibro(titulo){
+           let index =this.#biblioteca.findIndex(item=>item.titulo == titulo);
+            console.log(index);
+
+            
         }
+
+
         filtrarLibro(){
 
         }
         listar(){
-            this.#biblioteca.forEach(((libro ,index)=>{ 
+          return  this.#biblioteca.forEach(((libro ,index)=>{ 
                 console.log(`${index}_${libro.titulo}, ${libro.autor}, ${libro.genero}, ${libro.paginas}`)}));
         }
         info(){
@@ -59,8 +58,8 @@ clubIntrepidos= new ClubLectura();
 clubIntrepidos.agregarlibro(libro1);
 clubIntrepidos.agregarlibro(libro2);
 
-console.log(clubIntrepidos.listar());
+// console.log(clubIntrepidos.listar());
 
-clubIntrepidos.eliminarlibro("1984");
+clubIntrepidos.eliminarlibro("Donde tus sueños te lleven");
 
 // console.log(clubIntrepidos.listar());
