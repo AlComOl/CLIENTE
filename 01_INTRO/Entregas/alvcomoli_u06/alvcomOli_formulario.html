@@ -21,66 +21,66 @@
 
     <div class="seccion">
        <strong> <h4>--- DATOS USUARIO ------------------------------------------------------------------------------------</h4></strong>
-    <form action="" type="post">
+    <form action="http://localhost:3003/foo" method="post">
 
              <div>
-                <label>Nombre</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" name="nombre" value=""></input>
             </div>
             <div>
-                <label>Primer Apellido</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="1Apellido">Primer Apellido</label>
+                <input id="1Apellido" type="text" name="1Apellido" value=""></input>
             </div>
              <div>
-                <label>Segundo Apellido</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="2Apellido">Segundo Apellido</label>
+                <input id="2Apellido" type="text" name="2Apellido" value=""></input>
             </div>
             <div>
-                <label>Fecha de nacimiento</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="fechaNaci">Fecha de nacimiento</label>
+                <input id="2Apellido" type="date" name="fechaNaci" value=""></input>
             </div>
             <div>
-                <label>Tipo de documento</label>
-                <select name="documento">
+                <label for="tipoDoc">Tipo de documento</label>
+                <select id="tipoDoc" name="tipoDoc">
                     <option value="DNI">DNI</option>
                     <option value="saab">PASAPORTE</option>
                 </select>
             </div>
             <div>
-                <label>Nº Documento</label>    
-                <input type="text" name="nombre" value=""></input>
+                <label for="nDoc">Nº Documento</label>    
+                <input id=nDoc" type="text" name="nDoc" value=""></input>
             </div> 
 
 
 
              <div>
-                <label>Contraseña</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="contraseña">Contraseña</label>
+                <input id="contraseña" type="text" name="Contraseña" value=""></input>
             </div>
             <div>
-                <label>Repita contraseña</label>
-                 <input type="text" name="nombre" value=""></input>
+                <label for="contraseña">Repita contraseña</label>
+                 <input id="contraseñaR" type="text" name="Contraseña" value=""></input>
             </div>
             <div>
-                <label>Numero de soporte/IDESP/IXESP</label>    
-                <input type="text" name="nombre" value=""></input>
+                <label for="nnumSoporte">Numero de soporte/IDESP/IXESP</label>    
+                <input id="nnumSoporte" type="text" name="nnumSoporte" value=""></input>
             </div> 
 
 
 
              <div>
-                <label>Correo Electronico</label>
-                <input type="text" name="nombre" value=""></input>
+                <label for="correoEle">Correo Electronico</label>
+                <input id="correoEle" type="text" name="correoEle" value="correoElectronico"></input>
             </div>
             <div>
-                <label>Repita el correo electronico</label>
-                 <input type="text" name="nombre" value=""></input>
+                <label for="correoEle">Repita el correo electronico</label>
+                 <input id="correoEleR" type="text" name="correoEle" value="correroElec"></input>
             </div>
             <div>
-                <label>Télefono móvil</label>    
-                <input type="text" name="nombre" value=""></input>
+                <label for="telefono">Télefono móvil</label>    
+                <input id="telefono" type="text" name="telefono" value="correo"></input>
             </div> 
-        
+        <button type="submit">Enviar</button>
     </form>
 
     </div>
