@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./validar.js"></script>
     <title>Formularios</title>
 </head>
 <style>
@@ -10,75 +11,108 @@
       font-weight: bold;
     }
     div{
-        margin: 20px;
-    }
+     margin: 20px;
+     }
+    h4 {
+        text-align:justify; 
+        border-bottom: 3px solid #000; 
+        line-height: 0.1px;
+        margin: 30px 0 20px;
+        width: 100%;
+        } 
+
+     h4 span { 
+        background-color: #fff; 
+        padding:1px 10px; 
+        }
     form{
         margin-right: 100px;
     }
+    .recuazul{
+       display: flex;       
+       align-items: center;     
+       gap: 1px;   
+       background-color:rgb(190, 237, 244) ;            
+    }
+   .recuazul p{
+        padding:1px;
+    }
+   .recuazul img{
+        text-align: center;
+        margin: 2px;
+    }
+    .error{
+        color:red;
+    }
+
 
 </style>
 <body>
-
-    <div class="seccion">
-       <strong> <h4>--- DATOS USUARIO ------------------------------------------------------------------------------------</h4></strong>
-    <form action="http://localhost:3003/foo" method="post">
+        
+        <p>*Datos de carácter obligatorio</p>
+        <h4><span>DATOS DEL USUARIO</span></h4>
+    <form action="" method="post" onsubmit="return validar()">
 
              <div>
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" name="nombre" value=""></input>
+                <label for="nombre">*Nombre</label>
+                <input id="nombre" type="text" name="nombre" value="" placeholder="Andrés"></input>
+                <p id='error'></p>
             </div>
             <div>
-                <label for="1Apellido">Primer Apellido</label>
-                <input id="1Apellido" type="text" name="1Apellido" value=""></input>
+                <label for="1Apellido">*Primer Apellido</label>
+                <input id="1Apellido" type="text" name="1Apellido" value=""placeholder="Martinez"></input>
             </div>
              <div>
                 <label for="2Apellido">Segundo Apellido</label>
-                <input id="2Apellido" type="text" name="2Apellido" value=""></input>
+                <input id="2Apellido" type="text" name="2Apellido" value=""placeholder="Baeza"></input>
             </div>
             <div>
-                <label for="fechaNaci">Fecha de nacimiento</label>
+                <label for="fechaNaci">*Fecha de nacimiento</label>
                 <input id="2Apellido" type="date" name="fechaNaci" value=""></input>
             </div>
             <div>
-                <label for="tipoDoc">Tipo de documento</label>
-                <select id="tipoDoc" name="tipoDoc">
+                <label for="tipoDoc">*Tipo de documento</label>
+                <select id="tipoDoc" name="tipoDoc" >
                     <option value="DNI">DNI</option>
                     <option value="saab">PASAPORTE</option>
                 </select>
             </div>
             <div>
-                <label for="nDoc">Nº Documento</label>    
-                <input id=nDoc" type="text" name="nDoc" value=""></input>
+                <label for="nDoc">*Nº Documento</label>    
+                <input id="nDoc" type="text" name="nDoc" value="" placeholder="23456789A"></input>
             </div> 
 
-
+            <div class="recuazul">
+               <img src="./img/icons8-información-16.svg">
+               <p><strong>Este identificador se utilizará como usuario de acceso a la Sede electrónica.</strong></p></img>
+            </div>
 
              <div>
                 <label for="contraseña">Contraseña</label>
-                <input id="contraseña" type="text" name="Contraseña" value=""></input>
+                <input id="contraseña" type="text" name="Contraseña" value="" placeholder="Asdfk"></input>
             </div>
             <div>
                 <label for="contraseña">Repita contraseña</label>
-                 <input id="contraseñaR" type="text" name="Contraseña" value=""></input>
+                 <input id="contraseñaR" type="text" name="Contraseña" value="" placeholder="Asdfk"></input>
             </div>
             <div>
                 <label for="nnumSoporte">Numero de soporte/IDESP/IXESP</label>    
-                <input id="nnumSoporte" type="text" name="nnumSoporte" value=""></input>
+                <input id="nnumSoporte" type="text" name="nnumSoporte" value="" placeholder="15454545"></input>
             </div> 
 
 
 
              <div>
                 <label for="correoEle">Correo Electronico</label>
-                <input id="correoEle" type="text" name="correoEle" value="correoElectronico"></input>
+                <input id="correoEle" type="text" name="correoEle" value="" placeholder="a@gmail.com"></input>
             </div>
             <div>
                 <label for="correoEle">Repita el correo electronico</label>
-                 <input id="correoEleR" type="text" name="correoEle" value="correroElec"></input>
+                 <input id="correoEleR" type="text" name="correoEle" value="" placeholder="a@gmail.com"></input>
             </div>
             <div>
                 <label for="telefono">Télefono móvil</label>    
-                <input id="telefono" type="text" name="telefono" value="correo"></input>
+                <input id="telefono" type="text" name="telefono" value="" placeholder="2565852532"></input>
             </div> 
         <button type="submit">Enviar</button>
     </form>
