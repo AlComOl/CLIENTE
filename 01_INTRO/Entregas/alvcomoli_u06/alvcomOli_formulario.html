@@ -51,20 +51,23 @@
         
         <p>*Datos de carácter obligatorio</p>
         <h4><span>DATOS DEL USUARIO</span></h4>
-    <form action="" method="post" onsubmit="return validar()">
+    <form action="" method="post">
 
              <div>
                 <label for="nombre">*Nombre</label>
                 <input id="nombre" type="text" name="nombre" value="" placeholder="Andrés"></input>
-                <p id='error'></p>
+               <p id="error" style="display: inline-block; margin-left: 10px;"></p>
             </div>
             <div>
                 <label for="1Apellido">*Primer Apellido</label>
                 <input id="1Apellido" type="text" name="1Apellido" value=""placeholder="Martinez"></input>
+                <p id="error1" style="display: inline-block; margin-left: 10px;"></p>
             </div>
              <div>
                 <label for="2Apellido">Segundo Apellido</label>
                 <input id="2Apellido" type="text" name="2Apellido" value=""placeholder="Baeza"></input>
+                <p id="error2" style="display: inline-block; margin-left: 10px;"></p>
+                 </div>
             </div>
             <div>
                 <label for="fechaNaci">*Fecha de nacimiento</label>
