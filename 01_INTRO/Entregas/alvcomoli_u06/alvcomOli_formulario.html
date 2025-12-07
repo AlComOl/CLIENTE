@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./validar.js"></script>
+    <script src="./validar.js"defer></script>
     <title>Formularios</title>
 </head>
 <style>
@@ -19,19 +19,24 @@
         line-height: 0.1px;
         margin: 30px 0 20px;
         width: 100%;
-        } 
-
-     h4 span { 
+        }
+        
+        h4 span { 
         background-color: #fff; 
         padding:1px 10px; 
         }
+
+    .declaraciones h4 span { 
+       background-color: #ffffff; 
+       padding:1px 10px; 
+    }
+
     form{
         margin-right: 100px;
     }
     .recuazul{
        display: flex;       
-       align-items: center;     
-       gap: 1px;   
+       align-items: flex-start;        
        background-color:rgb(190, 237, 244) ;            
     }
    .recuazul p{
@@ -41,9 +46,23 @@
         text-align: center;
         margin: 2px;
     }
+
+    .icono1 {
+    vertical-align: text-top;
+    margin-right: 5px;
+    }
     .error{
         color:red;
     }
+   .declaraciones {
+    border-style: solid;
+    border-top: none;
+    padding: 15px; 
+         
+   
+  
+}
+   
 
 
 </style>
@@ -71,7 +90,8 @@
             </div>
             <div>
                 <label for="fechaNaci">*Fecha de nacimiento</label>
-                <input id="2Apellido" type="date" name="fechaNaci" value=""></input>
+                <input id="fechaNacimiento" type="date" name="fechaNaci" value=""></input>
+                 <p id="error3" style="display: inline-block; margin-left: 10px;"></p>
             </div>
             <div>
                 <label for="tipoDoc">*Tipo de documento</label>
@@ -87,7 +107,7 @@
 
             <div class="recuazul">
                <img src="./img/icons8-información-16.svg">
-               <p><strong>Este identificador se utilizará como usuario de acceso a la Sede electrónica.</strong></p></img>
+               <p>Este identificador se utilizará como usuario de acceso a la Sede electrónica.</p>
             </div>
 
              <div>
@@ -102,7 +122,15 @@
                 <label for="nnumSoporte">Numero de soporte/IDESP/IXESP</label>    
                 <input id="nnumSoporte" type="text" name="nnumSoporte" value="" placeholder="15454545"></input>
             </div> 
-
+           <div class="recuazul">
+                    <img class="icono1" src="./img/icons8-información-16.svg">
+                    <p>Si selecciona como Tipo de Documento DNI deberá informar el IDESP, si por el contrario selecciona NIE deberá informar el IXESP para que el Sistema pueda verificar sus Datos de Identidad con la Dirección General de la Policía.<br>
+                    <u><strong>Ver ayuda identidad.</strong></u><br>
+            
+                    Le recordamos en tal caso, que la información introducida en los campos</b>
+                    <strong>Nombre, Primo apellido y Segundo apellido (en caso de estar informado) deben ser EXACTAMENTE IGUALES a los existentes en su documento de identificación.</strong>
+              
+            </div>
 
 
              <div>
@@ -117,10 +145,44 @@
                 <label for="telefono">Télefono móvil</label>    
                 <input id="telefono" type="text" name="telefono" value="" placeholder="2565852532"></input>
             </div> 
+             <div class="recuazul">
+                    <img class="icono1" src="./img/icons8-información-16.svg">
+                    <p>El correo electrónico y el teléfono móvil indicados se utilizarán para recibir comunicaciones relativas a los trámites implementados en esta sede electrónica.</p>
+            </div>
+            
+             <div class="declaraciones"> 
+                <h4><span>DECLARACIONES</span></h4>
+            <input type="checkbox" id="declaro" name="declaro" value="declaro">
+             *Declaro que los datos que figuran en la solicitud de registro son ciertos, asumiendo en caso contrario, las responsabilidades que pudieran derivarse de su inexactitud y autorizando al Ministerio de Educación y Formación Profesional la consulta de los mismos en el Sistema de Verificación de Datos de Identidad de la Dirección General de la Policía.<br>
+            <input type="checkbox" id="declaro" name="declaro" value="declaro">
+                *Doy mi consentimiento
+                <div>
+                        Información importante
+
+                        Al firmar esta petición queda establecido que usted presta su consentimiento expreso al tratamiento de sus datos personales. Lea, antes de firmar, la información básica.
+
+                        Información básica
+
+                        Los datos personales recogidos serán incorporados en el registro de actividades de tratamiento del Ministerio de Educación y Formación Profesional denominado SEDE ELECTRÓNICA en cumplimiento del Reglamento General de Protección de Datos:
+                             Declaro que he leído la INFORMACIÓN BÁSICA referente a los derechos a ejercitar. Puede consultar la información adicional y detallada sobre protección de datos en enlace: https://sede.educacion.gob.es/registro-electronico/proteccion-datos
+                </div>
+                <div>
+                    <ul>
+                        <li>Responsable del tratamiento: Subsecretaría de Educación y Formación Profesional</li>
+                        <li>Finalidad: Registro de los ciudadanos en la sede electrónica del Ministerio, para realizar trámites electrónicos de los que el ministerio es competente, comprendiendo todo el ciclo del trámite administrativo
+                        <li>Legitimación: Consentimiento del interesado y orden EDU/947/2010, de 13 de abril por la que se crea y regula el registro electrónico del Ministerio de Educación y</li>
+                        <li>Formación Profesional</li>
+                        <li>Destinatarios: No están previstos</li>
+                        <li>Derechos: Acceso, rectificación, limitación del tratamiento, portabilidad de los datos, oposición y a no ser objeto de decisiones individualizadas.</li>
+                    </ul>
+                    </div>
+               
+            </div>
+
         <button type="submit">Enviar</button>
     </form>
-
     </div>
+   
     
 </body>
 </html>

@@ -15,7 +15,6 @@
 
 document.addEventListener('submit',(event)=>{
 
-
     //valida nombre
      const name=document.getElementById('nombre').value;//la cagava con el value
      const nameRGEX=/^[a-zA-ZÁÉÍÓÚáéíóúñü]+$/
@@ -53,8 +52,39 @@ document.addEventListener('submit',(event)=>{
         let msgeror=document.getElementById('error2');
         msgeror.classList.add('error');
         msgeror.innerHTML='<strong>El 2º Apellido contiene caracteres invalidos<strong>'; 
-
+ 
     
       }
-      
+     //validar fecha nacimiento 
+     let res=false;
+     const fechaNaci = document.getElementById('fechaNacimiento').value;
+
+     let msgeror=document.getElementById('error3');
+     let nacimientoDate= new Date(fechaNaci);
+     let hoy = new Date;
+     let año=hoy.getFullYear()-nacimientoDate.getFullYear();
+     let mes=(hoy.getMonth())+1;
+     let dia=hoy.getDate();
+   
+     if(año>18){
+      res=true;
+      if(res==false){
+        event.preventDefault();
+        msgeror.classList.add('error');
+        msgeror.innerHTML='No eres mayor de edad';
+        event.preventDefault();
+      }
+        console.log('primer if mayor de 18');
+     }
+     
+      if(año==18 && mes>=(nacimientoDate.getMonth()+1) && dia>=nacimientoDate.getDate()){
+
+      }
+
+      if(año==18 && mes>=(nacimientoDate.getMonth()+1) && dia<nacimientoDate.getDate()){
+       msgeror.classList.add('error');
+       msgeror.innerHTML='No eres mayor de edad';
+        event.preventDefault();
+      }
+            
 });
