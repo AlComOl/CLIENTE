@@ -76,7 +76,7 @@ document.addEventListener('submit',(event)=>{
       }
         console.log('primer if mayor de 18');
      }
-     
+
       if(año==18 && mes>=(nacimientoDate.getMonth()+1) && dia>=nacimientoDate.getDate()){
 
       }
@@ -86,5 +86,19 @@ document.addEventListener('submit',(event)=>{
        msgeror.innerHTML='No eres mayor de edad';
         event.preventDefault();
       }
+
+      //validar DNI
+
+     let dni= document.getElementById('tipoDoc').value;
+     const RGEXDni=/^[1-9]{8}[A-Z]{1}$/;
+     let validarDni=RGEXDni.test(dni);
+
+     if(validarDni==false){
+       let msgeror=document.getElementById('error4');
+       msgeror.classList.add('error');
+       msgeror.innerHTML='No eres mayor de edad';
+        event.preventDefault();
+
+     }
             
 });
