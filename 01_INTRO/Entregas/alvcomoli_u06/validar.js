@@ -139,7 +139,7 @@ function validarDni(){
       return true;
 }
 
-      //Validar Numero de soporte/
+   //Validar Numero de soporte/
 
 function validarNumeroSoporte(){
         let numSoporte= document.getElementById('numSoporte').value;
@@ -155,18 +155,13 @@ function validarNumeroSoporte(){
         return true;
 }
 
-
-//         //validar correos 
+//validar correos 
     
  function validarCorreos(){
     
         let correo= document.getElementById('correoEle').value;
         let REGEXCorreo=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // [...] conjunto de caracteres permitidos
-        // ^ dentro de los corchetes  negación (significa todo menos)
-        // \s  espacios
-        // @  arroba
-        //   uno o más caracteres
+      // Conjunto de caracteres permitidos; dentro de corchetes ^ significa negación; \s son espacios; @ es la arroba; + indica uno o más caracteres.
         let validaCorreo= REGEXCorreo.test(correo);
         
         if(validaCorreo==false){
@@ -233,13 +228,12 @@ function validarTelefono(){
 
 let acumula1=localStorage.getItem('cont');//si no guardo nada sera NAN
 let contador;
-console.log(contador);
-
+//como
 if(isNaN(contador)){
   contador=0;
 }
 
-
+// Dentro del addEventListener reviso todas las validaciones, y si alguna falla, evito que se envíe el formulario con preventDefault().
 document.addEventListener('submit',(event)=>{
 
 
@@ -283,24 +277,19 @@ document.addEventListener('submit',(event)=>{
  contador=contador+1;
 
 localStorage.setItem('cont',contador);
-console.log(contador);
+
 
 let acumula=localStorage.getItem('cont');
-console.log(acumula)
+
 
 
 let mostrarContador=document.getElementById('contador');
-mostrarContador.classList.add('error');
+mostrarContador.classList.add('mostrar');
 mostrarContador.innerHTML="Intento de Envíos del formulario: " +acumula;
-
  
 });
 
 
-
-
-
-
-// mostrarContador=document.getElementById('contador');
+//he intentado seguir todo lo que me dijistes en el correo , ya que mi intención es aprender, 
 
 
