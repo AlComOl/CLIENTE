@@ -93,8 +93,6 @@ function validarDni(){
      let dni= document.getElementById('nDoc').value;
      const RGEXDni=/^[0-9]{8}[A-Z]{1}$/;
      let validarDni=RGEXDni.test(dni);
-     console.log(dni);
-     console.log(validarDni);
      if(validarDni==false){
        let msgeror=document.getElementById('error4');
        msgeror.classList.add('error');
@@ -108,12 +106,9 @@ function validarDni(){
      function validarContraseñas(){
      let contraseña = document.getElementById('contraseña').value;
      let REGEXContraseña =/^(?=.*[0-9])(?=.*[!@#%^&*]).{13,}$/
-     console.log(contraseña);
-     
-
 
      let validarContaseña=REGEXContraseña.test(contraseña);
-     console.log(validarContaseña);
+ 
       if(validarContaseña==false){
         let msgeror=document.getElementById('error5');
         msgeror.classList.add('error');
@@ -175,7 +170,6 @@ function validarNumeroSoporte(){
         let validaCorreo= REGEXCorreo.test(correo);
         
         if(validaCorreo==false){
-          console.log('correo1'+validaCorreo);
           let msgeror=document.getElementById('error9');
           msgeror.classList.add('error');
           msgeror.innerHTML="El campo Correo electrónico debe cumplir con el formato de un email válido y no puede estár vacio";
@@ -186,7 +180,6 @@ function validarNumeroSoporte(){
    
         let validaCorreo1= REGEXCorreo.test(correo1);
         if(validaCorreo1==false){
-          console.log('correo2'+validaCorreo);
           let msgeror=document.getElementById('error10');
           msgeror.classList.add('error');
           msgeror.innerHTML="El campo Correo electrónico debe cumplir con el formato de un email válido y no puede estár vacio";
@@ -194,8 +187,6 @@ function validarNumeroSoporte(){
         }
 
          if(correo !== correo1){
-          console.log(correo +" "+ correo1);
-          console.log("diferentes"+ (correo !== correo1));
           let msgeror=document.getElementById('error11');
           msgeror.classList.add('error');
           msgeror.innerHTML="Los correos tienen que ser iguales";
@@ -227,10 +218,8 @@ function validarTelefono(){
         //value te da el contenido del input vs sin value(a pelo) el elemento completo como un ojeto
  function declaraciones(){
           let declaro=document.getElementById('declaro');//el value me da undefined en el checkbox
-          console.log(declaro);
           let declaro1=document.getElementById('declaro1');
           if(!declaro.checked  && !declaro1.checked){
-            console.log(declaro.checked);
             let msgeror=document.getElementById('error13');
             msgeror.classList.add('error');
             msgeror.innerHTML="Debe dar su consentimiento, en el apartado DECLARACIONES, al tratamiento de sus datos de carácter personal."
@@ -241,15 +230,19 @@ function validarTelefono(){
 
 
  //visualizar las veces que enviamos el formulario
-//  if(!document.cookie.includes("contador=")){
-// document.cookie="contador=0; expires=thu 12 Dic 2026 12:00:00";
-//  }
-// contador=document.cookie;
-// let cont=0;
 
-let contador=0;
+let acumula1=localStorage.getItem('cont');//si no guardo nada sera NAN
+let contador;
+console.log(contador);
+
+if(isNaN(contador)){
+  contador=0;
+}
+
 
 document.addEventListener('submit',(event)=>{
+
+
 
   if(!validaNombre()){
        event.preventDefault();
@@ -289,40 +282,25 @@ document.addEventListener('submit',(event)=>{
 
  contador=contador+1;
 
- localStorage.setItem('cont',contador);
+localStorage.setItem('cont',contador);
+console.log(contador);
+
+let acumula=localStorage.getItem('cont');
+console.log(acumula)
 
 
-  
- //visualizar las veces que enviamos el formulario
-// console.log(cont);
-
-// for (let i = 0; i < contador.length; i++) {
-
-//   if(contador[i]=="="){
-//     cont=parseInt(contador[i+1]);
-//   }
-// }
-
-// cont=cont+1;
-
-// console.log(cont);
-
-// localStorage.setItem('contador',cont);
-
-// let acumula=localStorage.getItem('test');
-
-
-
-mostrarContador=document.getElementById('contador');
-
+let mostrarContador=document.getElementById('contador');
 mostrarContador.classList.add('error');
-let valor=localStorage.getItem('cont');
-mostrarContador.innerHTML="Intento de Envíos del formulario: " +valor;
-
-
-
+mostrarContador.innerHTML="Intento de Envíos del formulario: " +acumula;
 
  
 });
+
+
+
+
+
+
+// mostrarContador=document.getElementById('contador');
 
 
