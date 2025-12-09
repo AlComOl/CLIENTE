@@ -162,8 +162,6 @@ function validarNumeroSoporte(){
 
 
 //         //validar correos 
-
-
     
  function validarCorreos(){
     
@@ -240,6 +238,17 @@ function validarTelefono(){
           }
         return true;
  }
+
+
+ //visualizar las veces que enviamos el formulario
+//  if(!document.cookie.includes("contador=")){
+// document.cookie="contador=0; expires=thu 12 Dic 2026 12:00:00";
+//  }
+// contador=document.cookie;
+// let cont=0;
+
+let contador=0;
+
 document.addEventListener('submit',(event)=>{
 
   if(!validaNombre()){
@@ -278,6 +287,42 @@ document.addEventListener('submit',(event)=>{
        event.preventDefault();
   }
 
+ contador=contador+1;
+
+ localStorage.setItem('cont',contador);
+
+
+  
+ //visualizar las veces que enviamos el formulario
+// console.log(cont);
+
+// for (let i = 0; i < contador.length; i++) {
+
+//   if(contador[i]=="="){
+//     cont=parseInt(contador[i+1]);
+//   }
+// }
+
+// cont=cont+1;
+
+// console.log(cont);
+
+// localStorage.setItem('contador',cont);
+
+// let acumula=localStorage.getItem('test');
+
+
+
+mostrarContador=document.getElementById('contador');
+
+mostrarContador.classList.add('error');
+let valor=localStorage.getItem('cont');
+mostrarContador.innerHTML="Intento de Envíos del formulario: " +valor;
+
+
+
 
  
 });
+
+
