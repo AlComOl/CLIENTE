@@ -46,3 +46,14 @@ content-type: application/json
     "title": "hola que tal",
     "id": 1
 }
+
+
+###
+POST http://localhost:3000/products
+content-type: application/json
+
+{
+    "name" : "mesa3", 
+    "descrip": "Lo uso para comer",
+    "id": 12334
+}

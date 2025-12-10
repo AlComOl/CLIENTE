@@ -1,45 +1,83 @@
 {
   "posts": [
     {
-      "title": "hola que tal",
-      "id": "1"
+      "id": 1,
+      "title": "Introducción a JavaScript",
+      "body": "JavaScript es un lenguaje esencial para el desarrollo web moderno.",
+      "author": "Ralph",
+      "views": 1200,
+      "tags": [
+        "javascript",
+        "programación",
+        "web"
+      ]
     },
     {
-      "id": "2",
-      "title": "another title",
-      "views": 200
+      "id": 2,
+      "title": "Cómo usar JSON Server",
+      "body": "JSON Server permite crear una API REST falsa en segundos.",
+      "author": "Ana",
+      "views": 780,
+      "tags": [
+        "json",
+        "rest",
+        "node"
+      ]
     }
   ],
   "comments": [
     {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
+      "id": 1,
+      "text": "Excelente explicación, gracias.",
+      "postId": 1,
+      "user": "Carlos"
     },
     {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": 2,
+      "text": "Justo lo que necesitaba para practicar fetch()",
+      "postId": 2,
+      "user": "Lucía"
     }
   ],
   "profile": {
-    "name": "typicode"
+    "id": 1,
+    "name": "Ralph Developer",
+    "email": "ralph@example.com",
+    "role": "admin"
   },
   "products": [
     {
-      "id": "f348",
-      "name": "mesa",
-      "descrip": "asd"
+      "id": "a101",
+      "name": "Mesa de Madera",
+      "description": "Mesa de pino macizo, ideal para comedor.",
+      "price": 120.99,
+      "stock": 4
     },
     {
-      "id": "0d11",
-      "name": "mesa",
-      "descrip": "asd"
+      "id": "a102",
+      "name": "Silla Ergonómica",
+      "description": "Perfecta para oficina, con soporte lumbar.",
+      "price": 89.5,
+      "stock": 10
     },
     {
-      "id": "d3da",
-      "name": "mesa",
-      "descrip": "asd"
+      "id": "a103",
+      "name": "Monitor 24''",
+      "description": "Pantalla Full HD con panel IPS.",
+      "price": 150,
+      "stock": 6
+    },
+    {
+      "id": "a104",
+      "name": "Teclado Mecánico",
+      "description": "Switches azules, retroiluminado.",
+      "price": 55.99,
+      "stock": 8
+    },
+    {
+      "id": "45a6",
+      "name": "prueba",
+      "descrip": "esto es una prueba"
     }
   ]
 }
