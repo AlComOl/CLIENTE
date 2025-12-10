@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    input:required{
+        border-left: 5px solid #0000FF;  
+    }
+    input:valid {
+     border-left: 5px solid #00FF00;
+     /* Borde verde para campos válidos */
+    }
+    input:invalid {
+     border-left: 5px solid #FF0000;
+      /* Borde rojo para campos inválidos */
+    }
+
+    
+   
+</style>
+<body>
+
+    <form action="localhost" method="post" >
+         <label for="idRead">Nombre</label>
+        <input id="idRead" type="text" name="color" value="" required>
+         <label for="idBlue">Apellido</label>
+        <input id="idBlue" type="text" name="color" value="" required>
+        <label for="idGreen">Edad</label>
+        <input id="idGreen" type="text" name="" value="" required>
+       
+
+        <br>
+
+        <input id="idRead" type="radio" name="color2" value="red">
+        <label for="idRead">ROJO</label>
+        <input id="idBlue" type="radio" name="color2" value="blue">
+        <label for="idBlue">VERDE</label>
+        <input id="idGreen" type="radio" name="color2" value="green">
+        <label for="idGreen">AZUL</label>
+
+        <button type="submit">ENVIAR</button>
+
+    </form>
+    
+</body>
+</html>
