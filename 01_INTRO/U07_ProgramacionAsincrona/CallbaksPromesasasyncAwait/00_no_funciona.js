@@ -36,9 +36,9 @@ window.addEventListener('load', () => {
   });
 });
 
-// function pintarTabla(datos) {
+function pintarTabla(datos) {
 
-// }
+}
 
 
 function getPosts(idUser) {

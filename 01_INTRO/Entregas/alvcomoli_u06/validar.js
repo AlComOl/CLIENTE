@@ -10,7 +10,7 @@ function validaNombre(){
       if(validarNombre==false){
         let msgeror=document.getElementById('error');
         msgeror.classList.add('error');
-        msgeror.innerHTML='<strong>El nombre contiene caracteres invalidos o está vacio<strong>'; 
+        msgeror.innerHTML='El nombre contiene caracteres invalidos o está vacio'; 
 
         return false;   
     }
@@ -25,7 +25,7 @@ function validarApellido1(){
       if(validarApellido1==false){
         let msgeror=document.getElementById('error1');
         msgeror.classList.add('error');
-        msgeror.innerHTML='<strong>El 1º Apellido contiene caracteres invalidos o está vacio<strong>';  
+        msgeror.innerHTML='El 1º Apellido contiene caracteres invalidos o está vacio';  
         return false;  
     }
 
@@ -42,7 +42,7 @@ function validarApellido2(){
       if(validarApellido2==false){
         let msgeror=document.getElementById('error2');
         msgeror.classList.add('error');
-        msgeror.innerHTML='<strong>El 2º Apellido contiene caracteres invalidos o está vacio<strong>'; 
+        msgeror.innerHTML='El 2º Apellido contiene caracteres invalidos o está vacio'; 
 
         return false;
     
@@ -195,10 +195,7 @@ function validarTelefono(){
 
         let telefono= document.getElementById('telefono').value;
         let REGEXtelefono=/^[6-9+]\d{8,}$/;
-        // ^  inicio de la cadena
-        // [6-9+]  el primer carácter debe ser 6, 7, 8, 9 o mas
-        // \d{8,}  al menos 8 dígitos mas (para que en total sean al menos 9)
-        // $  fin de la cadena
+    // ^ inicio, [6-9+] primer dígito 6-9 o +, \d{8,} al menos 8 dígitos más, $ fin de la cadena
         
         let validatelefono=REGEXtelefono.test(telefono);
         if(validatelefono==false){
@@ -226,11 +223,13 @@ function validarTelefono(){
 
  //visualizar las veces que enviamos el formulario
 
-let acumula1=localStorage.getItem('cont');//si no guardo nada sera NAN
-let contador;
-//como
-if(isNaN(contador)){
-  contador=0;
+let contador = parseInt(localStorage.getItem('cont')) ;
+
+let msgcontador = document.getElementById('contador');
+
+if (msgcontador) {
+    msgcontador.classList.add('mostrar');
+    msgcontador.innerHTML="Intento de Envíos del formulario:"+ contador;
 }
 
 // Dentro del addEventListener reviso todas las validaciones, y si alguna falla, evito que se envíe el formulario con preventDefault().
@@ -274,22 +273,13 @@ document.addEventListener('submit',(event)=>{
        event.preventDefault();
   }
 
- contador=contador+1;
+contador += 1;
+  localStorage.setItem('cont', contador);
 
-localStorage.setItem('cont',contador);
-
-
-let acumula=localStorage.getItem('cont');
-
-
-
-let mostrarContador=document.getElementById('contador');
-mostrarContador.classList.add('mostrar');
-mostrarContador.innerHTML="Intento de Envíos del formulario: " +acumula;
+  if (msgcontador) {
+      msgcontador.innerHTML = "Intento de Envíos del formulario: " + contador;
+  }
  
 });
-
-
-//he intentado seguir todo lo que me dijistes en el correo , ya que mi intención es aprender, 
 
 

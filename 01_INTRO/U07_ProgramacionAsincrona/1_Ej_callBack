@@ -1,0 +1,124 @@
+
+//aqui pasamos el callback que se ejecuta dentro, al tener el setTimeout ke da una temporacion
+
+// (() => {
+  function fetchData(callback) { 
+    setTimeout(() => {
+      const data = { name: "John", age: 30 };
+      callback(data);
+    }, 3000);
+  }
+
+  // Ejecutar la función con un callback
+  fetchData(function (data) {
+    console.log(data);
+  });
+
+  console.log("Data is being fetched...");
+// })();
+
+
+// 2-Ejemplo de uso de callbacks
+
+// En el siguiente ejemplo, la función second tiene código asíncrono que usa un callback 
+// para garantizar que la función third se ejecute después de que second haya terminado su tarea.
+
+(() => {
+  function first() {
+    console.log(1);
+  }
+
+  function second(callback) {
+    setTimeout(() => {
+      console.log(2);
+      callback();
+    }, 0);
+  }
+
+  function third() {
+    console.log(3);
+  }
+
+  second(third);
+  first();
+  // Salida: 1 2 3
+})();
+
+// Cuando llamas a una función que contiene un setTimeout con un callback:
+
+// La función que contiene el setTimeout se ejecuta inmediatamente hasta que termina su código síncrono.
+
+// El callback del setTimeout se envía a la cola de tareas (task queue), incluso si el tiempo es 0.
+
+// La ejecución del callback espera a que la pila (stack) se quede vacía y, si el tiempo de espera ha pasado, el event loop lo ejecuta.
+
+// Mientras tanto, el código siguiente en el stack principal se sigue ejecutando normalmente.
+
+(() => {
+  function first() {
+    console.log(1);
+  }
+
+  function second(callback) {
+    console.log(2);
+    setTimeout(() => {
+      callback();
+    }, 0);
+  }
+
+  function third() {
+    console.log(3);
+  }
+
+  second(third);
+  first();
+  // Salida: 2 1 3
+})();
+
+
+// Callback hell
+
+// El uso excesivo de callbacks puede llevar a una situación conocida como “Callback Hell” o “Pyramid of Doom”,
+//  donde el código se vuelve difícil de leer y mantener debido a la anidación profunda de funciones.
+
+function getData(callback){
+  // Hace lo que sea
+  let datoADevolver = "Data "
+  callback(datoADevolver)
+}
+
+function getMoreData(datoDeEntrada, callback) {
+  // Hace lo que sea
+  let datoADevolver = datoDeEntrada + "MoreData ";
+  callback(datoADevolver)
+}
+
+function getEvenMoreData(datoDeEntrada, callback) {
+  // Hace lo que sea
+  let datoADevolver = datoDeEntrada + "EvenMoreData "
+  callback(datoADevolver)
+}
+
+function getEvenEvenMoreData(datoDeEntrada, callback) {
+  // Hace lo que sea
+  let datoADevolver = datoDeEntrada + "EvenEvenMoreData "
+  callback(datoADevolver)
+}
+
+function getFinalData(datoDeEntrada, callback) {
+  // Hace lo que sea
+  let datoADevolver = datoDeEntrada + "FinalData "
+  callback(datoADevolver)
+}
+
+getData(function (a) {
+  getMoreData(a, function (b) {
+    getEvenMoreData(b, function (c) {
+      getEvenEvenMoreData(c, function (d) {
+        getFinalData(d, function (finalData) {
+          console.log(finalData);
+        });
+      });
+    });
+  });
+});

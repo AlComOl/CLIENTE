@@ -44,9 +44,11 @@
     }
     .error{
         color:red;
+         font-weight: 900;
     }
     .mostrar{
         color:green;
+         font-weight: 900;
     }
    .declaraciones {
         border-style: solid;
