@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-
-
-const App = () => {
-  const [value, setValue] = useState(5)
-  console.log(value)
+const App = (props) => {
+  const{notes}=props
+ 
 
 
 
   return (
-    <div>
-      {value}
-      <button onClick={() => setValue(0)}>button</button>
-
-    </div>
+   <div>
+    <h1>Notes</h1>
+    <ul>
+      <li>{notes[0].content}</li>
+      <li>{notes[1].content}</li>
+      <li>{notes[2].content}</li>
+    </ul>
+   </div>
  
   )
 }
