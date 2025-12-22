@@ -1,35 +1,19 @@
-const Hello = (props) => {
-// console.log(props.age)
-//   const bornYear = () => {
-//     const yearNow = new Date().getFullYear()
-//     return yearNow - props.age
-//   }
-const name=props.name
-const age=props.age
-const bornYear=new Date().getFullYear()-age
+import React, { useState } from 'react'
 
-
-  return (
-    <div>
-      <p>
-        Hello {name}, you are {age} years old
-      </p>
-
-      <p>So you were probably born in {bornYear}</p>
-    </div>
-  )
-}
 
 const App = () => {
-  const name = 'Peter'
-  const age = 10
+  const [value, setValue] = useState(5)
+  console.log(value)
+
+
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
+      {value}
+      <button onClick={() => setValue(0)}>button</button>
+
     </div>
+ 
   )
 }
 
