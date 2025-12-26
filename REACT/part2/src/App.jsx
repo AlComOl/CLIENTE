@@ -1,18 +1,17 @@
-const App = (props) => {
-  const{notes}=props
+const Note=({note})=>{
+  return(
+    <li >{note.content}</li>
+  )
+}
 
 
-
-
-
+const App = ({notes}) => {
   return (
    <div>
     <h1>Notes</h1>
     <ul>
-      {notes.map(item =>
-      <li key={item.content}>
-        {item.content}
-      </li>
+      {notes.map(note =>
+        <Note key={note.content} note={note}/>
     )}
     </ul>
     </div>
