@@ -57,14 +57,16 @@ generarInforme(){
 }
 
  calcularCargaMedia(){
-    var sum =0;
+
     const total = this.#unidades.reduce((acum,item) => {
 
-         sum += item.bateria;
+     return acum+ item.bateria;
+    //repasar mañana
+    },0); 
     
-    }); 
+    return total/this.#unidades.length;
   
- return sum;
+
     
 
   
