@@ -9,7 +9,7 @@ class Vehiculo{
             this.tipo=tipo;
         }else{
             console.log("el tipo no es correcto");
-            this.tipo=tipo;
+            
         }
       
         if(bateria< 0){
@@ -24,7 +24,7 @@ class Vehiculo{
     }
 
     resumen(){ 
-        return ` Modelo :${this.modelo} | Tipo :${this.tipo} | Carga :${this.bateria}`;
+        return `${this.id} Modelo :${this.modelo} | Tipo :${this.tipo} | Carga :${this.bateria}%`;
 
     }
 }
@@ -43,7 +43,7 @@ registrar(vehiculo){
 }
 
 retirar(id){
-  const indice = this.#unidades.indexOf(item => item.id === id);
+  const indice = this.#unidades.findIndex(item => item.id === id);
   this.#unidades.splice(indice,1);
 }
 
@@ -53,17 +53,17 @@ obtenerCriticos(){
 }
 
 generarInforme(){
-    return this.#unidades.map(item => console.log(item.resumen()));
+    return this.#unidades.map(item => item.resumen());
 }
 
  calcularCargaMedia(){
 
     const total = this.#unidades.reduce((acum,item) => {
 
-     return acum+ item.bateria;
-    //repasar mañana
+     return acum + item.bateria;
+   //acum es el numero que se acumula y item.bateria es el que coge
     },0); 
-    
+    //dividimos el toal entre las unidades del array
     return total/this.#unidades.length;
   
 
