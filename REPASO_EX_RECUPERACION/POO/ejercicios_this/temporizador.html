@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio Temporizador – this y setTimeout</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; }
+    h1 { margin-bottom: 20px; }
+    .botones { display: flex; gap: 10px; margin-bottom: 20px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Prueba del Temporizador</h1>
+  <p>Pulsa cualquiera de los botones con la consola abierta</p>
+
+  <div class="botones">
+    <button id="btnSumar">Sumar inmediatamente</button>
+    <button id="btnSumarDelay">Sumar con retraso</button>
+  </div>
+
+  <script>
+    "use strict";
+
+    class Temporizador {
+      constructor(botones) {
+        this.valor = 0;
+        this.botones = botones;
+
+        // MODIFICA SOLO ENTRE ESTAS LÍNEAS ----------------
+        this.botones[0].addEventListener("click",(e)=>this.sumar(e)); // completar
+        this.botones[1].addEventListener("click",(e)=>this.sumarConRetraso(e)); // completar
+        // -------------------------------------------------
+      }
+
+      // MODIFICA SOLO ENTRE ESTAS LÍNEAS ----------------
+     
+   
+      sumar(e) {
+        console.log("Botón pulsado:" ,e.target.id); // completar
+        this.valor++;
+        console.log("Valor actual:", this.valor); // completar
+      }
+      // -------------------------------------------------
+
+      // MODIFICA SOLO ENTRE ESTAS LÍNEAS ----------------
+      sumarConRetraso(e) {
+        setTimeout(function () {
+          this.valor++;
+          console.log("Botón con delay:",e.target.id ); // completar
+          console.log("Valor actual:",this.valor); // completar
+        }.bind(this), 2000);
+      }
+      // -------------------------------------------------
+    }
+
+    // NO MODIFICAR
+    const botones = [
+      document.getElementById("btnSumar"),
+      document.getElementById("btnSumarDelay")
+    ];
+
+    const temporizador = new Temporizador(botones);
+
+  </script>
+</body>
+</html>

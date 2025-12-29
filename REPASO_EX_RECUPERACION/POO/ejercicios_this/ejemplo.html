@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const f = () => this;
+
+// console.log(f() === window); // true
+
+const obj = {
+  foo: function() {
+    const baz = () => this;
+    return baz();
+  },
+  bar: () => this
+};
+
+console.log(obj.foo()); // { foo, bar }
+// console.log(obj.bar() === window); // true
+</script>
+</html>
