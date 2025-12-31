@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen de alertas</title>
+</head>
+<body>
+
+<h2>Examen de alertas</h2>
+<p>Abre la consola para ver los resultados</p>
+
+<script>
+  "use strict";
+
+  class Alerta {
+    constructor() {
+      this.totalAlertas = 0;
+
+      // ---------------- MODIFICAR AQUÍ ----------------
+      this.enviarAhora("AL1");
+      setTimeout(()=>{this.enviarConRetraso("AL2")}, 1500);
+      // -------------------------------------------------
+    }
+
+    // ---------------- MODIFICAR AQUÍ ----------------
+    enviarAhora(codigo) {
+      console.log(codigo);
+      console.log(this.totalAlertas++);
+    }
+    // -------------------------------------------------
+
+    // ---------------- MODIFICAR AQUÍ ----------------
+    enviarConRetraso(codigo) {
+      console.log(codigo);
+      console.log(this.totalAlertas++);
+    }
+    // -------------------------------------------------
+  }
+
+  const alerta = new Alerta();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Temporizador de Mensajes</title>
+</head>
+<body>
+
+  <h2>Temporizador de Mensajes</h2>
+  <p>Abre la consola para ver los resultados</p>
+
+  <script>
+    "use strict";
+
+    class Mensajes {
+      constructor() {
+        this.contador = 0;
+
+        // MODIFICA ESTE CÓDIGO HASTA "----------------"
+        // simula llamadas inmediatas y con delay
+        this.mostrarMensajeAhora("msg1");
+        // setTimeout(mostrarMensajeConDelay,9000,'msg2',contador).bind(this);
+        setTimeout (()=>{this.mostrarMensajeAhora('msg')},2000);
+        // ------------------------------------------------
+      }
+
+      // MODIFICA ESTE MÉTODO HASTA "----------------"
+      mostrarMensajeAhora(id) {
+        console.log(id);
+        console.log(this.contador++);
+        
+      }
+      // ------------------------------------------------
+
+      // MODIFICA ESTE MÉTODO HASTA "----------------"
+        mostrarMensajeConDelay(id){
+         console.log(id);
+         console.log(contador++);
+      }
+      // ------------------------------------------------
+    }
+
+    const temporizador = new Mensajes();
+  </script>
+
+</body>
+</html>
