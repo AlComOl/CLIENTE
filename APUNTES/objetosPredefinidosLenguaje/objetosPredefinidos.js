@@ -58,16 +58,16 @@ console.log("Nombre desde objeto parseado:", objParseado.nombre); // "Luis"
 // setTimeout(func, tiempo): ejecuta func una vez después de tiempo (ms)
 // setInterval(func, tiempo): ejecuta func repetidamente cada tiempo (ms)
 // =======================================================
-setTimeout(() => {
-  console.log("Esto aparece tras 2 segundos"); // Ejecuta 1 vez
-}, 2000);
+// setTimeout(() => {
+//   console.log("Esto aparece tras 2 segundos"); // Ejecuta 1 vez
+// }, 2000);
 
-let contador = 0;
-let intervalID = setInterval(() => {
-  contador++;
-  console.log("Contador:", contador); // Ejecuta cada segundo
-  if (contador === 5) clearInterval(intervalID); // Detener el interval
-}, 1000);
+// let contador = 0;
+// let intervalID = setInterval(() => {
+//   contador++;
+//   console.log("Contador:", contador); // Ejecuta cada segundo
+//   if (contador === 5) clearInterval(intervalID); // Detener el interval
+// }, 1000);
 
 // =======================================================
 // 6️ parseFloat() y parseInt()
@@ -75,10 +75,10 @@ let intervalID = setInterval(() => {
 // parseFloat(): número decimal
 // parseInt(): número entero
 // =======================================================
-console.log(parseFloat("3.14"));     // 3.14
-console.log(parseInt("42"));         // 42
-console.log(parseInt("42px"));       // 42 (ignora lo que no sea número)
-console.log(parseFloat("10.5abc"));  // 10.5
+// console.log(parseFloat("3.14"));     // 3.14
+// console.log(parseInt("42"));         // 42
+// console.log(parseInt("42px"));       // 42 (ignora lo que no sea número)
+// console.log(parseFloat("10.5abc"));  // 10.5
 
 // =======================================================
 // 7️ isNaN()
@@ -96,3 +96,77 @@ console.log([] instanceof Array);        // true, es un array
 console.log([] instanceof Object);       // true, array es objeto
 console.log(new Date() instanceof Date); // true, es Date
 console.log({} instanceof Array);        // false, no es array
+
+
+//OBJETOS REFERENCIA,DESESTRUCTURACION BORRAR ELEMENTOS
+
+const personas = [
+{ nombre: 'Ana' },
+{ nombre: 'Luis' }
+];
+console.log(personas.includes({ nombre: 'Ana' })); // false
+
+
+//desestructuracion de arrays 
+const arrayNotas = [5.2, 3.9, 6, 9.75, 7.5, 3];
+
+const [primera, segunda, tercera] = arrayNotas // primera = 5.2, segunda = 3.9, tercera = 6
+
+console.log(primera);
+// const [primera, , , cuarta] = arrayNotas // primera = 5.2, cuarta = 9.75
+// const [primera, ...resto] = arrayNotas
+
+
+///objetos
+
+let xeraco={
+  muebles:['sofa', 'televisión', 'nevera'],
+  habitaciones:2,
+  baño:2,
+  cocina:1
+};
+
+const xeraco2={...xeraco};
+
+console.log(xeraco);
+console.log(xeraco2);
+// xeraco2.muebles[2]='comoda';
+xeraco2.cocina=3;
+console.log(xeraco);//cocina=1
+console.log(xeraco2);//cocina=3
+
+const obj={
+  x:10,y:{z:20}
+}
+
+const newObj=obj;
+
+obj.x=100;
+console.log(obj)
+console.log(newObj);
+
+const original = {a:10, y:{z:20}}; 
+
+const b = original; 
+
+original.a="100"; 
+console.log(b);
+console.log(original);
+
+const personaCarlos = { 
+
+nombre: 'Carlos', 
+
+apellidos: 'Pérez Ortiz', 
+
+edad: 19, 
+
+}; 
+
+function muestraNombre({nombre, apellidos}) { // sólo coge 2 propiedades y las asigna 
+
+console.log('El nombre es ' + nombre + ' ' + apellidos) //a las variables nombre y apellidos 
+
+}
+
+muestraNombre(personaCarlos);

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+</html>
+<script>
+let miVentana;
+function welcome(){
+
+    miVentana = window.open("","","width=200 height=500");
+    miVentana.document.write("<h1>welcome</h1>");
+    let b = miVentana.document.createElement('button');
+    b.append('BOTON');
+    miVentana.document.body.append(b);
+  
+}
+
+setTimeout(welcome,2000);
+
+</script>
