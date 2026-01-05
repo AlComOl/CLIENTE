@@ -15,12 +15,22 @@
 let miVentana;
 function welcome(){
 
-    miVentana = window.open("","","width=200 height=500");
-    miVentana.document.write("<h1>welcome</h1>");
-    let b = miVentana.document.createElement('button');
+   miVentana=window.open('','','width=300 height=500');
+//    miVentana.document.write('<h1>Welcome</h1>');
+
+    const texto=miVentana.document.createElement('h1');
+    texto.append('Hola');
+    miVentana.document.body.append(texto);
+
+    const b = miVentana.document.createElement('button');
     b.append('BOTON');
     miVentana.document.body.append(b);
-  
+
+    b.addEventListener("click",cerrarVentana);
+
+}
+function cerrarVentana(){
+    miVentana.close();
 }
 
 setTimeout(welcome,2000);

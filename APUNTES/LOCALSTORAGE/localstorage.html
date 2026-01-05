@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div>
+    <button type="button" id="resetLocaStorage">RESET</button>
+    </div>
+    <div>
+
+    <input type="text" name="datos" id="d" value="datos">
+    <button type="submit" id="guardarLocaStorage">GUARDAR</button>
+
+    
+   
+    <div>
+      <button type="submit" id="mostrarLocaStorage">Mostrar Memoria</button>    
+    </div>
+     <div id="mostrar"> </div>
+    
+</head>
+<body>
+    <script>
+        // Guardar
+        function guardar(){
+            const idForm= document.getElementById('d').value;
+            console.log(idForm); 
+            localStorage.setItem("lastname",idForm);
+        }
+       const idBoton= document.getElementById('guardarLocaStorage');
+       idBoton.addEventListener('click',guardar);
+       
+        
+        // Obtener
+        const obtener=document.getElementById('mostrarLocaStorage');
+        obtener.addEventListener('click',obtenerLocalestore);
+
+        function obtenerLocalestore(){
+            const d = localStorage.getItem("lastname");
+            const mostrarLocalStore=document.getElementById('mostrar');
+            return mostrarLocalStore.innerHTML=d;
+        }
+
+      
+        // Borrar
+        const datos=document.getElementById('resetLocaStorage');
+        datos.addEventListener('click',removeLocalStore)
+
+        function removeLocalStore(){
+            localStorage.removeItem('lastname');
+         
+        }
+
+        // document.getElementById('mostrar').innerHTML="";
+
+
+    </script>
+</body>
+</html>
