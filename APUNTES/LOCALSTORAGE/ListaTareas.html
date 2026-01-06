@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Tareas</title>
+</head>
+<body>
+
+    <div id="lista">
+        <input type="text" id="texto" value="texto">
+        <button type="submit" id="crear">Crear</button>
+       
+    </div>
+
+    <script>
+        const botonCrear = document.getElementById('crear');
+        botonCrear.addEventListener('click',crearTarea);
+        
+        function crearTarea(){
+         
+            const tarea=document.getElementById('texto').value;
+           
+            const addTarea= document.createElement('li');
+            const botonEditar=document.createElement('button');
+            const botonEliminar=document.createElement('button');
+            botonEditar.append('Editar');
+            botonEliminar.append('Eliminar');
+
+
+
+            addTarea.append(tarea);
+          
+            const lista=document.getElementById('lista');
+            lista.appendChild(addTarea);
+            lista.append(botonEditar);
+            lista.append(botonEliminar);
+  
+        }
+    </script>
+</body>
+</html>
