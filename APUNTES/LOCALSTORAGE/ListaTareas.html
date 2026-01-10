@@ -14,28 +14,70 @@
     </div>
 
     <script>
-        const botonCrear = document.getElementById('crear');
-        botonCrear.addEventListener('click',crearTarea);
         
+     
+
+
+        document.onclick = function(event){
+            let target=event.target.id;
+
+
+            if(target==='crear'){
+                crearTarea();
+                console.log(target)
+            }
+            if(target.includes('boEditar')){
+                editarTarea(event);
+            }
+            if(target.includes('boEliminar')){
+                eliminarTarea(event);
+            }
+
+        }
+
+     
+        
+
+        
+ tareaid=1;
+
         function crearTarea(){
+           
          
             const tarea=document.getElementById('texto').value;
-           
             const addTarea= document.createElement('li');
             const botonEditar=document.createElement('button');
             const botonEliminar=document.createElement('button');
             botonEditar.append('Editar');
+            botonEditar.id = 'boEditar'+tareaid;
             botonEliminar.append('Eliminar');
-
-
+            botonEliminar.id = 'boEliminar'+tareaid;
+            addTarea.id= "tarea"+tareaid;
+            tareaid+=1;
+           
+        
+            addTarea.appendChild(botonEditar);
+            addTarea.appendChild(botonEliminar);
 
             addTarea.append(tarea);
           
             const lista=document.getElementById('lista');
             lista.appendChild(addTarea);
-            lista.append(botonEditar);
-            lista.append(botonEliminar);
-  
+         
+        }
+
+        function editarTarea(event){
+           
+        
+
+           
+        }
+
+        function eliminarTarea(event){
+            const li = event.target.closest('li');
+                li.remove()
+          
+
         }
     </script>
 </body>
