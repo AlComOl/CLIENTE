@@ -31,12 +31,15 @@ function agregaAlCarrito(nombre,precio){
     const botonComprar = document.createElement('button');
     const botonEliminar = document.createElement('button');
     botonComprar.classList.add('btn-comprar');
+    botonComprar.textContent="Comprar";
     botonComprar.addEventListener('click',()=>{
-        comprarProducto(li);
+        comprarProducto(li,nombre,precio);
     });
     botonEliminar.classList.add('btn-Eliminar');
+    botonEliminar.textContent="Eliminar";
     botonEliminar.addEventListener('click',()=>{
-        console.log('borrar');
+        element.remove();
+        EliminarCarrito.remove();
     });
 
     li.classList.add('item');
@@ -65,8 +68,34 @@ function iniciaTemporizador(element){
 
 }
 
-function comprarProducto(){
+function comprarProducto(li,nombre,precio){
+    arrayCarrito.push(li);
+let total=0;
+    arrayCarrito.forEach(li=>{
+        
+        const elementUl=document.getElementById('comprados');
+        const divComprados= document.createElement('div');
+        divComprados.append(li);
+        total += parseFloat(precio);
+        console.log(total);
+        elementUl.appendChild(divComprados);
+        const btn=document.getElementsByClassName('btn-comprar');
+        const btn1=document.getElementsByClassName('btn-Eliminar');
+        const salidaTotal=document.getElementById('total');
+        salidaTotal.innerText=total;
+        
+     
+    
+     btn[0].remove();
+     btn1[0].remove();
+        
 
-    console.log('voy a por esta funcion')
+
+        
+
+    })
+
+
+   
 
 }
