@@ -19,39 +19,40 @@ function crearTarea(){
   const liTarea=document.getElementById('id-tarea').value;
   const lista=document.getElementById('lista');
   const li= document.createElement('li');
-  const div=document.createElement('div');
+
   const btnElminar=document.createElement('button');
   const btnModificar=document.createElement('button');
+
   btnElminar.id='btn-eliminar';
   btnElminar.innerText='Eliminar';
 
   btnModificar.id='btn-modificar';
   btnModificar.innerText='Modificar';
-  div.id=idtarea;
+  li.id=idtarea;
   idtarea++;
   li.append(liTarea);
   li.appendChild(btnElminar);
   li.appendChild(btnModificar);
 
+  lista.append(li);
+
 
 
   
-  div.append(li)
-  lista.appendChild(div);
+
   
 
   btnElminar.addEventListener('click',()=>{
-    div.remove()
+    li.remove()
   });
 
   btnModificar.addEventListener('click',()=>{
 
 
-    //  const newLi=prompt('Introduce la modificación','');
-
-     console.log(this);
-     console.log(this.parentElement);
-       
+     const newLi=prompt('Introduce la modificación','');
+     
+      li.childNodes[0].remove(); 
+      li.append(newLi);     
 
    
 
@@ -64,6 +65,7 @@ function crearTarea(){
 
 
 
-function eliminarTarea(){
+function eliminarTarea(li){
+  
 
 }
