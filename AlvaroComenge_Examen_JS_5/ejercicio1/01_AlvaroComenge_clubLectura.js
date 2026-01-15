@@ -27,8 +27,8 @@ class ClubLectura{
 
 constructor(libro){
 
-   this.biblioteca[];
-   libro=this.libro;
+   this.biblioteca=[];
+ 
 }
 
 
