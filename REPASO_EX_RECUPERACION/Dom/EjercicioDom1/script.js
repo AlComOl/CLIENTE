@@ -1,4 +1,4 @@
-
+let puntos=0;
 document.querySelectorAll('.btn-incidencia').forEach(boton=>{
     boton.addEventListener('click',()=>{
         const tipo=boton.dataset.tipo;
@@ -8,21 +8,6 @@ document.querySelectorAll('.btn-incidencia').forEach(boton=>{
     });
     
 })
-
- const btnOk=document.getElementsByClassName('btn-ok');
-
- 
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -46,29 +31,42 @@ function nuevaincidencia(tipo,prioridad){
     
     const addIncidencia=document.getElementById('lista-pendientes');
 
-    console.log(addIncidencia);
+ 
     addIncidencia.append(div);
 
-    setTimeout(anadirPrioridad,3000);
+    
+    anadirPrioridad(div);
+    
 
-    botonSolucionar.addEventListener('click',(e)=>{
+    botonSolucionar.addEventListener('click',()=>{
        const incidencia = botonSolucionar.parentElement;
         const InSol = document.getElementById('lista-resueltas');
         botonIgnorar.remove();
         botonSolucionar.remove();
         InSol.append(incidencia);
+        
+        actualizarPuntaje();
        
     })
 
-
+    botonIgnorar.addEventListener('click',()=>{
+        const elim=botonIgnorar.parentElement;
+        console.log(elim);
+        elim.remove();
+    })
 
 }
 
-function anadirPrioridad(){
-  const element=document.getElementsByClassName('incidencia-card')[0];
-    element.classList.add('estado-critico');
- 
-   
+function anadirPrioridad(div){
+    setTimeout(()=>{div.classList.add('estado-critico')},15000)
+}
+
+
+function actualizarPuntaje(){
+    let resuelta=100;
+    puntos+=resuelta;
+    const actualizar=document.getElementById('puntos');
+    actualizar.innerText=puntos;
 
 }
 
