@@ -6,7 +6,7 @@
 
 //bucles while
 //Mientras la condiccion sea verdara el cosigo del cuerpo del bucle será ejecutado.
-let i=0;
+// let i=0;
 // while(n<=3){
 //     console.log("hola");
 //     n++;
@@ -30,9 +30,9 @@ let i=0;
 
 // }
 
-const character = "#";
-const count = 8;
-const rows = [];
+// const character = "#";
+// const count = 8;
+// const rows = [];
 
 // for (let i = 0; i < count; i = i + 1) {
 //   console.log(i);
@@ -47,17 +47,47 @@ const rows = [];
 // var dentro de una funcion scope{} si se declara fuera global, Si rasignar y Si redeclarar
 
 //const No puede redeclararse , No puede redeclararse ni reasignarse.
-function test() {// ReferenceError
+// function test() {// ReferenceError
 
       
-  console.log(x); 
-  var x = 10;
-  var x=20;
+//   console.log(x); 
+//   var x = 10;
+//   var x=20;
 
   
-}
+// }
 
 
-test();
+// test();
 
-pro
+
+const urba={
+
+  consegue: 'Alejandro',
+  presidente: 'Andres',
+  vecino: 'Sergio',
+  vecinos:['Orduño','Pepe','Luis']
+
+};
+
+// console.log(urba);
+
+// for (const key in urba) {
+//       console.log(key);
+// }
+
+ let urba2={};
+ urba2={...urba};
+
+
+urba2.consegue='Alvaro';
+ console.log(urba.consegue);
+ 
+ console.log(urba2.consegue);
+
+
+
+
+
+
+

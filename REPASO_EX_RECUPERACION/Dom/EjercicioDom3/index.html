@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Turnos</title>
+    <script src="./script.js" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .cliente-card { border: 1px solid #ccc; padding: 10px; margin: 5px; border-radius: 5px; }
+        .btn-atender, .btn-cancelar { margin-left: 5px; cursor: pointer; }
+        .tiempo-superado { background-color: #f88; border: 2px solid red; }
+        #cola-espera, #clientes-atendidos { margin-top: 20px; }
+        h2 { margin-bottom: 5px; }
+        label { display: block; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Turnos de Clientes</h1>
+
+    <div id="panel-control">
+        <label for="nombre-cliente">Nombre del cliente:</label>
+        <input type="text" id="nombre-cliente" placeholder="Introduce el nombre">
+        
+        <label for="tipo-servicio">Tipo de servicio:</label>
+        <select id="tipo-servicio">
+            <option value="Normal">Normal</option>
+            <option value="Urgente">Urgente</option>
+        </select>
+
+        <button id="btnNuevoCliente">Añadir Cliente</button>
+    </div>
+
+    <h2>Clientes en espera</h2>
+    <div id="cola-espera">
+        <!-- Aquí se añadirán los clientes en espera -->
+    </div>
+
+    <h2>Clientes atendidos</h2>
+    <div id="clientes-atendidos">
+        <!-- Aquí se moverán los clientes atendidos -->
+    </div>
+
+    
+</body>
+</html>
