@@ -20,7 +20,7 @@ class Articulo{
 
   }
 calcularPrecioFinal(){
- return this.precio=(precio+21)/100;
+ return this.precio=(this.precio+21)/100;
   
 
 }
