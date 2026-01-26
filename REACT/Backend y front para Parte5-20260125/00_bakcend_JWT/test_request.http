@@ -1,0 +1,51 @@
+
+
+
+### Login - usuario válido
+POST http://localhost:3009/api/login
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password": "secret"
+}
+
+###
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMSIsImlkIjoiMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODk4MTcxMiwiZXhwIjoxNzY4OTg1MzEyfQ.nF1CGJu7RYH5FpxcQ2TCgmpdQ7Xo-CsC0Yq97ja8eIM
+
+#@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiIyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzY4ODQ0OTY3LCJleHAiOjE3Njg4NDg1Njd9.UFHodmjG-utyCcrOf9vxqkZyfUDxKbixy0IrKsjOsCM
+
+#@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiIyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzY4ODQ1MTMxLCJleHAiOjE3Njg4NDg3MzF9.1YuEsEl8outik_6OliTrsvh-GOthx5q-iYPn1osDuKU
+POST http://localhost:3009/api/notes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "content": "Esta es una nota de prueba",
+  "important": true
+}
+
+
+
+### Login - usuario inválido
+POST http://localhost:3009/api/login
+Content-Type: application/json
+
+{
+  "username": "julio",
+  "password": "wrongpassword"
+}
+
+
+### Get all notes
+GET http://localhost:3009/api/notes
+
+
+### Create note - without token
+POST http://localhost:3009/api/notes
+Content-Type: application/json
+
+{
+  "content": "Nota sin token",
+  "important": false
+}

@@ -1,0 +1,13 @@
+# Dependencias (el "agujero negro")
+node_modules/
+
+# Archivos de entorno (contienen contraseñas o claves API)
+.env
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de compilación (si usas React, Angular, etc.)
+/dist
+/build
