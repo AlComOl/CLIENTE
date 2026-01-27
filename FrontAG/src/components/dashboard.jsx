@@ -1,5 +1,10 @@
-import React from "react"
-
 const dashboard = () =>{
 
+     <div>
+      <h2>Página de Dasbboard</h2>
+    
+    </div>
+
 } 
+
+export default dashboard 
