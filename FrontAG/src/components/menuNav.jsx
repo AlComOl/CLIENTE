@@ -5,12 +5,12 @@ import './menuNav.css';
 const BtnNav =({to,texto,iconImg,altText}) =>{
 
   return(
-  <Link to={to}>
+  <Link to={to} className="router-link">
   <div className='logo'>
-      <p className='texto'>
+      <a className='texto'>
         <img className='iconMenu' src={iconImg} alt={altText} />
         <span>{texto}</span>
-       </p>
+       </a>
        
   </div>
     </Link>
@@ -25,7 +25,7 @@ const BtnDashboard = () =>{
 
    <BtnNav 
    to="/dashboard"
-   iconImg="./iconDashboard.png"
+   iconImg="./iconDashboard2.svg"
    altText="Dashboard"
    texto="Dasbboard" />
    
@@ -38,7 +38,7 @@ const BtnExplotaciones = () =>{
   return(
     <BtnNav
     to="/explotaciones"
-    iconImg="./iconExplotaciones.png"
+    iconImg="./iconExplotacion.svg"
     altText="Explotaciones"
     texto="Explotaciones" 
     />
@@ -49,7 +49,7 @@ const BtnParcelas = () =>{
   return (
     <BtnNav
     to="./parcelas"
-    iconImg="./iconParcelas.png"
+    iconImg="./iconParcelas.svg"
     altText="Parcelas"
     texto="Parcelas" />
   )
@@ -61,9 +61,9 @@ const BtnOperacines = () =>{
     
      <BtnNav 
      to="./operaciones"
-     iconImg="./iconOperaciones.png"
+     iconImg="./iconOperaciones.svg"
      altText="Parcelas"
-     texto="Parcelas"/>
+     texto="Operaciones"/>
   )
 
 }
@@ -73,7 +73,7 @@ const BtnRecoleccion = () =>{
    
      <BtnNav 
      to="./recoleccion"
-     iconImg="./iconRecoleccion.png"
+     iconImg="./iconRecoleccion.svg"
      altText="Recoleccion"
      texto="Recoleccion"/>
   )
@@ -84,7 +84,7 @@ const BtnAlmacen = () =>{
   return(
      <BtnNav 
      to="./almacen"
-     iconImg="./iconAlmacen.png"
+     iconImg="./iconAlmacen.svg"
      altText="Almacen"
      texto="Almacen"/>
   )
