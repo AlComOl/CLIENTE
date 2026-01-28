@@ -1,40 +1,57 @@
 import { Link } from 'react-router-dom';
+import './menuNav.css';
 
+///Btn Padre
+const BtnNav =({to,texto,iconImg,altText}) =>{
 
-const Btndashboard = () =>{
+  return(
+  <Link to={to}>
+  <div className='logo'>
+      <p className='texto'>
+        <img className='iconMenu' src={iconImg} alt={altText} />
+        <span>{texto}</span>
+       </p>
+       
+  </div>
+    </Link>
+  )
+
+}
+
+//paso por props a los demas componentes
+const BtnDashboard = () =>{
 
   return(
 
-<Link to="/dashboard">
-<div className='logo'>
-   <p>
-  <img className='iconMenu' src="./iconDashboard.png" alt="dashboard" />
-  <span>Dashboard</span>
-</p>
-</div>
-</Link>
+   <BtnNav 
+   to="/dashboard"
+   iconImg="./iconDashboard.png"
+   altText="Dashboard"
+   texto="Dasbboard" />
+   
   )
 }
+
+
 const BtnExplotaciones = () =>{
 
   return(
-<div className='logo'>
-  <p>
-    <img className='iconMenu' src="./iconExplotaciones.png" alt="dashboard" />
-    <span>Explotaciones</span>
-  </p>
-</div>
+    <BtnNav
+    to="/explotaciones"
+    iconImg="./iconExplotaciones.png"
+    altText="Explotaciones"
+    texto="Explotaciones" 
+    />
   )
 }
-const Btnparcelas = () =>{
+const BtnParcelas = () =>{
 
   return (
-<div className='logo'>
-  <p>
-    <img className='iconMenu' src="./iconParcelas.png" alt="Parcelas" />
-    <span>Parcelas</span>
-  </p>
-</div>
+    <BtnNav
+    to="./parcelas"
+    iconImg="./iconParcelas.png"
+    altText="Parcelas"
+    texto="Parcelas" />
   )
 
 }
@@ -42,51 +59,47 @@ const BtnOperacines = () =>{
 
   return(
     
-      <div className='logo'>
-        <Link to="/operaciones">
-          <p>
-            <img className='iconMenu' src="./IconOperaciones.png" alt="Operaciones" />
-            <span>Operaciones</span>
-          </p>
-        </Link>
-      </div>
+     <BtnNav 
+     to="./operaciones"
+     iconImg="./iconOperaciones.png"
+     altText="Parcelas"
+     texto="Parcelas"/>
   )
 
 }
-const BtnExlotaciones = () =>{
+const BtnRecoleccion = () =>{
 
   return(
-    <div className='logo'>
-  <p>
-    <img className='iconMenu' src="./iconRecoleccion.png" alt="Recoleccion" />
-    <span>Recoleccion</span>
-  </p>
-</div>
+   
+     <BtnNav 
+     to="./recoleccion"
+     iconImg="./iconRecoleccion.png"
+     altText="Recoleccion"
+     texto="Recoleccion"/>
   )
 
 }
-const Btnalmacen = () =>{
+const BtnAlmacen = () =>{
 
   return(
-    <div className='logo'>
-  <p>
-    <img className='iconMenu' src="./iconAlmacen.png" alt="Almacen" />
-    <span>Almacen</span>
-  </p>
-</div>
+     <BtnNav 
+     to="./almacen"
+     iconImg="./iconAlmacen.png"
+     altText="Almacen"
+     texto="Almacen"/>
   )
 
 }
-
+//meto componentes dentro de la barraNav
 const BarraMenu = () => {
   return(
 <div class="navbar">
-   <Btndashboard/>
+   <BtnDashboard/>
    <BtnExplotaciones/>
-   <Btnparcelas/>
+   <BtnParcelas/>
    <BtnOperacines/>
-   <BtnExlotaciones/>
-   <Btnalmacen />
+   <BtnRecoleccion/>
+   <BtnAlmacen />  
 </div>
   )
 }

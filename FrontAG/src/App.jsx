@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BarraMenu from './components/menuNav.jsx';
 import Operaciones from './components/operaciones';
-import Dashboard from './components/dashboard'; // si tienes este componente
+import Dashboard from './components/dashboard'; 
+import Recoleccion from './components/recoleccion'; 
+import './App.css';
 
-
-
-import './App.css'
 
 function App() {
   return (
@@ -24,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/operaciones" element={<Operaciones />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/recoleccion" element={<Recoleccion />} />
            
         </Routes>
       </div>
