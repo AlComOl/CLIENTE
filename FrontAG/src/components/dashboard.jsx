@@ -1,10 +1,26 @@
+
+
+
+
+
+
+
 const dashboard = () =>{
 return(
      <div>
-      <h2>Página de Dasbboard</h2>
-    
+      <h1>Página de Dasbboard</h1>
+      <p>Resumen general de la gestión agrícola</p>
+
+
+
     </div>
+
+    
+    
+  
 )
-} 
+}
+
+
 
 export default dashboard 

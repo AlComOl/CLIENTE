@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './menuNav.css';
 
-///Btn Padre
+
 const BtnNav =({to,texto,iconImg,altText}) =>{
 
   return(
@@ -18,88 +18,50 @@ const BtnNav =({to,texto,iconImg,altText}) =>{
 
 }
 
-//paso por props a los demas componentes
-const BtnDashboard = () =>{
 
+//meto componentes dentro de la barraNav
+const BarraMenu = () => {
   return(
 
-   <BtnNav 
-   to="/dashboard"
-   iconImg="./iconDashboard2.svg"
-   altText="Dashboard"
-   texto="Dasbboard" />
-   
-  )
-}
+<div className="navbar">
 
+  <BtnNav  to="./almacen"
+     iconImg="./iconAlmacen.svg"
+     altText="Almacen"
+     texto="Almacen"/>
 
-const BtnExplotaciones = () =>{
-
-  return(
-    <BtnNav
+  <BtnNav
     to="/explotaciones"
     iconImg="./iconExplotacion.svg"
     altText="Explotaciones"
     texto="Explotaciones" 
-    />
-  )
-}
-const BtnParcelas = () =>{
+    /> 
 
-  return (
-    <BtnNav
+  <BtnNav
     to="./parcelas"
     iconImg="./iconParcelas.svg"
     altText="Parcelas"
     texto="Parcelas" />
-  )
 
-}
-const BtnOperacines = () =>{
-
-  return(
-    
-     <BtnNav 
+     
+  <BtnNav 
      to="./operaciones"
      iconImg="./iconOperaciones.svg"
      altText="Parcelas"
      texto="Operaciones"/>
-  )
 
-}
-const BtnRecoleccion = () =>{
-
-  return(
-   
-     <BtnNav 
+  <BtnNav 
      to="./recoleccion"
      iconImg="./iconRecoleccion.svg"
      altText="Recoleccion"
      texto="Recoleccion"/>
-  )
 
-}
-const BtnAlmacen = () =>{
-
-  return(
-     <BtnNav 
+  <BtnNav 
      to="./almacen"
      iconImg="./iconAlmacen.svg"
      altText="Almacen"
      texto="Almacen"/>
-  )
-
-}
-//meto componentes dentro de la barraNav
-const BarraMenu = () => {
-  return(
-<div class="navbar">
-   <BtnDashboard/>
-   <BtnExplotaciones/>
-   <BtnParcelas/>
-   <BtnOperacines/>
-   <BtnRecoleccion/>
-   <BtnAlmacen />  
+    
 </div>
   )
 }
