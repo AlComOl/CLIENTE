@@ -31,11 +31,11 @@ a{ display: flex;
 }
 .router-link {
   text-decoration: none;
-  color: black;
+  /* color: black;
   padding: 3px 3px;      
   border-radius: 5px;
   border: 1px solid transparent;    
-  transition: all 5s ease;
+  transition: all 5s ease; */
 }
 .router-link:hover {
   color: white;

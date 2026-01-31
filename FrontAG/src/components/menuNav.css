@@ -1,4 +1,23 @@
 
+.logo {
+  padding: 10px;
+  background-color: white; 
+ 
+  cursor: pointer;
+}
+
+.logo span {
+  color: black;
+}
+
+
+.logo.activeMenu {
+  background-color:black; 
+}
+
+.logo.activeMenu span {
+  color: grey ; 
+}
 .iconMenu{
     width: 25px;
     height: 25px;

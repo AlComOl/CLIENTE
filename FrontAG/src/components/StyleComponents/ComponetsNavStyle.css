@@ -10,11 +10,17 @@ background-color: #ffffff;
 .card1 p{
     color:black;
     display: inline;
-    margin-right: 190px;
     color:grey;
 }
 .texto img{
-    color:grey;
+    color:grey;   
+           
+  
+}
+.texto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .value{
     font-size:20px;
@@ -25,8 +31,21 @@ background-color: #ffffff;
     justify-content: center;
     align-items: center;
     
-    
-    
+}
+
+.segundaSeccion{
+
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cardShort{
+    width: 430px;
+    height: 30px;
+    border: 1px solid black;
 }
 
 
