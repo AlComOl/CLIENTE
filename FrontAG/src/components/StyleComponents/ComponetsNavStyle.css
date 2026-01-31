@@ -1,0 +1,32 @@
+.card1{
+background-color: #ffffff;
+  border: 3px solid #bdc0c4; /* gris claro */
+  border-radius: 12px;
+  padding: 20px;
+  width: 310px;
+  margin:10px;
+}
+
+.card1 p{
+    color:black;
+    display: inline;
+    margin-right: 190px;
+    color:grey;
+}
+.texto img{
+    color:grey;
+}
+.value{
+    font-size:20px;
+}
+.primeraSeccion{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+
+

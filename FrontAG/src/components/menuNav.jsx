@@ -25,10 +25,10 @@ const BarraMenu = () => {
 
 <div className="navbar">
 
-  <BtnNav  to="./almacen"
-     iconImg="./iconAlmacen.svg"
-     altText="Almacen"
-     texto="Almacen"/>
+  <BtnNav  to="./dashboard"
+     iconImg="./iconDashboard.svg"
+     altText="Dashboard"
+     texto="Dashboard"/>
 
   <BtnNav
     to="/explotaciones"
