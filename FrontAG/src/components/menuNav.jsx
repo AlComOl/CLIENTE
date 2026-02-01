@@ -2,18 +2,15 @@ import { Link } from 'react-router-dom';
 import {useState} from 'react';
 import './menuNav.css';
 
-
+//ESTE ES EL MOLDE
 const BtnNav =({to,texto,iconImg,altText,isSeleccionado, onClick}) =>{
 
 
   return(
-  <Link to={to} className="router-link" onClick={onClick}>
+  <Link to={to} className="router-link">
   <div className={`logo ${isSeleccionado ? 'activeMenu' : ''}`} onClick={onClick}>
-      <a className='texto'>
         <img className='iconMenu' src={iconImg} alt={altText} />
         <span>{texto}</span>
-       </a>
-       
   </div>
     </Link>
   )

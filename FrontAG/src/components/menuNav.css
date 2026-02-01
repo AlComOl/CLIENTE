@@ -2,7 +2,6 @@
 .logo {
   padding: 10px;
   background-color: white; 
- 
   cursor: pointer;
 }
 
@@ -13,15 +12,25 @@
 
 .logo.activeMenu {
   background-color:black; 
+  
 }
 
+
 .logo.activeMenu span {
-  color: grey ; 
+  color: grey;
 }
+
+
+.iconMenu {
+  filter: grayscale(0%);
+  transition: filter 0.2s;
+}
+/* Al ser un svg tiene que hacerse asi Ajusta los valores hasta que se vea gris. */
+.logo.activeMenu .iconMenu { 
+  filter: brightness(0.5) invert(0.5);
+}
+
 .iconMenu{
     width: 25px;
     height: 25px;
-}
-p{
-    color:grey;
 }
