@@ -47,5 +47,13 @@ background-color: #ffffff;
     height: 30px;
     border: 1px solid black;
 }
+.tituloCard2 {
+  display: flex;            
+  align-items: center;      
+  gap: 10px;                
+}
 
-
+.tituloCard2 img {
+  width: 20px;   
+  
+}

@@ -1,6 +1,6 @@
 import './StyleComponents/ComponetsNavStyle.css';
 
-const Card = ({ texto, iconImg, altText, valor, comentario, children }) => {
+const Card = ({ texto, iconImg, altText, valor, comentario}) => {
   return (
     <div className="card1">
       <div className="texto">
@@ -14,19 +14,24 @@ const Card = ({ texto, iconImg, altText, valor, comentario, children }) => {
         <p className="texto">{comentario}</p>
       </div>
 
-      {/* Aquí se renderiza cualquier componente hijo */}
-      {children}
     </div>
   );
 };
 
-const ShortCard = ({ titulo, texto }) => {
+const BtnCard =() => {
+
+}
+
+const Card2 = ({ titulo, iconImg,altText,texto,textoBtn }) => {
   return (
-    <div className="cardShort">
-      <h6>{titulo}</h6>
+    <div className="card2">
+      <div class="tituloCard2">
+        <img src={iconImg} alt={altText}/>
+        <h4>{titulo}</h4>
+      </div>
       <p>{texto}</p>
       <div>
-        <button>Ver</button>
+        <button>{textoBtn}</button>
       </div>
     </div>
   );
@@ -73,25 +78,13 @@ const Dashboard = () => {
 
       <div className="segundaSeccion">
      
-        <Card
-          iconImg="./iconAlmacen.svg"
-          altText="Alertas"
-          texto="Alertas"
-          valor="9"
-          comentario="Requiere atención"
-        >
-          <ShortCard titulo="Nueva alerta" texto="Revisar fincas" />
-        </Card>
-
-        <Card
-          iconImg="./iconAlmacen.svg"
-          altText="Almacen"
-          texto="Productos"
-          valor="9"
-          comentario="En almacén"
-        >
-          <ShortCard titulo="Nueva alerta" texto="Revisar fincas" />
-        </Card>
+        <Card2 
+        iconImg="./advertencia1.png"
+        titulo="Alertas"
+        texto="Requieren atención"
+        textoBtn="Ver"
+        />
+          
       </div>
     </div>
   );
