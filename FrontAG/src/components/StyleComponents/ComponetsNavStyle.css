@@ -1,6 +1,6 @@
 .card1{
-background-color: #ffffff;
-  border: 3px solid #bdc0c4; /* gris claro */
+  background-color: #ffffff;
+  border: 3px solid #bdc0c4;
   border-radius: 12px;
   padding: 20px;
   width: 310px;
@@ -34,7 +34,6 @@ background-color: #ffffff;
 }
 
 .segundaSeccion{
-
     display: flex;
     padding: 10px;
     justify-content: center;
@@ -42,10 +41,12 @@ background-color: #ffffff;
 
 }
 
-.cardShort{
-    width: 430px;
-    height: 30px;
-    border: 1px solid black;
+.card2{
+  border: 3px solid #bdc0c4;
+  border-radius: 12px;
+  padding: 20px;
+  width: 610px;
+  margin:10px;
 }
 .tituloCard2 {
   display: flex;            
@@ -57,3 +58,32 @@ background-color: #ffffff;
   width: 20px;   
   
 }
+.BtnCard {
+  border: 3px solid #bdc0c4;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.BtnCardHeader {
+  display: flex;
+  justify-content: space-between; /* h5 a la izquierda, botón a la derecha */
+  align-items: center;
+  margin-bottom: 10px; /* espacio entre la fila y el texto */
+}
+
+.BtnCardHeader h5 {
+  margin: 0;
+}
+
+.BtnCardHeader button {
+  padding: 5px 15px;
+}
+
+.BtnCard p {
+  margin: 0;
+}
+
+
