@@ -45,7 +45,7 @@
   border: 3px solid #bdc0c4;
   border-radius: 12px;
   padding: 20px;
-  width: 610px;
+  width: 710px;
   margin:10px;
 }
 .tituloCard2 {
@@ -69,9 +69,9 @@
 
 .BtnCardHeader {
   display: flex;
-  justify-content: space-between; /* h5 a la izquierda, botón a la derecha */
+  justify-content: space-between; 
   align-items: center;
-  margin-bottom: 10px; /* espacio entre la fila y el texto */
+  margin-bottom: 10px; 
 }
 
 .BtnCardHeader h5 {

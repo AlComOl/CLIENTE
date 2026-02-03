@@ -1,4 +1,8 @@
 import './StyleComponents/ComponetsNavStyle.css';
+import explotacionService from '../services/explotaciones.js';
+import parcelasService from '../services/parcelas.js';
+import { useEffect , useState } from 'react';
+
 
 const Card = ({ texto, iconImg, altText, valor, comentario}) => {
   return (
@@ -40,7 +44,7 @@ const Card2 = ({ titulo, iconImg,altText,texto,children }) => {
         <h4>{titulo}</h4>
       </div>
       <p>{texto}</p>
-{/* PAsamos al boton hijo para  */}
+{/* Psamos al boton hijo para  */}
       {children}
 
     </div>
@@ -48,6 +52,31 @@ const Card2 = ({ titulo, iconImg,altText,texto,children }) => {
 };
 
 const Dashboard = () => {
+
+
+  const [numExplo, setNumExplo] = useState(0);//explotaciones
+  const [numParcelas, setnumParcelas] = useState(0);//parcelas
+
+//Peticion Explotaciones totales
+   useEffect(() => {
+    explotacionService.getCount()
+      .then(total => setNumExplo(total))
+      .catch(err => console.log(err));
+  }, [])
+
+//peticion Parcelas totales
+  useEffect(()=>{
+    parcelasService.getCount()
+      .then(total => setnumParcelas(total))
+      .catch(err => console.log(err));
+  }, [])
+  
+
+
+
+
+
+
   return (
     <div>
       <p>Resumen general de la gestión agrícola</p>
@@ -57,7 +86,7 @@ const Dashboard = () => {
           iconImg="./iconExplotacion.svg"
           altText="Explotaciones"
           texto="Explotaciones"
-          valor="9"
+          valor={numExplo}
           comentario="Total de Fincas"
         />
 
@@ -65,8 +94,8 @@ const Dashboard = () => {
           iconImg="./iconParcelas.svg"
           altText="parcelas"
           texto="Parcelas"
-          valor="35"
-          comentario="Total de Fincas"
+          valor={numParcelas}
+          comentario="Total Parcelas"
         />
 
         <Card
@@ -102,11 +131,16 @@ const Dashboard = () => {
      
 
         <Card2 
-        iconImg=""
-        titulo="Actividades Recientes"
-        texto="Ultimas operaciones registradas"
-        textoBtn="Ver"
-        />
+        iconImg="./advertencia1.png"
+        titulo="Actividad Reciente"
+        texto="Requieren atención"
+        textoBtn="Ver">
+
+        <BtnCard
+        titulo="Fumigacion"
+        texto="Parcela 12/25 15/08/2025"/>
+
+        </Card2>
           
       </div>
     </div>
