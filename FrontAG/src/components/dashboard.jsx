@@ -1,55 +1,17 @@
 import './StyleComponents/ComponetsNavStyle.css';
+import Card from './cards/Card'
+import Card2 from './cards/card2'
+import BtnCard from './buttons/btn1.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import { useEffect , useState } from 'react';
 
 
-const Card = ({ texto, iconImg, altText, valor, comentario}) => {
-  return (
-    <div className="card1">
-      <div className="texto">
-        <p>{texto}</p>
-        <img src={iconImg} alt={altText} />
-      </div>
 
-      <h5 className="value">{valor}</h5>
 
-      <div>
-        <p className="texto">{comentario}</p>
-      </div>
 
-    </div>
-  );
-};
 
-const BtnCard =({titulo,texto}) => {
 
-  return(
-      <div className="BtnCard">
-      <div className="BtnCardHeader">
-        <h5>{titulo}</h5>
-        <button>Ver</button>
-      </div>
-      <p>{texto}</p>
-    </div>
-  )
-
-}
-
-const Card2 = ({ titulo, iconImg,altText,texto,children }) => {
-  return (
-    <div className="card2">
-      <div className="tituloCard2">
-        <img src={iconImg} alt={altText}/>
-        <h4>{titulo}</h4>
-      </div>
-      <p>{texto}</p>
-{/* Psamos al boton hijo para  */}
-      {children}
-
-    </div>
-  );
-};
 
 const Dashboard = () => {
 
@@ -123,7 +85,7 @@ const Dashboard = () => {
         texto="Requieren atención"
         textoBtn="Ver">
 
-        <BtnCard
+        <BtnCard className="BtnCard"
         titulo="Stock Bajo"
         texto="productos con stock bajo"/>
 
@@ -148,3 +110,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
