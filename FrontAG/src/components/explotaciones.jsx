@@ -1,4 +1,4 @@
-import Card from './cards/Card'
+import Card from './cards/card'
 import './StyleComponents/ComponetsNavStyle.css';
 
 const explotaciones = () =>{

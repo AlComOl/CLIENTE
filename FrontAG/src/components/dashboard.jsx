@@ -1,18 +1,12 @@
 import './StyleComponents/ComponetsNavStyle.css';
-import Card from './cards/Card'
-import Card2 from './cards/card2'
+import Card from './cards/card.jsx'
+import Card2 from './cards/card2.jsx'
 import BtnCard from './buttons/btn1.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import { useEffect , useState } from 'react';
 
-
-
-
-
-
-
-
+//darle una vuelta a los nombre,es decir descriptivos los nombres de los componente
 const Dashboard = () => {
 
 
@@ -23,7 +17,7 @@ const Dashboard = () => {
    useEffect(() => {
     explotacionService.getCount()
       .then(total => setNumExplo(total))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));//gestionar errores cunado la informacion no este disponible
   }, [])
 
 //peticion Parcelas totales
