@@ -1,4 +1,4 @@
-import Card from './cards/card.jsx'
+import Card from './InfoPanel/InfoPanel2.jsx'
 import Btn2 from './buttons/btn2.jsx'
 import './Style/buttons.css';
 

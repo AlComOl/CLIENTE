@@ -1,4 +1,4 @@
-import Card from './cards/card'
+import Card from './InfoPanel/InfoPanel1.jsx'
 import './StyleComponents/ComponetsNavStyle.css';
 
 const explotaciones = () =>{
