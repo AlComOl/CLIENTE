@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import {useState} from 'react';
-import './menuNav.css';
+// import './menuNav.css';
+import './Style/menuNav.css';
+
 
 //ESTE ES EL MOLDE
 const BtnNav =({to,texto,iconImg,altText,isSeleccionado, onClick}) =>{

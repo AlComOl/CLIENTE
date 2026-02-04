@@ -1,7 +1,8 @@
-import './StyleComponents/ComponetsNavStyle.css';
-import Card from './cards/card.jsx'
-import Card2 from './cards/card2.jsx'
-import BtnCard from './buttons/btn1.jsx'
+import './Style/ComponetsNavStyle.css';
+import './Style/card.css';
+import Card from './InfoPanel/InfoPanel1.jsx';
+import Card2 from './InfoPanel/InfoPanel2.jsx';
+import BtnCard from './buttons/btn1.jsx';
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import { useEffect , useState } from 'react';
