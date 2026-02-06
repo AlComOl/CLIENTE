@@ -1,13 +1,14 @@
 
 import '../Style/buttons.css';
 
-const BtnCard =({titulo,texto}) => {
+const Btn1 =({titulo,texto,iconIng,altText,className}) => {
 
   return(
       <div>
       <div className="BtnCardHeader">
-        <h5>{titulo}</h5>
-        <button>Ver</button>
+        <button className={className}>
+           <img src={iconIng} alt={altText}/>{titulo}
+        </button>
       </div>
       <p>{texto}</p>
     </div>
@@ -15,4 +16,4 @@ const BtnCard =({titulo,texto}) => {
 
 }
 
-export default BtnCard
+export default Btn1

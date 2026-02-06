@@ -2,7 +2,7 @@ import './Style/ComponetsNavStyle.css';
 import './Style/card.css';
 import Card from './InfoPanel/InfoPanel1.jsx';
 import Card2 from './InfoPanel/InfoPanel2.jsx';
-import BtnCard from './buttons/btn1.jsx';
+import Btn1 from './buttons/Btn1.jsx';
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import { useEffect , useState } from 'react';
@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [numExplo, setNumExplo] = useState(0);//explotaciones
   const [numParcelas, setnumParcelas] = useState(0);//parcelas
 
-//Peticion Explotaciones totales
+//useEfect 
    useEffect(() => {
     explotacionService.getCount()
       .then(total => setNumExplo(total))
@@ -36,6 +36,7 @@ const Dashboard = () => {
 
   return (
     <div>
+      <h1>Dashboard</h1>
       <p>Resumen general de la gestión agrícola</p>
 
       <div className="primeraSeccion">
@@ -80,7 +81,7 @@ const Dashboard = () => {
         texto="Requieren atención"
         textoBtn="Ver">
 
-        <BtnCard className="BtnCard"
+        <Btn1 className="BtnCard"
         titulo="Stock Bajo"
         texto="productos con stock bajo"/>
 
@@ -93,7 +94,7 @@ const Dashboard = () => {
         texto="Requieren atención"
         textoBtn="Ver">
 
-        <BtnCard
+        <Btn1
         titulo="Fumigacion"
         texto="Parcela 12/25 15/08/2025"/>
 

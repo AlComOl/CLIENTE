@@ -1,0 +1,43 @@
+.menuExplo{
+  display: flex;
+  justify-content:space-between;
+}
+
+
+.primeraSeccion {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.primeraSeccion > * {
+  flex: 1;
+}
+
+.filtroExplo{
+  display: flex;
+}
+
+.btn-nueva-explotacion {
+  background-color: #000000;  /* Fondo negro */
+  color: white;               /* Letra blanca */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.btn-nueva-explotacion:hover {
+  background-color: #333333;  /* Gris oscuro al pasar el mouse */
+}
+
+.btn-nueva-explotacion img {
+  width: 20px;
+  height: 20px;
+}
