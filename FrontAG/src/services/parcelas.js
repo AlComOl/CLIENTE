@@ -1,9 +1,10 @@
 import axios from 'axios';
 const baseUrl = 'http://localhost/api/parcelas';
 
-const getCount = () => axios.get(`${baseUrl}`).then(res => res.data.total)
+const getCount = () => {
+  const request = axios.get(baseUrl)
+  return request.then(response => response.data)
+}
 
 export default { getCount }
 
-
-///deberia tener cada archivo card otro para 

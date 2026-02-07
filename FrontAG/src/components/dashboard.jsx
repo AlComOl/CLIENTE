@@ -19,14 +19,20 @@ const Dashboard = () => {
     explotacionService.getCount()
       .then(total => setNumExplo(total))
       .catch(err => console.error(err));//gestionar errores cunado la informacion no este disponible
-  }, [])
+  
+    parcelasService.getCount()
+      .then(data =>{
+        setnumParcelas(data.total)
+      })
+  
+    }, [])
 
 //peticion Parcelas totales
-  useEffect(()=>{
-    parcelasService.getCount()
-      .then(total => setnumParcelas(total))
-      .catch(err => console.log(err));
-  }, [])
+  // useEffect(()=>{
+  //   parcelasService.getCount()
+  //     .then(total => setnumParcelas(total))
+  //     .catch(err => console.log(err));
+  // }, [])
   
 
 

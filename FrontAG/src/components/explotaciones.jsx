@@ -1,20 +1,31 @@
 import { useEffect , useState } from 'react';
 import Card from './InfoPanel/InfoPanel1.jsx'
 import explotacionService from '../services/explotaciones.js';
+import parcelasService from '../services/parcelas.js';
 import './Style/Explotaciones.css';
 import Btn1 from './buttons/Btn1.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import './Style/busqueda1.css';
 
 const Explotaciones = () =>{
-
+// useState es un hook que permite crear y manejar estado (datos que pueden cambiar) en un componente funcional.
   const [numExplo, setNumExplo] = useState(0);//explotaciones
-  
+  const [numParcelas, setNumParcelas] = useState(0);
+  const [totalHng,setTotalHng] = useState(0);
+
+
+  //useEffect es un hook que ejecuta código cuando el componente se monta, actualiza o desmonta.
   
      useEffect(() => {
+      
       explotacionService.getCount()
         .then(total => setNumExplo(total))
-        .catch(err => console.error(err));//gestionar errores cunado la informacion no este disponible
+
+      parcelasService.getCount()
+        .then(data => {
+          setNumParcelas(data.total)
+          setTotalHng(data.totalHng)
+        })
     }, [])
 
 return(
@@ -43,22 +54,22 @@ return(
           altText="menu"
           texto="Explotaciones"
           valor={numExplo}
-          // comentario="Total de Fincas"
+          comentario="Total de Fincas"
         />
 
         <Card
           iconImg="./menuKebab.png"
           altText="Menu"
           texto="Total hangadas"
-          // valor={numParcelas}
-          comentario="Cantidad de anegadas"
+          valor={totalHng}
+          comentario="Cantidad de hanegadas"
         />
 
         <Card
           altText="Total parcelas"
           iconImg="./menuKebab.png"
           texto="Total Parcelas"
-          // valor="34"
+          valor={numParcelas}
           comentario="Cantidad de parcelas"
         />
 
