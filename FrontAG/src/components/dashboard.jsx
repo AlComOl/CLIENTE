@@ -1,6 +1,6 @@
 import './Style/ComponetsNavStyle.css';
 import './Style/card.css';
-import Card from './InfoPanel/InfoPanel1.jsx';
+import CardInfo from './InfoPanel/InfoPanel1.jsx';
 import Card2 from './InfoPanel/InfoPanel2.jsx';
 import Btn1 from './buttons/Btn1.jsx';
 import explotacionService from '../services/explotaciones.js';
@@ -17,7 +17,7 @@ const Dashboard = () => {
 //useEfect 
    useEffect(() => {
     explotacionService.getCount()
-      .then(total => setNumExplo(total))
+      .then(total => setNumExplo(data.total))
       .catch(err => console.error(err));//gestionar errores cunado la informacion no este disponible
   
     parcelasService.getCount()
@@ -27,18 +27,6 @@ const Dashboard = () => {
   
     }, [])
 
-//peticion Parcelas totales
-  // useEffect(()=>{
-  //   parcelasService.getCount()
-  //     .then(total => setnumParcelas(total))
-  //     .catch(err => console.log(err));
-  // }, [])
-  
-
-
-
-
-
 
   return (
     <div>
@@ -46,7 +34,7 @@ const Dashboard = () => {
       <p>Resumen general de la gestión agrícola</p>
 
       <div className="primeraSeccion">
-        <Card
+        <CardInfo
           iconImg="./iconExplotacion.svg"
           altText="Explotaciones"
           texto="Explotaciones"
@@ -54,7 +42,7 @@ const Dashboard = () => {
           comentario="Total de Fincas"
         />
 
-        <Card
+        <CardInfo
           iconImg="./iconParcelas.svg"
           altText="parcelas"
           texto="Parcelas"
@@ -62,7 +50,7 @@ const Dashboard = () => {
           comentario="Total Parcelas"
         />
 
-        <Card
+        <CardInfo
           iconImg="./iconOperaciones.svg"
           altText="operaciones"
           texto="Operaciones"
@@ -70,7 +58,7 @@ const Dashboard = () => {
           comentario="Total Operaciones"
         />
 
-        <Card
+        <CardInfo
           iconImg="./iconAlmacen.svg"
           altText="Almacen"
           texto="Productos"

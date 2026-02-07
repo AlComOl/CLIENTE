@@ -1,6 +1,6 @@
 
 
-const Card = ({ texto, iconImg, altText, valor, comentario}) => {
+const CardInfo = ({ texto, iconImg, altText, valor, comentario}) => {
   return (
     <div className="card1">
       <div className="texto">
@@ -18,4 +18,4 @@ const Card = ({ texto, iconImg, altText, valor, comentario}) => {
   );
 };
 
-export default Card
+export default CardInfo

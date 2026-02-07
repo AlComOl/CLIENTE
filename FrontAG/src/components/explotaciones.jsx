@@ -1,17 +1,20 @@
 import { useEffect , useState } from 'react';
-import Card from './InfoPanel/InfoPanel1.jsx'
+import CardInfo from './InfoPanel/InfoPanel1.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import './Style/Explotaciones.css';
 import Btn1 from './buttons/Btn1.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import './Style/busqueda1.css';
+import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
+
 
 const Explotaciones = () =>{
 // useState es un hook que permite crear y manejar estado (datos que pueden cambiar) en un componente funcional.
   const [numExplo, setNumExplo] = useState(0);//explotaciones
   const [numParcelas, setNumParcelas] = useState(0);
   const [totalHng,setTotalHng] = useState(0);
+  const [nomExplo ,setnomExplo] = useState([]);
 
 
   //useEffect es un hook que ejecuta código cuando el componente se monta, actualiza o desmonta.
@@ -19,16 +22,24 @@ const Explotaciones = () =>{
      useEffect(() => {
       
       explotacionService.getCount()
-        .then(total => setNumExplo(total))
+        .then(data => {
+          setNumExplo(data.total)
+          setnomExplo(data.nom)
+     })
 
       parcelasService.getCount()
         .then(data => {
           setNumParcelas(data.total)
           setTotalHng(data.totalHng)
+          
+
         })
+
     }, [])
 
 return(
+
+  
      <div>
         <h1>Explotaciones</h1>
           <div className='menuExplo'>
@@ -39,6 +50,8 @@ return(
                   className="btn-nueva-explotacion"
                 />
             </div> 
+
+       
       
       <div className="filtroExplo">
             <BarraBusqueda 
@@ -49,7 +62,7 @@ return(
          
        
       <div className="primeraSeccion">
-        <Card
+        <CardInfo
           iconImg="./menuKebab.png"
           altText="menu"
           texto="Explotaciones"
@@ -57,7 +70,7 @@ return(
           comentario="Total de Fincas"
         />
 
-        <Card
+        <CardInfo
           iconImg="./menuKebab.png"
           altText="Menu"
           texto="Total hangadas"
@@ -65,7 +78,7 @@ return(
           comentario="Cantidad de hanegadas"
         />
 
-        <Card
+        <CardInfo
           altText="Total parcelas"
           iconImg="./menuKebab.png"
           texto="Total Parcelas"
@@ -73,6 +86,15 @@ return(
           comentario="Cantidad de parcelas"
         />
 
+      </div>
+
+      <div className="seccionExplo">
+        {nomExplo.map((explotacion,index) => (
+        <ExplotacionCard 
+        key={index} 
+           nombre={explotacion}
+        />
+          ))}
       </div>
 
         </div>

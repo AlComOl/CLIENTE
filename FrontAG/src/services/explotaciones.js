@@ -10,7 +10,7 @@ const baseUrl = 'http://localhost/api/explotaciones';
 //con el get traemos todos los datos del response del controlador de la API
 const getCount = () => {
   const request = axios.get(baseUrl)
-  return request.then(response => response.data.total)
+  return request.then(response => response.data)
 }
 
 export default { getCount }

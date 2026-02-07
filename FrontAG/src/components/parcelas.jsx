@@ -1,14 +1,32 @@
-import Card from './InfoPanel/InfoPanel2.jsx';
+import {useEffect,useState} from 'react';
+import CardInfo from './InfoPanel/InfoPanel1.jsx';
 import Btn1 from './buttons/Btn1.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
+import parcelasService from '../services/parcelas.js';
 import './Style/buttons.css';
 import './Style/Parcelas.css'
 
 
-const parcelas = () => {
+
+const Parcelas = () => {
+//  console.log( COMPONENTE PARCELAS RENDERIZANDO') 
+   const [numParcelas, setNumParcelas] = useState(0);
+   const [totalHng,setTotalHng] = useState(0);
+
+   useEffect (() => {
+     
+     parcelasService.getCount()
+     .then(data =>{
+      setNumParcelas(data.total)
+      setTotalHng(data.totalHng)
+
+     })
+   },[])
 
     return (
+   
       <div>
+        
         <h1>Parcelas</h1>
           <div className='menuExplo'>
             <p>Gestiona las parcelas de tus explotaciones</p> 
@@ -26,35 +44,37 @@ const parcelas = () => {
          </div>
        
      
-
+<p>{numParcelas}</p>
     
     <div className="primeraSeccion">
-        <Card
+        
+        <CardInfo
           iconImg="./menuKebab.png"
           altText="menu"
           texto="Total Parcelas"
+          valor={numParcelas}
           // comentario="Total de Fincas"
         />
 
-        <Card
+        <CardInfo
           iconImg="./menuKebab.png"
           altText="Menu"
           texto="Total hectarias"
-          // valor={numParcelas}
+          valor={totalHng}
           // comentario="Total Parcelas"
         />
 
-        <Card
+        <CardInfo
           altText="Total Riego Manta"
           iconImg="./menuKebab.png"
-          texto="Operaciones"
+          texto="Riego Manta"
           // valor="34"
           // comentario="Total Operaciones"
         />
-         <Card
+         <CardInfo
           altText="Parcelas Riego Goteo"
           iconImg="./menuKebab.png"
-          texto="Operaciones"
+          texto="Riego Goteo"
           // valor="34"
           // comentario="Total Operaciones"
         />
@@ -66,4 +86,4 @@ const parcelas = () => {
     )
 }
 
-export default parcelas
+export default Parcelas
