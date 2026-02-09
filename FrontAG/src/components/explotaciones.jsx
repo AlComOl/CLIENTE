@@ -7,7 +7,7 @@ import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import './Style/busqueda1.css';
 import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
-import FormExplotacion from './CreateForm/formExplotacion.jsx';
+
 
 
 const Explotaciones = () =>{
