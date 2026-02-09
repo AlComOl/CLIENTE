@@ -28,7 +28,8 @@ const BarraMenu = () => {
 
 <div className="navbar">
 
-  <BtnNav  to="./dashboard"
+  <BtnNav  
+     to="./dashboard"
      iconImg ="./iconDashboard.svg"
      altText="Dashboard"
      texto="Dashboard"

@@ -3,10 +3,11 @@ import CardInfo from './InfoPanel/InfoPanel1.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import './Style/Explotaciones.css';
-import Btn1 from './buttons/Btn1.jsx';
+import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import './Style/busqueda1.css';
 import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
+import FormExplotacion from './CreateForm/formExplotacion.jsx';
 
 
 const Explotaciones = () =>{
@@ -44,11 +45,15 @@ return(
         <h1>Explotaciones</h1>
           <div className='menuExplo'>
             <p>Gestiona tus fincas y propiedades</p>  
-                <Btn1 
+      
+            
+                <BtnCrear
+                  to='/nueva-explotacion'
                   titulo="Crear Explotacion"
                   iconIng="./plusNegro.png"
                   className="btn-nueva-explotacion"
                 />
+        
             </div> 
 
        

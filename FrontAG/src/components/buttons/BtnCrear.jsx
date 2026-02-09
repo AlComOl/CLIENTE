@@ -1,19 +1,21 @@
-
+import { Link } from 'react-router-dom'
 import '../Style/buttons.css';
 
-const Btn1 =({titulo,texto,iconIng,altText,className}) => {
+const BtnCrear=({to,titulo,texto,iconIng,altText,className}) => {
 
   return(
       <div>
+      <Link to={to} className="router-link">
       <div className="BtnCardHeader">
         <button className={className}>
            <img src={iconIng} alt={altText}/>{titulo}
         </button>
       </div>
       <p>{texto}</p>
+      </Link>
     </div>
   )
 
 }
 
-export default Btn1
+export default BtnCrear

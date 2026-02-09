@@ -2,7 +2,7 @@ import './Style/ComponetsNavStyle.css';
 import './Style/card.css';
 import CardInfo from './InfoPanel/InfoPanel1.jsx';
 import Card2 from './InfoPanel/InfoPanel2.jsx';
-import Btn1 from './buttons/Btn1.jsx';
+import Btn1 from './buttons/BtnCrear.jsx';
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
 import { useEffect , useState } from 'react';
@@ -17,7 +17,7 @@ const Dashboard = () => {
 //useEfect 
    useEffect(() => {
     explotacionService.getCount()
-      .then(total => setNumExplo(data.total))
+      .then(data => setNumExplo(data.total))
       .catch(err => console.error(err));//gestionar errores cunado la informacion no este disponible
   
     parcelasService.getCount()

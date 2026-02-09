@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BarraMenu from './components/menuNav.jsx';
+import FormExplotacion from './components/CreateForm/formExplotacion.jsx';
+import Dashboard from './components/dashboard.jsx'; 
+import Explotaciones from './components/explotaciones.jsx';
+import Parcelas from './components/parcelas.jsx'; 
+import Operaciones from './components/operaciones.jsx';
+import Recoleccion from './components/recoleccion.jsx';
+import Almacen from './components/almacen.jsx';
 
-import Dashboard from './components/dashboard'; 
-import Explotaciones from './components/explotaciones';
-import Parcelas from './components/parcelas'; 
-import Operaciones from './components/operaciones';
-import Recoleccion from './components/recoleccion';
-import Almacen from './components/almacen';
 import './App.css';
 
 
@@ -36,11 +37,16 @@ function App() {
           <Route path="/operaciones" element={<Operaciones />} />
           <Route path="/recoleccion" element={<Recoleccion />} />
           <Route path="/almacen" element={<Almacen />} />
+          <Route path="/nueva-explotacion" element={<FormExplotacion />} />
+
            
         </Routes>
+        {/* <Dashboard /> */}
+  
       </div>
     </Router>
   )
+    
 }
 
 export default App
