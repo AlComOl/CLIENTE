@@ -1,50 +1,50 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import parcelaService from '../../services/parcelas'
-import SubmitButton from '../buttons/SubmitButton'
-import './formStyles.css'
+import BntSubmit from '../buttons/BtnSubmit'
+import '../Style/formStyles.css'
 
 const FormParcela = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   
-  const [formData, setFormData] = useState({
-    explotacion_id: '',
-    propietario_id: '',
-    riego: 'manta',
-    pol_parcela: '',
-    variedad: '',
-    dimension_hanegadas: '',
-    num_arboles: '',
-    fecha_plantacion: '',
-    descripcion: ''
-  })
+  // const [formData, setFormData] = useState({
+  //   explotacion_id: '',
+  //   propietario_id: '',
+  //   riego: 'manta',
+  //   pol_parcela: '',
+  //   variedad: '',
+  //   dimension_hanegadas: '',
+  //   num_arboles: '',
+  //   fecha_plantacion: '',
+  //   descripcion: ''
+  // })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value
+  //   })
+  // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
     
-    parcelaService
-      .create(formData)
-      .then(() => {
-        navigate('/parcelas')
-      })
-      .catch(err => {
-        console.error('Error al crear parcela:', err)
-      })
-  }
+  //   parcelaService
+  //     .create(formData)
+  //     .then(() => {
+  //       navigate('/parcelas')
+  //     })
+  //     .catch(err => {
+  //       console.error('Error al crear parcela:', err)
+  //     })
+  // }
 
   return (
     <div className="form-container">
       <h1>Nueva Parcela</h1>
       
-      <form onSubmit={handleSubmit} className="form-grid">
+      <form  className="form-grid">
         
         {/* Explotación */}
         <div className="form-grupo">
@@ -52,8 +52,8 @@ const FormParcela = () => {
           <select
             id="explotacion_id"
             name="explotacion_id"
-            value={formData.explotacion_id}
-            onChange={handleChange}
+            // value={formData.explotacion_id}
+            // onChange={handleChange}
             required
           >
             <option value="">Selecciona una explotación</option>
@@ -67,8 +67,8 @@ const FormParcela = () => {
           <select
             id="propietario_id"
             name="propietario_id"
-            value={formData.propietario_id}
-            onChange={handleChange}
+            // value={formData.propietario_id}
+            // onChange={handleChange}
             required
           >
             <option value="">Selecciona un propietario</option>
@@ -82,8 +82,8 @@ const FormParcela = () => {
           <select
             id="riego"
             name="riego"
-            value={formData.riego}
-            onChange={handleChange}
+            // value={formData.riego}
+            // onChange={handleChange}
             required
           >
             <option value="manta">Manta</option>
@@ -98,8 +98,8 @@ const FormParcela = () => {
             type="text"
             id="pol_parcela"
             name="pol_parcela"
-            value={formData.pol_parcela}
-            onChange={handleChange}
+            // value={formData.pol_parcela}
+            // onChange={handleChange}
             placeholder="Ej: 12/45"
             required
           />
@@ -111,10 +111,10 @@ const FormParcela = () => {
           <input
             type="text"
             id="variedad"
-            name="variedad"
-            value={formData.variedad}
-            onChange={handleChange}
-            placeholder="Ej: Arbequina"
+            name="caqui"
+            // value={formData.variedad}
+            // onChange={handleChange}
+            placeholder="Ej: Rojo Brillante"
             required
           />
         </div>
@@ -127,8 +127,8 @@ const FormParcela = () => {
             step="0.001"
             id="dimension_hanegadas"
             name="dimension_hanegadas"
-            value={formData.dimension_hanegadas}
-            onChange={handleChange}
+            // value={formData.dimension_hanegadas}
+            // onChange={handleChange}
             placeholder="Ej: 2.5"
             required
           />
@@ -141,9 +141,9 @@ const FormParcela = () => {
             type="number"
             id="num_arboles"
             name="num_arboles"
-            value={formData.num_arboles}
-            onChange={handleChange}
-            placeholder="Ej: 250"
+            // value={formData.num_arboles}
+            // onChange={handleChange}
+            // placeholder="Ej: 250"
           />
         </div>
 
@@ -154,8 +154,8 @@ const FormParcela = () => {
             type="date"
             id="fecha_plantacion"
             name="fecha_plantacion"
-            value={formData.fecha_plantacion}
-            onChange={handleChange}
+            // value={formData.fecha_plantacion}
+            // onChange={handleChange}
           />
         </div>
 
@@ -165,15 +165,14 @@ const FormParcela = () => {
           <textarea
             id="descripcion"
             name="descripcion"
-            value={formData.descripcion}
-            onChange={handleChange}
+            // value={formData.descripcion}
+            // onChange={handleChange}
             rows="4"
             placeholder="Descripción de la parcela..."
           />
         </div>
 
-        {/* Botones */}
-        <div className="form-actions full-width">
+        {/* <div className="form-actions full-width">
           <button 
             type="button" 
             onClick={() => navigate('/parcelas')}
@@ -181,8 +180,8 @@ const FormParcela = () => {
           >
             Cancelar
           </button>
-          <SubmitButton texto="Crear Parcela" />
-        </div>
+        
+        </div> */}
       </form>
     </div>
   )

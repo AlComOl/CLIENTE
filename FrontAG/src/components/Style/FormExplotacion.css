@@ -1,4 +1,4 @@
-.contenedor-formulario {
+/* .contenedor-formulario {
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -49,10 +49,10 @@ input:focus, textarea:focus {
 }
 
 textarea {
-  resize: vertical; /* Permite al usuario agrandarlo hacia abajo */
+  resize: vertical; /* Permite al usuario agrandarlo hacia abajo 
 }
 
-.fila-doble {
+ .fila-doble {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
@@ -74,4 +74,4 @@ textarea {
 
 .boton-guardar:hover {
   background-color: #219150;
-}
+} 

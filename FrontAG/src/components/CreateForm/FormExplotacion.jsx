@@ -1,5 +1,5 @@
 import '../buttons/BtnSubmit';
-import '../Style/FormExplotacion.css';
+import '../Style/formStyles.css'
 import { useState } from 'react';
 
 const FormExplotacion = () => {
@@ -30,8 +30,7 @@ const FormExplotacion = () => {
 
     <div>
 
-         <h1>Registrar Parcela</h1>
-            <p>Completa los datos de la Explotación para añadirla a la base de datos</p>
+        
 
       <div className="contenedor-formulario">
 
@@ -60,7 +59,6 @@ const FormExplotacion = () => {
             />
             </div>
 
-            {/* Usamos textarea para la caja más grande */}
             <div className="grupo-input">
             <label>Descripción Explotación:</label>
             <textarea 

@@ -2,7 +2,12 @@
   display: flex;
   justify-content:space-between;
 }
-
+.seccion-explo{
+  margin:10px;
+}
+.seccion-explo-part{
+  margin:20px;
+}
 
 .primeraSeccion {
   display: flex;
@@ -17,6 +22,8 @@
 
 .filtroExplo{
   display: flex;
+  padding: 30px;
+ 
 }
 
 .btn-nueva-explotacion {

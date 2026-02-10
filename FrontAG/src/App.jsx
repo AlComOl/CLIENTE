@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BarraMenu from './components/menuNav.jsx'
 import FormExplotacion from './components/CreateForm/formExplotacion.jsx'
+import FormParcela from './components/CreateForm/FormParcela.jsx'
 import Dashboard from './components/dashboard.jsx'
 import Explotaciones from './components/explotaciones.jsx'
 import Parcelas from './components/parcelas.jsx'
@@ -42,6 +43,7 @@ function App() {
           <Route path="/recoleccion" element={<Recoleccion />} />
           <Route path="/almacen" element={<Almacen />} />
           <Route path="/nueva-explotacion" element={<FormExplotacion />} />
+          <Route path="/nueva-parcela" element={<FormParcela />} />
         </Routes>
       </main>
     </Router>

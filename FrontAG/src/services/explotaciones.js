@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-
-// const baseUrl = 'http://localhost/explotaciones';
-// const baseUrl = '/api/explotaciones';
-
 const baseUrl = 'http://localhost/api/explotaciones';
-
+const baseUrl1 = 'http://localhost/api/explotaciones/resumen';
 
 //con el get traemos todos los datos del response del controlador de la API
 const getCount = () => {
@@ -13,4 +9,12 @@ const getCount = () => {
   return request.then(response => response.data)
 }
 
-export default { getCount }
+const getResumen = () => {
+  const request = axios.get(baseUrl1)
+  return request.then(response => response.data)
+}
+
+
+export default { getCount, getResumen}
+
+

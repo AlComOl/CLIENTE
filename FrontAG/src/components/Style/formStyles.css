@@ -15,29 +15,29 @@
   gap: 20px;
 }
 
-.form-group {
+.form-grupo {
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.form-grupo label {
   margin-bottom: 8px;
   font-weight: 600;
   color: #555;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.form-grupo input,
+.form-grupo select,
+.form-grupo textarea {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-grupo input:focus,
+.form-grupo select:focus,
+.form-grupo textarea:focus {
   outline: none;
   border-color: #4CAF50;
 }

@@ -1,5 +1,5 @@
 
-const SubmitButton = ({ texto }) => {
+const BntSubmit = ({ texto }) => {
   return (
     <Link to={to} className="router-link">
     <button type="submit">
@@ -9,4 +9,4 @@ const SubmitButton = ({ texto }) => {
   )
 }
 
-export default SubmitButton
+export default BntSubmit
