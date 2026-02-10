@@ -25,7 +25,7 @@ function App() {
           </div>
           
           <div className='login'>
-            <img className='user-avatar' src="/user-avatar.png" alt="Usuario"/>
+            <img className='user-avatar' src="/usuario.png" alt="Usuario"/>
             <h3>Usuario</h3>
           </div>
         </div>

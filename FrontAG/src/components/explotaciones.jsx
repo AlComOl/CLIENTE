@@ -52,9 +52,9 @@ const Explotaciones = () =>{
 return(
 
        <div>
-        <h1>Explotaciones</h1>
+        {/* <h1>Explotaciones</h1> */}
           <div className='menuExplo'>
-            <p>Gestiona tus fincas y propiedades</p>  
+            {/* <p>Gestiona tus fincas y propiedades</p>   */}
 
 
       
@@ -123,6 +123,8 @@ return(
         <ExplotacionCard 
     
            nombre={explotacion.nombre}
+           iconImg="./iconUbicacion.svg" altText="Ubicacion"  
+           ubicacion={explotacion.ubicacion}
            TotalHngExplo={explotacion.parcelas_sum_dimension_hanegadas}
            numParcelas={explotacion.parcelas_count}
 

@@ -23,6 +23,7 @@ const BtnNav =({to,texto,iconImg,altText,isSeleccionado, onClick}) =>{
 //meto componentes dentro de la barraNav
 const BarraMenu = () => {
 
+  // useState guarda qué botón está activo, 
   const [botonActivo, setBotonActivo] = useState('Dashboard');
   return(
 
@@ -33,6 +34,7 @@ const BarraMenu = () => {
      iconImg ="./iconDashboard.svg"
      altText="Dashboard"
      texto="Dashboard"
+    //  isSeleccionado pregunta si ese botón es el activo para añadirle la clase CSS. 
      isSeleccionado={botonActivo === 'Dashboard'} 
      onClick={() => setBotonActivo('Dashboard')}/>
 
