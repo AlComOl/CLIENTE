@@ -13,6 +13,9 @@
   gap: 20px;
   padding: 20px;
 }
+.texto {
+
+}
 
 /* Barra de búsqueda */
 .filtroExplo {
@@ -77,9 +80,9 @@
 }
 
 .explo-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+  width: 30px;
+  height: 30px;
+  /* object-fit: contain; */
 }
 
 .ubicacion-text {

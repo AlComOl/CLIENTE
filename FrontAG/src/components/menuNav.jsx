@@ -7,7 +7,6 @@ const BarraMenu = () => {
   
   return (
     <nav className="navbar">
-      {/* Logo en el menú */}
       <div className="navbar-logo">
         <img src="/logo.png" alt="AgroGestión" className="logo-img" />
         <div className="logo-text">
@@ -16,10 +15,9 @@ const BarraMenu = () => {
         </div>
       </div>
       
-      {/* Separador */}
       <div className="navbar-divider"></div>
       
-      {/* Items del menú */}
+     
       <div className="navbar-items">
         <MenuBar
           to="/dashboard"

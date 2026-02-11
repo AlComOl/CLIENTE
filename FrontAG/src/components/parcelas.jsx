@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react';
-import CardInfo from './InfoPanel/InfoPanel1.jsx';
+import CardInfo from './InfoPanel/InfoPanel.jsx';
 import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import parcelasService from '../services/parcelas.js';

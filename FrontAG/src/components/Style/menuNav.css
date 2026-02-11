@@ -9,6 +9,11 @@
   padding: 0;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08);
 }
+.logo{
+  display: flex;              /* Activa Flexbox */
+  align-items: center;        /* Centra verticalmente */
+  gap: 10px; 
+}
 
 /* Logo en el menú */
 .navbar-logo {
@@ -55,8 +60,9 @@
 .navbar-items {
   flex: 1;
   padding: 12px 0;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
+
 
 /* Scrollbar personalizada */
 .navbar-items::-webkit-scrollbar {
@@ -115,10 +121,11 @@
 .menu-item span {
   color: rgba(255, 255, 255, 0.85);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 24px;
   letter-spacing: 0.3px;
   transition: all 0.3s ease;
 }
+
 
 .menu-item:hover span {
   color: white;
@@ -132,10 +139,18 @@
 
 /* Icono */
 .iconMenu {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   transition: all 0.3s ease;
+  margin: 10px;
   filter: brightness(0) saturate(100%) invert(100%) opacity(0.85);
+}
+.textMenu{
+  text-decoration: none;
+  font-size:24px;
+  color: white;
+
+
 }
 
 .menu-item:hover .iconMenu {

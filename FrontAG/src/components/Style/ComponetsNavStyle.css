@@ -8,19 +8,49 @@
     align-items: center;
 }
 .value{
-    font-size:20px;
+    font-size:30px;
+    color: #1B4332;
 }
 .primeraSeccion{
     display: flex;
     padding: 10px;
     justify-content: center;
     align-items: center;
-    
 }
-.cardinfo-icon{
+h1 , p{
+  color: #1B4332;
+}
+.texto {
+  color: #1B4332;
+}
+.cardinfo-icon,
+ .explo-icon{
   width: 30px;
   height: 30px;
+ 
 }
+ .card{
+  background-color: #D8F3DC;
+  border: 3px solid #bdc0c4;
+  border-radius: 12px;
+  padding: 20px;
+  width: 310px;
+  margin:10px;
+  
+}
+
+.card1{
+    color:black;
+    display: inline;
+    color:grey;
+}
+
+.btn-nueva-explotacion{
+  width: 10px;
+  height: 10px;
+
+}
+
 
 
 .segundaSeccion{
@@ -49,3 +79,48 @@
   
 } 
 
+
+/* Link sin decoración */
+a {
+  text-decoration: none;
+}
+
+/* Botón crear - VERDE por defecto */
+button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background-color: #1B4332;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;  /* ← Alinea a la derecha */
+}
+
+/* Icono */
+button img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);  /* Blanco */
+}
+
+/* Hover */
+button:hover {
+  background-color: #40916C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(82, 183, 136, 0.3);
+}
+
+/* Variante NEGRA */
+.btn-nueva-explotacion {
+  background-color: #000000;
+}
+
+.btn-nueva-explotacion:hover {
+  background-color: #333333;
+}

@@ -1,6 +1,6 @@
 import './Style/ComponetsNavStyle.css';
-import './Style/card.css';
-import CardInfo from './InfoPanel/InfoPanel1.jsx';
+
+import InfoPanel from './InfoPanel/InfoPanel.jsx';
 import Card2 from './InfoPanel/InfoPanel2.jsx';
 import Btn1 from './buttons/BtnCrear.jsx';
 import explotacionService from '../services/explotaciones.js';
@@ -34,7 +34,7 @@ const Dashboard = () => {
       <p>Resumen general de la gestión agrícola</p>
 
       <div className="primeraSeccion">
-        <CardInfo
+        <InfoPanel
           iconImg="./iconExplotacion.svg"
           altText="Explotaciones"
           texto="Explotaciones"
@@ -42,7 +42,7 @@ const Dashboard = () => {
           comentario="Total de Fincas"
         />
 
-        <CardInfo
+        <InfoPanel
           iconImg="./iconParcelas.svg"
           altText="parcelas"
           texto="Parcelas"
@@ -50,7 +50,7 @@ const Dashboard = () => {
           comentario="Total Parcelas"
         />
 
-        <CardInfo
+        <InfoPanel
           iconImg="./iconOperaciones.svg"
           altText="operaciones"
           texto="Operaciones"
@@ -58,7 +58,7 @@ const Dashboard = () => {
           comentario="Total Operaciones"
         />
 
-        <CardInfo
+        <InfoPanel
           iconImg="./iconAlmacen.svg"
           altText="Almacen"
           texto="Productos"

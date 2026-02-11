@@ -1,14 +1,14 @@
 import { useEffect , useState } from 'react';
-import CardInfo from './InfoPanel/InfoPanel1.jsx'
+import InfoPanel from './InfoPanel/InfoPanel.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
-import './Style/Explotaciones.css';
+// import './Style/ComponetsNavStyle.css';
 import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
-import './Style/barraBusqueda.css';
+// import './Style/barraBusqueda.css';
 import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
 import BtnSubmit from './buttons/BtnSubmit.jsx'
-
+import './Style/ComponetsNavStyle.css';
 
 
 const Explotaciones = () =>{
@@ -63,8 +63,9 @@ return(
                 <BtnCrear
                   to='/nueva-explotacion'
                   titulo="Crear Explotacion"
-                  iconIng="./plusNegro.png"
+                  iconIng="./plusnegro.png"
                   className="btn-nueva-explotacion"
+                  
                 />
         
             </div> 
@@ -76,28 +77,28 @@ return(
          
        
       <div className="primeraSeccion">
-        <CardInfo
+        <InfoPanel
           iconImg="./iconExplotacion.svg"
           altText="menu"
           texto="Explotaciones"
           valor={numExplo}
         />
 
-        <CardInfo
+        <InfoPanel
           iconImg="./superficie.png"
           altText="Menu"
           texto="Total hangadas"
           valor={totalHng}
         />
 
-        <CardInfo
+        <InfoPanel
           altText="Total parcelas"
           iconImg="./riego-manta.png"
-          texto="Parcelas Riego Manta"
+          texto="Riego Manta"
           valor={parcelaMan}
 
         />
-        <CardInfo
+        <InfoPanel
           altText="Parcelas Riego Goteo"
           iconImg="./riego-goteo.png"
           texto="Total Parcelas"

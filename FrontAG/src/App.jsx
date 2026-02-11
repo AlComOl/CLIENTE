@@ -14,12 +14,9 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* Menú lateral izquierdo */}
         <BarraMenu />
-        
-        {/* Contenido principal */}
         <div className="main-content">
-          {/* Header superior */}
+      
           <header className="top-header">
             <div className="header-left">
               <img className='user-login' src="/logo_inicio.gif" alt="Inicio"/>
@@ -30,8 +27,7 @@ function App() {
               <span className="user-name">Usuario</span>
             </div>
           </header>
-          
-          {/* Contenido de las rutas */}
+     
           <main className="content">
             <Routes>
               <Route path="/" element={<Dashboard />} />

@@ -6,11 +6,11 @@ const MenuBar =({to,texto,iconImg,altText,isSeleccionado, onClick}) =>{
 
 
   return(
-    
+
   <Link to={to} className="router-link">
   <div className={`logo ${isSeleccionado ? 'activeMenu' : ''}`} onClick={onClick}>
         <img className='iconMenu' src={iconImg} alt={altText} />
-        <span>{texto}</span>
+        <span className='textMenu'>{texto}</span>
   </div>
     </Link>
   )
