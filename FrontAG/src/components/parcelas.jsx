@@ -14,6 +14,7 @@ const Parcela = () => {
    const [totalHng,setTotalHng] = useState(0);
     const [parcelaGot,setParGot] = useState(0);
     const [parcelaMan,setParMan] = useState(0);
+    const [polParcela,setpolParcela] = useState([]);
 
    useEffect (() => {
      
@@ -25,12 +26,19 @@ const Parcela = () => {
       setParMan(data.parcelasmanta)
 
      })
+
+     parcelasService.getResumenP()
+      .then(data => {
+        console.log(JSON.stringify(data, null, 2));
+       setpolParcela(data)
+  
+      })
+      .catch(err => console.error('Error al obtener resumen:', err))
    },[])
 
     return (
    
       <div>
-       
         <h1>Parcelas</h1>
           <div className='menuExplo'>
             <p>Gestiona las parcelas de tus explotaciones</p> 
@@ -47,7 +55,7 @@ const Parcela = () => {
     <div className="primeraSeccion">
         
         <CardInfo
-          iconImg="./menuKebab.png"
+          iconImg="./iconParcelas.svg"
           altText="menu"
           texto="Total Parcelas"
           valor={numParcelas}
@@ -55,7 +63,7 @@ const Parcela = () => {
         />
 
         <CardInfo
-          iconImg="./menuKebab.png"
+          iconImg="./superficie.png"
           altText="Menu"
           texto="Total hectarias"
           valor={totalHng}
@@ -64,7 +72,7 @@ const Parcela = () => {
 
         <CardInfo
           altText="Total Riego Manta"
-          iconImg="./menuKebab.png"
+          iconImg="./riego-manta.png"
           texto="Riego Manta"
           valor={parcelaMan}
           
@@ -72,7 +80,7 @@ const Parcela = () => {
         />
          <CardInfo
           altText="Parcelas Riego Goteo"
-          iconImg="./menuKebab.png"
+          iconImg="./riego-goteo.png"
           texto="Riego Goteo"
           valor={parcelaGot}
         
@@ -85,8 +93,18 @@ const Parcela = () => {
             iconImg="./lupa.png"
             altText="fotoLupa"/>
          </div>
+             
+
+         {/* {polParcela.map((parcelas,index)=>(
+          <div className='seccion-explo-part' key={index}>
+           <p>{parcelas.variedad}</p>
+          </div>
+         ))} */}
+
     
     </div>
+
+
  
     )
 }

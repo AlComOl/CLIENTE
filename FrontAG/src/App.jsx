@@ -13,39 +13,40 @@ import './App.css'
 function App() {
   return (
     <Router>
-      <header>
-        {/* Logo y Usuario en la misma línea */}
-        <div className='header-top'>
-          <div className='logo'>
-            <img className='imgLogo' src="/logo.png" alt="Logo"/>
-            <div>
-              <h1>AgroGestión</h1>
-              <h5>Sistema de Gestión de tierras</h5>
-            </div>
-          </div>
-          
-          <div className='login'>
-            <img className='user-avatar' src="/usuario.png" alt="Usuario"/>
-            <h3>Usuario</h3>
-          </div>
-        </div>
-        
+      <div className="app-container">
+        {/* Menú lateral izquierdo */}
         <BarraMenu />
-      </header>
-      
-      <main>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/explotaciones" element={<Explotaciones />} />
-          <Route path="/parcelas" element={<Parcelas />} />
-          <Route path="/operaciones" element={<Operaciones />} />
-          <Route path="/recoleccion" element={<Recoleccion />} />
-          <Route path="/almacen" element={<Almacen />} />
-          <Route path="/nueva-explotacion" element={<FormExplotacion />} />
-          <Route path="/nueva-parcela" element={<FormParcela />} />
-        </Routes>
-      </main>
+        
+        {/* Contenido principal */}
+        <div className="main-content">
+          {/* Header superior */}
+          <header className="top-header">
+            <div className="header-left">
+              <img className='user-login' src="/logo_inicio.gif" alt="Inicio"/>
+            </div>
+            
+            <div className="header-right">
+              <img className='user-avatar' src="/usuario.png" alt="Usuario"/>
+              <span className="user-name">Usuario</span>
+            </div>
+          </header>
+          
+          {/* Contenido de las rutas */}
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/explotaciones" element={<Explotaciones />} />
+              <Route path="/parcelas" element={<Parcelas />} />
+              <Route path="/operaciones" element={<Operaciones />} />
+              <Route path="/recoleccion" element={<Recoleccion />} />
+              <Route path="/almacen" element={<Almacen />} />
+              <Route path="/nueva-explotacion" element={<FormExplotacion />} />
+              <Route path="/nueva-parcela" element={<FormParcela />} />
+            </Routes>
+          </main>
+        </div>
+      </div>
     </Router>
   )
 }

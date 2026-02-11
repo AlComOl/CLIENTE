@@ -7,6 +7,7 @@ import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import './Style/barraBusqueda.css';
 import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
+import BtnSubmit from './buttons/BtnSubmit.jsx'
 
 
 
@@ -52,9 +53,9 @@ const Explotaciones = () =>{
 return(
 
        <div>
-        {/* <h1>Explotaciones</h1> */}
+        <h1>Explotaciones</h1>
           <div className='menuExplo'>
-            {/* <p>Gestiona tus fincas y propiedades</p>   */}
+            <p>Gestiona tus fincas y propiedades</p>  
 
 
       
@@ -76,14 +77,14 @@ return(
        
       <div className="primeraSeccion">
         <CardInfo
-          iconImg="./menuKebab.png"
+          iconImg="./iconExplotacion.svg"
           altText="menu"
           texto="Explotaciones"
           valor={numExplo}
         />
 
         <CardInfo
-          iconImg="./menuKebab.png"
+          iconImg="./superficie.png"
           altText="Menu"
           texto="Total hangadas"
           valor={totalHng}
@@ -91,14 +92,14 @@ return(
 
         <CardInfo
           altText="Total parcelas"
-          iconImg="./menuKebab.png"
+          iconImg="./riego-manta.png"
           texto="Parcelas Riego Manta"
           valor={parcelaMan}
 
         />
         <CardInfo
           altText="Parcelas Riego Goteo"
-          iconImg="./menuKebab.png"
+          iconImg="./riego-goteo.png"
           texto="Total Parcelas"
           valor={parcelaGot}
 
@@ -127,9 +128,9 @@ return(
            ubicacion={explotacion.ubicacion}
            TotalHngExplo={explotacion.parcelas_sum_dimension_hanegadas}
            numParcelas={explotacion.parcelas_count}
-
-
-        />
+        >
+         <BtnSubmit texto="Editar" to={`/explotacion/${explotacion.id}`} />
+        </ExplotacionCard>
         </div>
           ))}
       </div>

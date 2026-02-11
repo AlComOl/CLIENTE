@@ -1,5 +1,5 @@
-
-const BntSubmit = ({ texto }) => {
+import { Link } from "react-router-dom"
+const BntSubmit = ({ texto,to }) => {
   return (
     <Link to={to} className="router-link">
     <button type="submit">
