@@ -3,6 +3,8 @@ import CardInfo from './InfoPanel/InfoPanel.jsx';
 import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
 import parcelasService from '../services/parcelas.js';
+import ParcelaCard from './InfoPanel/ParcelaCard.jsx';
+import BtnSubmit from './buttons/BtnSubmit.jsx';
 import './Style/buttons.css';
 import './Style/Parcelas.css'
 
@@ -14,7 +16,11 @@ const Parcela = () => {
    const [totalHng,setTotalHng] = useState(0);
     const [parcelaGot,setParGot] = useState(0);
     const [parcelaMan,setParMan] = useState(0);
-    const [polParcela,setpolParcela] = useState([]);
+    const [polParcela,setpolParcela] = useState(0);
+    const [parResumen,setParResumen] = useState([]);
+    // const [polParcela,setpolParcela] = useState(0);
+    // const [polParcela,setpolParcela] = useState(0);
+    // const [polParcela,setpolParcela] = useState(0);
 
    useEffect (() => {
      
@@ -29,9 +35,9 @@ const Parcela = () => {
 
      parcelasService.getResumenP()
       .then(data => {
-        console.log(JSON.stringify(data, null, 2));
-       setpolParcela(data)
-  
+       
+       setParResumen(data)
+         
       })
       .catch(err => console.error('Error al obtener resumen:', err))
    },[])
@@ -95,11 +101,22 @@ const Parcela = () => {
          </div>
              
 
-         {/* {polParcela.map((parcelas,index)=>(
+         {parResumen.map((parcelas,index)=>(
           <div className='seccion-explo-part' key={index}>
-           <p>{parcelas.variedad}</p>
-          </div>
-         ))} */}
+            <ParcelaCard
+               pol_parcela={parcelas.pol_parcela}
+               iconIng="./parcela.png"
+               altText="pick"
+              //  ubicacion="Valencia"
+               dimension_hanegadas={parcelas.dimension_hanegadas}
+               rol={parcelas.rol}
+               variedad={parcelas.variedad}
+              //  explotacion={parcelas.explotacion.nombre}
+              >
+                 {/* <BtnSubmit texto="Editar" to={`/explotacion/${explotacion.id}`} /> */}
+              </ParcelaCard>
+            </div>
+         ))}
 
     
     </div>
