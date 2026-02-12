@@ -2,10 +2,8 @@ import { useEffect , useState } from 'react';
 import InfoPanel from './InfoPanel/InfoPanel.jsx'
 import explotacionService from '../services/explotaciones.js';
 import parcelasService from '../services/parcelas.js';
-// import './Style/ComponetsNavStyle.css';
 import BtnCrear from './buttons/BtnCrear.jsx';
 import BarraBusqueda from './BarraBusqueda/BarraBusqueda.jsx';
-// import './Style/barraBusqueda.css';
 import ExplotacionCard from './InfoPanel/ExplotacionCard .jsx'
 import BtnSubmit from './buttons/BtnSubmit.jsx'
 import './Style/ComponetsNavStyle.css';

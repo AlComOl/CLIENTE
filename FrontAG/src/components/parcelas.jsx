@@ -16,11 +16,8 @@ const Parcela = () => {
    const [totalHng,setTotalHng] = useState(0);
     const [parcelaGot,setParGot] = useState(0);
     const [parcelaMan,setParMan] = useState(0);
-    const [polParcela,setpolParcela] = useState(0);
     const [parResumen,setParResumen] = useState([]);
-    // const [polParcela,setpolParcela] = useState(0);
-    // const [polParcela,setpolParcela] = useState(0);
-    // const [polParcela,setpolParcela] = useState(0);
+  
 
    useEffect (() => {
      
@@ -102,18 +99,18 @@ const Parcela = () => {
              
 
          {parResumen.map((parcelas,index)=>(
-          <div className='seccion-explo-part' key={index}>
+          <div key={index}>
             <ParcelaCard
-               pol_parcela={parcelas.pol_parcela}
-               iconIng="./parcela.png"
+               pol_parcela= { parcelas.pol_parcela}
+               iconImg="./iconUbicacion.svg"
                altText="pick"
-              //  ubicacion="Valencia"
+               explotacion={parcelas.explotacion.nombre}
                dimension_hanegadas={parcelas.dimension_hanegadas}
                rol={parcelas.rol}
                variedad={parcelas.variedad}
               //  explotacion={parcelas.explotacion.nombre}
               >
-                 {/* <BtnSubmit texto="Editar" to={`/explotacion/${explotacion.id}`} /> */}
+                 <BtnSubmit texto="Editar" to={`/parcelas/${parcelas.id}`} />
               </ParcelaCard>
             </div>
          ))}

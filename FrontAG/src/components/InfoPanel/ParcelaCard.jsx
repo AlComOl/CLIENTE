@@ -4,17 +4,15 @@ const ParcelaCard = ({pol_parcela,iconImg,altText,variedad,explotacion,dimension
     return(
         <div>
             <div className="explotacionCard ">
-                <h4>Poligono-parcela{pol_parcela}</h4>
-                    <div className="cabecera-cardExplo">
-                    <img className="explo-icon" src={iconImg} alt={altText} />
-                    {/* <p>{ubicacion}</p> */}
+                <h3>Poligono-parcela: {pol_parcela}</h3>
+                <div className="cabecera-cardExplo">
+                    <img className="explo-icon" src={iconImg} alt={altText}/>
+                   <span>{explotacion}</span>
                 </div>
                 <div className="datos-cardExplo">
-                    <p>Dimensión Parcela: {dimension_hanegadas}</p>
-                     <p>Rol: {rol}</p>
+                    <p>Dimensión Parcela:<span>{dimension_hanegadas}</span> </p>
+                     <p>Tipo riego: {rol}</p>
                     <p>Variedad: {variedad}</p>
-                    <p>Explotacion: {explotacion}</p>
-                    {/* Psamos al boton hijo para  */}
                     {children}
                 </div>
             </div>
