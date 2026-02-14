@@ -1,4 +1,4 @@
-/* Barra de menú lateral */
+
 .navbar {
   display: flex;
   flex-direction: column;
@@ -10,12 +10,12 @@
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08);
 }
 .logo{
-  display: flex;              /* Activa Flexbox */
-  align-items: center;        /* Centra verticalmente */
+  display: flex;            
+  align-items: center;        
   gap: 10px; 
 }
 
-/* Logo en el menú */
+/* menu */
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -44,15 +44,15 @@
   font-weight: 400;
 }
 
-/* Separador */
+
 .navbar-divider {
   height: 1px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg, 
     transparent 0%, 
     rgba(255, 255, 255, 0.2) 50%, 
     transparent 100%
-  );
+  ); */
   margin: 8px 16px;
 }
 
@@ -92,13 +92,13 @@
   position: relative;
 }
 
-/* Hover */
+
 .menu-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateX(4px);
 }
 
-/* Activo */
+
 .menu-item.activeMenu {
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

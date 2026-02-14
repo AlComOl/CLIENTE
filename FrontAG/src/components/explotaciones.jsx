@@ -40,7 +40,8 @@ const Explotaciones = () =>{
           setParMan(data.parcelasmanta)
           
         })
-
+         .catch(err => console.error('Error al obtener resumen:', err))
+         
         explotacionService.getResumen()
          .then(data => {
            setResumen(data)

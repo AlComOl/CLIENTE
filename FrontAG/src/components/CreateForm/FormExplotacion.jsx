@@ -4,26 +4,24 @@ import { useState } from 'react';
 
 const FormExplotacion = () => {
 
-    const [datos, setDatos] = useState({
-    nombre: "",
-    ubicacion: "",
-    descripcion: "",
-    usuario: "",
-    propietario: ""
-  });
+ 
+  const [nombre,setNombre] = useState ();
+  const [ubicacion, setUbicacion] = useState ();
+  const [descripcion, setDescripcion] = useState ();
+  const [usuario, setUsuario] = useState ();
+  const [propietario, setPropietario] = useState ();
+ 
 
-  // 2. Función única para manejar todos los cambios
-  const manejarCambio = (e) => {
-    const { name, value } = e.target;
-    setDatos({
-      ...datos,        // Mantiene los valores de los otros campos
-      [name]: value    // Actualiza solo el campo que estás escribiendo
-    });
-  };
+
+  const manejarNombre = (e) =>setNombre(e.target.value);
+   const manejarUbicacion = (e) =>setUbicacion(e.target.value);
+    const manejarDescripcion = (e) =>setDescripcion(e.target.value);
+     const manejarUsuario = (e) =>setUsuario(e.target.value);
+      const manejarPropietario = (e) =>setPropietario(e.target.value);
 
   const enviarFormulario = (e) => {
-    e.preventDefault();
-    console.log("Datos enviados:", datos);
+  
+   
   };
 
     return(
@@ -44,8 +42,8 @@ const FormExplotacion = () => {
             <input 
                 name="nombre" 
                 placeholder="Ej: Finca La Esperanza"
-                value={datos.nombre} 
-                onChange={manejarCambio} 
+                value={nombre} 
+                onChange={manejarNombre} 
             />
             </div>
 
@@ -54,8 +52,8 @@ const FormExplotacion = () => {
             <input 
                 name="ubicacion" 
                 placeholder="Ciudad o coordenadas"
-                value={datos.ubicacion} 
-                onChange={manejarCambio} 
+                value={ubicacion} 
+                onChange={manejarUbicacion} 
             />
             </div>
 
@@ -65,20 +63,20 @@ const FormExplotacion = () => {
                 name="descripcion" 
                 rows="4" 
                 placeholder="Detalles de la actividad..."
-                value={datos.descripcion} 
-                onChange={manejarCambio} 
+                value={descripcion} 
+                onChange={manejarDescripcion} 
             />
             </div>
 
             <div className="fila-doble">
             <div className="grupo-input">
                 <label>Usuario:</label>
-                <input name="usuario" value={datos.usuario} onChange={manejarCambio} />
+                <input name="usuario" value={usuario} onChange={manejarUsuario} />
             </div>
 
             <div className="grupo-input">
                 <label>Propietario:</label>
-                <input name="propietario" value={datos.propietario} onChange={manejarCambio} />
+                <input name="propietario" value={propietario} onChange={manejarPropietario} />
             </div>
     </div>
 

@@ -1,0 +1,335 @@
+1) Expresiones Regulares (Regex)
+
+Apuntes basados en:
+
+Expresiones Regulares - Marcos Ruiz
+
+Regexr
+
+¿Qué es una expresión regular?
+
+Una expresión regular es un patrón formal que describe un conjunto de cadenas de texto.
+
+Se utiliza para:
+
+Validar datos (email, DNI, contraseña)
+
+Buscar coincidencias
+
+Reemplazar texto
+
+Extraer partes de un string
+
+Sintaxis general
+
+En JavaScript:
+
+const regex = /patron/;
+
+
+También:
+
+const regex = new RegExp("patron");
+
+Componentes fundamentales
+1. Anclas
+
+Sirven para indicar posición.
+
+Símbolo	Significado
+^	Inicio del texto
+$	Final del texto
+
+Ejemplo: solo números
+
+const regex = /^\d+$/;
+
+
+Significa:
+
+Empieza con número
+
+Termina con número
+
+Uno o más números
+
+No permite nada más
+
+2. Clases predefinidas
+Expresión	Significado
+\d	Dígito (0-9)
+\D	No dígito
+\w	Letra, número o _
+\W	No alfanumérico
+\s	Espacio
+\S	No espacio
+3. Cuantificadores
+Símbolo	Significado
++	1 o más
+*	0 o más
+?	Opcional
+{n}	Exactamente n
+{n,m}	Entre n y m
+
+Ejemplo: mínimo 8 caracteres
+
+/^.{8,}$/
+
+Métodos en JavaScript
+test()
+
+Devuelve booleano.
+const nombre = "Juan Pérez";
+const password = "abc123";
+const telefono = "612345678";
+const email = "juan@mail.com";
+const cp = "28001";
+const dni = "12345678A";
+
+const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/;
+const regexPassword = /^[A-Za-z0-9@#$%^&+=]{6,}$/;
+const regexTelefono = /^\d{9}$/;
+const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const regexCP = /^[0-5]\d{4}$/;
+const regexDNI = /^\d{8}[A-Za-z]$/;
+
+2) Formularios en HTML
+
+Estructura básica
+<form action="destino.php" method="POST">
+  <input type="text" name="usuario">
+  <button type="submit">Enviar</button>
+</form>
+
+Atributos clave
+Atributo	Función
+action	URL destino
+method	GET o POST
+name	Identificador del campo
+required	Obligatorio
+pattern	Regex
+minlength	Longitud mínima
+Tipos importantes de input
+<input type="text">
+<input type="email">
+<input type="password">
+<input type="number">
+<input type="checkbox">
+<input type="radio">
+
+3) Validación con HTML
+
+Apuntes basados en:
+Validación Formularios HTML - Marcos Ruiz
+
+Validación automática
+
+El navegador valida antes de enviar.
+
+Ejemplo:
+
+<input type="email" required>
+
+
+Si no cumple:
+
+No se envía
+
+Se muestra mensaje automático
+
+Validación con pattern
+<input type="text" pattern="\d{8}" required>
+
+Desactivar validación nativa
+<form novalidate>
+
+4) Validación con JavaScript
+
+Apuntes basados en:
+Validación Formularios JavaScript - Marcos Ruiz
+
+Flujo básico
+
+Escuchar evento submit
+
+Evitar envío
+
+Validar manualmente
+
+Código típico
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const email = document.querySelector("#email").value;
+
+    if (email === "") {
+        alert("Campo obligatorio");
+        return;
+    }
+
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+        alert("Formato incorrecto");
+    }
+});
+
+Diferencia HTML vs JS
+HTML	JS
+Automático	Manual
+Poco personalizable	Total control
+Rápido	Más flexible
+5) AJAX
+
+Apuntes basados en:
+AJAX - CIPFP Batoi
+
+¿Qué es AJAX?
+
+Asynchronous JavaScript And XML.
+
+Permite enviar/recibir datos del servidor sin recargar la página.
+
+Hoy se implementa con fetch().
+
+6) Fetch API
+
+Apuntes basados en:
+
+Fetch JavaScript - Marcos Ruiz
+
+Using Fetch - MDN
+
+Fetch - JavaScript.info
+
+JSONPlaceholder Guide
+
+GET
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+POST
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "Hola",
+    body: "Contenido"
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+Manejo de errores HTTP
+
+Importante:
+
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Error HTTP");
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+Tipos de respuesta
+response.json()
+response.text()
+response.blob()
+response.formData()
+
+7) Callbacks
+
+Apuntes basados en:
+Callbacks JavaScript - Marcos Ruiz
+
+Un callback es una función que se pasa como argumento y se ejecuta después.
+
+Ejemplo:
+
+function saludar(nombre, callback) {
+    console.log("Hola " + nombre);
+    callback();
+}
+
+saludar("Juan", function() {
+    console.log("Fin");
+});
+
+
+Problema: callback hell (anidaciones profundas).
+
+8) Promesas
+
+Apuntes basados en:
+Promesas JavaScript - Marcos Ruiz
+
+Una promesa representa un valor futuro.
+
+Estados:
+
+pending
+
+fulfilled
+
+rejected
+
+Crear promesa
+const promesa = new Promise((resolve, reject) => {
+    const exito = true;
+
+    if (exito) {
+        resolve("Correcto");
+    } else {
+        reject("Error");
+    }
+});
+
+Usar promesa
+promesa
+  .then(resultado => console.log(resultado))
+  .catch(error => console.log(error));
+
+9) Promise Chaining
+
+Apuntes basados en:
+Promise Chaining - JavaScript.info
+
+Cada .then() devuelve una nueva promesa.
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+      return data[0];
+  })
+  .then(obj => console.log(obj))
+  .catch(err => console.log(err));
+
+10) Async / Await
+
+Apuntes basados en:
+Async Await - JavaScript.info
+
+Sintaxis más clara sobre promesas.
+
+async function cargar() {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+await solo funciona dentro de funciones async.
