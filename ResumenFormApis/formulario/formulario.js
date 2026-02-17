@@ -8,8 +8,6 @@ form.addEventListener('submit', function(event){
     confirmarFormulario();
 });
 
-
-
 function confirmarFormulario(){
     const nombre=document.getElementById('nombre').value;
     const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/;
@@ -19,11 +17,4 @@ function confirmarFormulario(){
         comprobar.innerHTML="Esta mal"
 
     }
-
-   
-
-
-
-
-
 }
