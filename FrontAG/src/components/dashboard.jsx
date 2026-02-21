@@ -86,7 +86,8 @@ const Dashboard = () => {
         iconImg="./advertencia1.png"
         titulo="Actividad Reciente"
         texto="Requieren atención"
-        textoBtn="Ver">
+        textoBtn="Ver"
+        children="" >
 
         <Btn1
         titulo="Fumigacion"
