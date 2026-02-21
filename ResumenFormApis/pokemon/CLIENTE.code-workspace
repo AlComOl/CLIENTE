@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../Downloads/tienda-examen"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

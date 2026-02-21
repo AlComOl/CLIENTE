@@ -30,36 +30,119 @@
 // hacerPeticion();*/
 
 // https://pokeapi.co/api/v2/pokemon/
- const datos=document.getElementById('datos');
+//  const datos=document.getElementById('datos');
 
-const baseURL = ' https://pokeapi.co/api/v2/pokemon/';       // Ruta del endpoint 
+// const baseURL = ' https://pokeapi.co/api/v2/pokemon/';       // Ruta del endpoint 
 
-const params = new URLSearchParams();        // Creamos un objeto para los parámetros 
-
-  
-https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
-params.set('offset', 'limit');              // Primer parámetro: filtro de búsqueda 
-
-// params.set('page', 2);                      //Segundo parámetro: número de página (paginación) 
+// const params = new URLSearchParams();        // Creamos un objeto para los parámetros 
 
   
+// https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
+// params.set('offset', 'limit');              // Primer parámetro: filtro de búsqueda 
 
-const urlFinal = `${baseURL}?${params.toString()}`;  //Construimos la URL final 
+// // params.set('page', 2);                      //Segundo parámetro: número de página (paginación) 
+
+  
+
+// const urlFinal = `${baseURL}?${params.toString()}`;  //Construimos la URL final 
 
 
 
-fetch(urlFinal)                             // Llamamos al API con fetch 
+// fetch(urlFinal)                             // Llamamos al API con fetch 
 
-  .then(res => res.json())                  //  Convertimos la respuesta a JSON 
+//   .then(res => res.json())                  //  Convertimos la respuesta a JSON 
 
-  .then(data => {
+//   .then(data => {
 
-   data.results.forEach(item =>{
+//    data.results.forEach(item =>{
+//     console.log(item.name)
+//     datos.innerHTML +=`<p>${item.name}</p>`} )
+//    }  );
 
-    datos.innerText =  `${item.name}`} )
-   }  ); //Mostramos los datos en consola 
 
-// const salida=document.getElementById('datos');
 
-// salida.innerHTML=`<p>Respuesta: ${data.name}</p>`;
+const baseURL = 'https://es.wikipedia.org/w/api.https://es.wikipedia.org/w/api.php?action=query&list=search&srsearch=Nelson%20Mandela&utf8=&format=json&origin=*';       // Ruta del endpoint 
 
+// const params = new URLSearchParams();        // Creamos un objeto para los parámetros 
+
+  
+
+// params.set('Nelson', 'Mandela');              // Primer parámetro: filtro de búsqueda 
+
+// params.set('page', '*');                      //Segundo parámetro: número de página (paginación) 
+
+  
+
+// const urlFinal = `${baseURL}?${params.toString()}`;  //Construimos la URL final 
+
+  
+
+// fetch(baseURL)                             // Llamamos al API con fetch 
+
+//   .then(res => res.json())                  //  Convertimos la respuesta a JSON 
+
+//   .then(data => console.log(data)); //Mostramos los datos en consola 
+
+
+// const busqueda=document.getElementById("textoBusqueda").value;
+
+// async function hacerPeticion(busqueda) { 
+// const baseURL = "https://es.wikipedia.org/w/api.php";
+ 
+// const params = new URLSearchParams();
+
+// params.set("action","query");
+// params.set("list","search");
+// params.set("srsearch",busqueda);
+// params.set("utf8","");
+// params.set("format","json");
+// params.set("origin","*");
+
+// try{
+
+//    const urlFinal=await fetch(`${baseURL}?${params.toString()}`);
+
+
+// if (!urlFinal.ok) throw new Error("Error en la red");
+
+//     const json = await urlFinal.json();
+//     console.log(json.query.search);
+
+// }catch(error){
+//   console.error("Hubo un fallo:", error);
+// }
+
+//      } 
+ 
+
+// hacerPeticion(busqueda); .userId
+
+const resu=document.getElementById('resultado');
+
+
+
+
+
+// fetch('https://jsonplaceholder.typicode.com/posts')
+//  .then (res=>res.json())
+//  .then (datos =>{
+//   datos.forEach(element => {
+//     resu.innerHTML+= `<p>${element.title}</p>`;
+//   });
+// });
+
+
+async function salida() {
+
+  const  res = await 
+  fetch('https://jsonplaceholder.typicode.com/posts');
+
+    const data = await res.json();
+
+    data.forEach(element => {
+      resu.innerHTML += `<p>${element.title}<p>`;
+      
+    });
+}
+
+salida();
