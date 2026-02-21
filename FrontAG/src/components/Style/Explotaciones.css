@@ -7,15 +7,13 @@
 }
 
 /* Sección de cards de estadísticas (arriba) - 4 por fila */
-.primeraSeccion {
+/*.primeraSeccion {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* 4 columnas iguales */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
   padding: 20px;
-}
-.texto {
+}*/
 
-}
 
 /* Barra de búsqueda */
 .filtroExplo {

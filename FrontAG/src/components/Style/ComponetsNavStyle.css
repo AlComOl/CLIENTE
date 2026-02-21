@@ -11,12 +11,7 @@
     font-size:30px;
     color: #1B4332;
 }
-.primeraSeccion{
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-}
+
 h1 , p{
   color: #1B4332;
 }
@@ -29,15 +24,17 @@ h1 , p{
   height: 30px;
  
 }
- .card{
+.card {
   background-color: #D8F3DC;
   border: 3px solid #bdc0c4;
   border-radius: 12px;
   padding: 20px;
-  width: 310px;
-  margin:10px;
-  
+  width: 100%;        /* ← ocupa el espacio que le da el grid */
+  min-width: 0;       /* ← evita que se desborde */
+  box-sizing: border-box;
+  margin: 0;          /* ← el gap del grid ya da el espacio */
 }
+
 
 .card1{
     color:black;

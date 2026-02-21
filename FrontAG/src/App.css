@@ -14,7 +14,7 @@ body {
 /* Contenedor principal - Grid layout */
 .app-container {
   display: grid;
-  grid-template-columns: 260px 1fr;  /* Menú 260px + resto */
+  grid-template-columns: 260px 1fr;
   height: 100vh;
 }
 
@@ -81,23 +81,32 @@ body {
   margin: 0 auto;
 }
 
-/* Responsive */
+/* Tablet - menú compacto */
 @media (max-width: 1024px) {
   .app-container {
-    grid-template-columns: 80px 1fr;  /* Menú compacto */
+    grid-template-columns: 80px 1fr;
   }
 }
 
+/* Móvil - menú abajo */
 @media (max-width: 768px) {
   .app-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
   }
-  
+
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 70px;
+  }
+
   .content {
-    padding: 20px;
+    padding: 15px;
   }
-  
+
   .top-header {
-    padding: 16px 20px;
+    padding: 12px 16px;
   }
 }
