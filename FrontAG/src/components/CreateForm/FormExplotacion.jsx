@@ -10,7 +10,7 @@ const FormExplotacion = () => {
   // const [descripcion, setDescripcion] = useState('');
   // const [propietario, setPropietario] = useState('');
   // const [dni, setDni] = useState('');
-  // const [telefono, setTelefono] = useState('');
+
 
   // con un solo use useState
 const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const [formData, setFormData] = useState({
   descripcion: '',
   propietario: '',
   dni: '',
-  telefono: ''
+
 });
 
  //con un solo UseEfect
@@ -32,35 +32,67 @@ const [errors, setErrors] = useState({
   descripcion: '',
   propietario: '',
   dni: '',
-  telefono: ''
+
 });
 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({...formData,[name]: value})
-  }
+ 
 
 
 //validar con regex
 
-  const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/;
-  const regexUsuario=/ / ;
-  const regexUbicacion=/ /;
-  const regexDescripcion=/ /;
-  const regexPropietario=/ /;
-  const regexDni=/ /;
-  const regexTelefono=/ /;
+  const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,20}$/;
+  const regexUsuario = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
+  const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
+  const regexDescripcion = /^.{10,}$/; 
+  const regexPropietario = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,8}$/; 
+  const regexDni = /^\d{8}[A-Z]$/; 
+ 
+
+   const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({...formData,[name]: value});
+    validarCampos(name, value);
+  }
 
 
 const validarCampos=(name,value) =>{
+
+    let mensaje = '';
 
   if(name==='nombre' && !regexNombre.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
   }
 
+  if(name==='usuario' && !regexUsuario.test(value)){
+      mensaje = 'Solo letras, mínimo 3 caracteres';
+  }
+
+  if(name==='ubicacion' && !regexUbicacion.test(value)){
+      mensaje = 'Solo letras, mínimo 3 caracteres';
+  }
+
+  if(name==='descripcion' && !regexDescripcion.test(value)){
+      mensaje = 'Solo letras, mínimo 3 caracteres';
+  }
+
+   if(name==='propietario' && !regexPropietario.test(value)){
+      mensaje = 'Solo letras, mínimo 3 caracteres';
+  }
+
+   if(name==='dni' && !regexDni.test(value)){
+      mensaje = 'Solo números,y al final una letra';
+  }
+
+ 
+
+  
+
   setErrors({ ...errors, [name]: mensaje });
 }
+
+
+
 
   const enviarFormulario = (e) => {
     e.preventDefault();
@@ -80,7 +112,7 @@ const validarCampos=(name,value) =>{
             placeholder="Ej: Finca Casa del Pi"
             value={formData.nombre}
             onChange={handleChange}
-             className={errors.nombre ? 'input-error' : ''}
+            className={errors.nombre ? 'input-error' : ''} // si no cumple regex pone la casa y sale el mensaje de bajo
           />
           {errors.nombre && <span className="mensaje-error">{errors.nombre}</span>}
         </div>
@@ -92,7 +124,9 @@ const validarCampos=(name,value) =>{
             placeholder="Termino municipal"
             value={formData.ubicacion}
             onChange={handleChange}
+            className={errors.ubicacion ? 'input-error' : ''} 
           />
+          {errors.ubicacion && <span className="mensaje-error">{errors.ubicacion}</span>}
         </div>
 
         <div className="form-grupo">
@@ -102,7 +136,9 @@ const validarCampos=(name,value) =>{
             placeholder="L'Alcudia"
             value={formData.usuario}
             onChange={handleChange}
+            className={errors.usuario ? 'input-error' : ''} 
           />
+          {errors.usuario && <span className="mensaje-error">{errors.usuario}</span>}
         </div>
 
         <div className="form-grupo">
@@ -112,7 +148,9 @@ const validarCampos=(name,value) =>{
             placeholder="Álvaro Comenge"
             value={formData.propietario}
             onChange={handleChange}
+            className={errors.propietario ? 'input-error' : ''} 
           />
+          {errors.propietario && <span className="mensaje-error">{errors.propietario}</span>}
         </div>
 
          <div className="form-grupo">
@@ -122,18 +160,11 @@ const validarCampos=(name,value) =>{
             placeholder="22345696W"
             value={formData.dni}
             onChange={handleChange}
+            className={errors.dni ? 'input-error' : ''} 
           />
+          {errors.dni && <span className="mensaje-error">{errors.dni}</span>}
         </div>
 
-        <div className="form-grupo">
-          <label>Dni</label>
-          <input
-            name="telefono"
-            placeholder="657898990"
-            value={formData.telefono}
-            onChange={handleChange}
-          />
-        </div>
 
         <div className="form-grupo full-width">
           <label>Descripción</label>
@@ -143,7 +174,9 @@ const validarCampos=(name,value) =>{
             placeholder="Descripción de la Explotación"
             value={formData.descripcion}
             onChange={handleChange}
+            className={errors.descripcion ? 'input-error' : ''} 
           />
+          {errors.descripcion && <span className="mensaje-error">{errors.descripcion}</span>}
         </div>
 
         <div className="form-actions full-width">
