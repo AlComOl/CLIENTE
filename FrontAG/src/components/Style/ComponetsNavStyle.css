@@ -25,8 +25,8 @@ h1 , p{
  
 }
 .card {
-  background-color: #D8F3DC;
-  border: 3px solid #bdc0c4;
+  background-color: #f4fdf2;
+  border: 1px solid #8a8a8a;
   border-radius: 12px;
   padding: 20px;
   width: 100%;        /* ← ocupa el espacio que le da el grid */
