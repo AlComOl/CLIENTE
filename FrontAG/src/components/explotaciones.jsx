@@ -59,7 +59,7 @@ return(
 
       
             
-                <
+                <BtnCrear
                   to='/nueva-explotacion'
                   titulo="Crear Explotacion"
                   iconIng="./plusNegro.png"
