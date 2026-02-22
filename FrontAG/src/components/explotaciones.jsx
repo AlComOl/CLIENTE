@@ -59,10 +59,10 @@ return(
 
       
             
-                <BtnCrear
+                <
                   to='/nueva-explotacion'
                   titulo="Crear Explotacion"
-                  iconIng="./plusnegro.png"
+                  iconIng="./plusNegro.png"
                   className="btn-nueva-explotacion"
                   
                 />
