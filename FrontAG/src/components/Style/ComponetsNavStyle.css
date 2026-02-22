@@ -29,10 +29,10 @@ h1 , p{
   border: 1px solid #8a8a8a;
   border-radius: 12px;
   padding: 20px;
-  width: 100%;        /* ← ocupa el espacio que le da el grid */
-  min-width: 0;       /* ← evita que se desborde */
+  width: 100%;       
+  min-width: 0;       
   box-sizing: border-box;
-  margin: 0;          /* ← el gap del grid ya da el espacio */
+  margin: 0;         
 }
 
 
@@ -77,12 +77,12 @@ h1 , p{
 } 
 
 
-/* Link sin decoración */
+
 a {
   text-decoration: none;
 }
 
-/* Botón crear - VERDE por defecto */
+/* Botón crear */
 button {
   display: flex;
   align-items: center;

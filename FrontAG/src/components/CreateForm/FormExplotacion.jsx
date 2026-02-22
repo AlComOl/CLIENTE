@@ -3,20 +3,68 @@ import { useState } from 'react';
 
 const FormExplotacion = () => {
 
-  const [nombre, setNombre] = useState('');
-  const [ubicacion, setUbicacion] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [usuario, setUsuario] = useState('');
-  const [propietario, setPropietario] = useState('');
+  //ORIGINARIO 
+  //  const [nombre, setNombre] = useState('');
+  // const [usuario, setUsuario] = useState('');
+  // const [ubicacion, setUbicacion] = useState('');
+  // const [descripcion, setDescripcion] = useState('');
+  // const [propietario, setPropietario] = useState('');
+  // const [dni, setDni] = useState('');
+  // const [telefono, setTelefono] = useState('');
 
-  const manejarNombre = (e) => setNombre(e.target.value);
-  const manejarUbicacion = (e) => setUbicacion(e.target.value);
-  const manejarDescripcion = (e) => setDescripcion(e.target.value);
-  const manejarUsuario = (e) => setUsuario(e.target.value);
-  const manejarPropietario = (e) => setPropietario(e.target.value);
+  // con un solo use useState
+const [formData, setFormData] = useState({
+  nombre: '',
+  usuario: '',
+  ubicacion: '',
+  descripcion: '',
+  propietario: '',
+  dni: '',
+  telefono: ''
+});
+
+ //con un solo UseEfect
+
+const [errors, setErrors] = useState({
+  nombre: '',
+  usuario: '',
+  ubicacion: '',
+  descripcion: '',
+  propietario: '',
+  dni: '',
+  telefono: ''
+});
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({...formData,[name]: value})
+  }
+
+
+//validar con regex
+
+  const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/;
+  const regexUsuario=/ / ;
+  const regexUbicacion=/ /;
+  const regexDescripcion=/ /;
+  const regexPropietario=/ /;
+  const regexDni=/ /;
+  const regexTelefono=/ /;
+
+
+const validarCampos=(name,value) =>{
+
+  if(name==='nombre' && !regexNombre.test(value)){
+      mensaje = 'Solo letras, mínimo 3 caracteres';
+  }
+
+  setErrors({ ...errors, [name]: mensaje });
+}
 
   const enviarFormulario = (e) => {
     e.preventDefault();
+
   };
 
   return (
@@ -29,19 +77,21 @@ const FormExplotacion = () => {
           <label>Nombre Explotación</label>
           <input
             name="nombre"
-            placeholder="Ej: Finca La Esperanza"
-            value={nombre}
-            onChange={manejarNombre}
+            placeholder="Ej: Finca Casa del Pi"
+            value={formData.nombre}
+            onChange={handleChange}
+             className={errors.nombre ? 'input-error' : ''}
           />
+          {errors.nombre && <span className="mensaje-error">{errors.nombre}</span>}
         </div>
 
         <div className="form-grupo">
           <label>Ubicación</label>
           <input
             name="ubicacion"
-            placeholder="Ciudad o coordenadas"
-            value={ubicacion}
-            onChange={manejarUbicacion}
+            placeholder="Termino municipal"
+            value={formData.ubicacion}
+            onChange={handleChange}
           />
         </div>
 
@@ -49,8 +99,9 @@ const FormExplotacion = () => {
           <label>Usuario</label>
           <input
             name="usuario"
-            value={usuario}
-            onChange={manejarUsuario}
+            placeholder="L'Alcudia"
+            value={formData.usuario}
+            onChange={handleChange}
           />
         </div>
 
@@ -58,8 +109,29 @@ const FormExplotacion = () => {
           <label>Propietario</label>
           <input
             name="propietario"
-            value={propietario}
-            onChange={manejarPropietario}
+            placeholder="Álvaro Comenge"
+            value={formData.propietario}
+            onChange={handleChange}
+          />
+        </div>
+
+         <div className="form-grupo">
+          <label>Dni</label>
+          <input
+            name="dni"
+            placeholder="22345696W"
+            value={formData.dni}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-grupo">
+          <label>Dni</label>
+          <input
+            name="telefono"
+            placeholder="657898990"
+            value={formData.telefono}
+            onChange={handleChange}
           />
         </div>
 
@@ -68,9 +140,9 @@ const FormExplotacion = () => {
           <textarea
             name="descripcion"
             rows="4"
-            placeholder="Detalles de la actividad..."
-            value={descripcion}
-            onChange={manejarDescripcion}
+            placeholder="Descripción de la Explotación"
+            value={formData.descripcion}
+            onChange={handleChange}
           />
         </div>
 
