@@ -10,7 +10,7 @@ const FormExplotacion = () => {
 
 
   const [usuarios, setUsers] = useState([]);
-  const [propietario, setPropietario] = useState([]);
+  const [propietarios, setPropietario] = useState([]);
 
 
 useEffect(() => {
@@ -198,9 +198,9 @@ return comprobar;
             onChange={handleChange}>
 
             <option value="">Selecciona un propietario</option>
-                {propietario.map(propietario => (
-                  <option key={propietario.id} value={usuario.id}>
-                    {propietario.name}
+                {propietarios.map(propietario => (
+                  <option key={propietario.id} value={propietario.id}>
+                    {propietario.nombre}
               </option>
             ))}
           </select>
