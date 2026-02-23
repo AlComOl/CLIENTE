@@ -1,5 +1,7 @@
 import '../Style/formStyles.css'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import explotacionService from '../../services/explotaciones'
 
 const FormExplotacion = () => {
 
@@ -15,10 +17,10 @@ const FormExplotacion = () => {
   // con un solo use useState
 const [formData, setFormData] = useState({
   nombre: '',
-  usuario: '',
+  user_id: '',
   ubicacion: '',
   descripcion: '',
-  propietario: '',
+  propietario_id: '',
 
 
 });
@@ -27,25 +29,25 @@ const [formData, setFormData] = useState({
 
 const [errors, setErrors] = useState({
   nombre: '',
-  usuario: '',
+  user_id: '',
   ubicacion: '',
   descripcion: '',
-  propietario: '',
+  propietario_id: '',
 
 
 });
 
 
  
-
+const navigate = useNavigate();
 
 //validar con regex
 
   const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,20}$/;
-  const regexUsuario = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
+  const regexUsuario = /^\d+$/; 
   const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
   const regexDescripcion = /^.{10,}$/; 
-  const regexPropietario = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,8}$/; 
+  const regexPropietario = /^\d+$/;
    
  
 
@@ -66,7 +68,7 @@ const validarCampos=(name,value) =>{
       comprobar=false;
   }
 
-  if(name==='usuario' && !regexUsuario.test(value)){
+  if(name==='user_id' && !regexUsuario.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
       comprobar=false;
   }
@@ -81,7 +83,7 @@ const validarCampos=(name,value) =>{
       comprobar=false;
   }
 
-   if(name==='propietario' && !regexPropietario.test(value)){
+   if(name==='propietario_id' && !regexPropietario.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
       comprobar=false;
   }
@@ -98,17 +100,32 @@ return comprobar;
 
   const enviarFormulario = (e) => {
     e.preventDefault();
+     console.log('formulario enviado');
+     console.log('formData:', formData);
 //validamos los campos
     const nombreOk = validarCampos('nombre', formData.nombre);
     const ubicacionOk = validarCampos('ubicacion', formData.ubicacion);
-    const usuarioOk = validarCampos('usuario', formData.usuario);
-    const propietarioOk = validarCampos('propietario', formData.propietario);
+    const usuarioOk = validarCampos('user_id', formData.user_id);
+    const propietarioOk = validarCampos('propietario_id', formData.propietario_id);
     const descripcionOk = validarCampos('descripcion', formData.descripcion);
+
+  console.log('nombreOk:', nombreOk);
+  console.log('ubicacionOk:', ubicacionOk);
+  console.log('usuarioOk:', usuarioOk);
+  console.log('propietarioOk:', propietarioOk);
+  console.log('descripcionOk:', descripcionOk);
 //validamos que no esten vacios
     if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk &&
-       formData.nombre !=="" && formData.ubicacion !=="" && formData.usuario !=="" && formData.propietario !==""){
+       formData.nombre !=="" && formData.ubicacion !=="" && formData.user_id !=="" && formData.propietario_id !==""){
         //llamamos al servicio
-        explotacionesService.create(formData)
+        explotacionService.postCrear(formData)
+            .then(() => {
+              navigate('/explotaciones')
+            })
+            .catch(err => console.error(err))
+      
+
+   
 
     }
     
@@ -150,9 +167,9 @@ return comprobar;
         <div className="form-grupo">
           <label>Usuario</label>
           <input
-            name="usuario"
+            name="user_id"
             placeholder="L'Alcudia"
-            value={formData.usuario}
+            value={formData.user_id}
             onChange={handleChange}
             className={errors.usuario ? 'input-error' : ''} 
           />
@@ -162,9 +179,9 @@ return comprobar;
         <div className="form-grupo">
           <label>Propietario</label>
           <input
-            name="propietario"
+            name="propietario_id"
             placeholder="Álvaro Comenge"
-            value={formData.propietario}
+            value={formData.propietario_id}
             onChange={handleChange}
             className={errors.propietario ? 'input-error' : ''} 
           />
