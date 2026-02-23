@@ -7,4 +7,4 @@ const getPropietarios = () => {
     return request.then (response => response.data);
 }
 
-export default getPropietarios;
+export default {getPropietarios};

@@ -17,15 +17,15 @@ useEffect(() => {
       usuariosService.getUsuarios()
         .then(data => {
           setUsers(data.usuarios)
-          console.log(usuarios)
+         
         })
 
 
-      // propietariosService.getPropietario()
-      //   .then(data => {
-      //     setPropietario(data.propietarios)
+      propietariosService.getPropietarios()
+        .then(data => {
+          setPropietario(data.propietarios)
 
-      //   })
+        })
 
      }, []);
  
@@ -66,13 +66,12 @@ const [errors, setErrors] = useState({
  
 const navigate = useNavigate();
 
-//validar con regex
+//validar con regex, usuario y propietario vienen con el select
 
   const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,25}$/;
-  const regexUsuario = /^\d+$/; 
   const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
   const regexDescripcion = /^.{10,}$/; 
-  const regexPropietario = /^\d+$/;
+
    
  
 
@@ -93,11 +92,6 @@ const validarCampos=(name,value) =>{
       comprobar=false;
   }
 
-  // if(name==='user_id' && !regexUsuario.test(value)){
-  //     mensaje = 'Numeros';
-  //     comprobar=false;
-  // }
-
   if(name==='ubicacion' && !regexUbicacion.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
       comprobar=false;
@@ -107,12 +101,6 @@ const validarCampos=(name,value) =>{
       mensaje = 'Solo letras, mínimo 3 caracteres';
       comprobar=false;
   }
-
-  //  if(name==='propietario_id' && !regexPropietario.test(value)){
-  //     mensaje = 'Solo letras, mínimo 3 caracteres';
-  //     comprobar=false;
-  // }
-  
 
   setErrors({ ...errors, [name]: mensaje });
 
@@ -130,15 +118,9 @@ return comprobar;
 //validamos los campos
     const nombreOk = validarCampos('nombre', formData.nombre);
     const ubicacionOk = validarCampos('ubicacion', formData.ubicacion);
-    const usuarioOk = validarCampos('user_id', formData.user_id);
-    const propietarioOk = validarCampos('propietario_id', formData.propietario_id);
     const descripcionOk = validarCampos('descripcion', formData.descripcion);
 
-  console.log('nombreOk:', nombreOk);
-  console.log('ubicacionOk:', ubicacionOk);
-  console.log('usuarioOk:', usuarioOk);
-  console.log('propietarioOk:', propietarioOk);
-  console.log('descripcionOk:', descripcionOk);
+ 
 //validamos que no esten vacios
     if(nombreOk && ubicacionOk && descripcionOk &&
        formData.nombre !=="" && formData.ubicacion !=="" && formData.user_id !=="" && formData.propietario_id !==""){
@@ -188,6 +170,8 @@ return comprobar;
           />
           {errors.ubicacion && <span className="mensaje-error">{errors.ubicacion}</span>}
         </div>
+
+
       {/* Usuario hace otra peticion a la Api para traer los usuarios al igual que lo propietario */}
         <div className="form-grupo">
           <label>Usuario</label>
@@ -205,17 +189,24 @@ return comprobar;
           </select>
         </div>
 
+
         <div className="form-grupo">
-          <label>ID Propietario (campo númerico)</label>
-          <input
+          <label>Propietario</label>
+          <select
             name="propietario_id"
-            placeholder="Álvaro Comenge"
             value={formData.propietario_id}
-            onChange={handleChange}
-            className={errors.id_propietario ? 'input-error' : ''} 
-          />
-          {errors.propietario && <span className="mensaje-error">{errors.propietario}</span>}
+            onChange={handleChange}>
+
+            <option value="">Selecciona un propietario</option>
+                {propietario.map(propietario => (
+                  <option key={propietario.id} value={usuario.id}>
+                    {propietario.name}
+              </option>
+            ))}
+          </select>
         </div>
+
+      
 
         <div className="form-grupo full-width">
           <label>Descripción</label>
