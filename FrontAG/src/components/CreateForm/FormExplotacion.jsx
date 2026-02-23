@@ -69,7 +69,7 @@ const navigate = useNavigate();
 //validar con regex, usuario y propietario vienen con el select
 
   const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,25}$/;
-  const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
+  const regexUbicacion = /^.{3,}$/;
   const regexDescripcion = /^.{10,}$/; 
 
    
@@ -97,10 +97,11 @@ const validarCampos=(name,value) =>{
       comprobar=false;
   }
 
-  if(name==='descripcion' && !regexDescripcion.test(value)){
-      mensaje = 'Solo letras, mínimo 3 caracteres';
-      comprobar=false;
-  }
+ if(name==='descripcion' && !regexDescripcion.test(value)){
+  mensaje = 'Mínimo 10 caracteres'; 
+  comprobar=false;
+}
+
 
   setErrors({ ...errors, [name]: mensaje });
 
@@ -110,36 +111,28 @@ return comprobar;
 
 
 
+const enviarFormulario = (e) => {
+  e.preventDefault();
 
-  const enviarFormulario = (e) => {
-    e.preventDefault();
-     console.log('formulario enviado');
-     console.log('formData:', formData);
-//validamos los campos
-    const nombreOk = validarCampos('nombre', formData.nombre);
-    const ubicacionOk = validarCampos('ubicacion', formData.ubicacion);
-    const descripcionOk = validarCampos('descripcion', formData.descripcion);
+  const nombreOk = validarCampos('nombre', formData.nombre);
+  const ubicacionOk = validarCampos('ubicacion', formData.ubicacion);
+  const descripcionOk = validarCampos('descripcion', formData.descripcion);
 
- 
-//validamos que no esten vacios
-    if(nombreOk && ubicacionOk && descripcionOk &&
-       formData.nombre !=="" && formData.ubicacion !=="" && formData.user_id !=="" && formData.propietario_id !==""){
-        //llamamos al servicio
-        explotacionService.postCrear(formData)
-            .then(() => {
-              navigate('/explotaciones')
-            })
-            .catch(err => console.error(err))
-      
-
-   
-
-    }
+  if(nombreOk && ubicacionOk && descripcionOk &&
+     formData.nombre !=="" && formData.ubicacion !=="" && 
+     formData.user_id !=="" && formData.propietario_id !==""){
     
+    explotacionService.postCrear(formData)
+      .then((response) => {  
+        console.log('respuesta:', response)
+        navigate('/explotaciones')
+      })
+      .catch(err => console.error(err))
 
-    
-
-  };
+  } else {
+    console.log('formulario inválido', {nombreOk, ubicacionOk, descripcionOk, formData})
+  }
+};
 
   return (
     <div className="form-container">
@@ -154,7 +147,7 @@ return comprobar;
             placeholder="Ej: Finca Casa del Pi"
             value={formData.nombre}
             onChange={handleChange}
-            className={errors.nombre ? 'input-error' : ''} // si no cumple regex pone la casa y sale el mensaje de bajo
+            className={errors.nombre ? 'input-error' : ''} // si no cumple regex pone la clase y sale el mensaje de bajo
           />
           {errors.nombre && <span className="mensaje-error">{errors.nombre}</span>}
         </div>
