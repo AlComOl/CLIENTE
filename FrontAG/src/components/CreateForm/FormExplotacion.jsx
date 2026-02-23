@@ -19,11 +19,11 @@ const [formData, setFormData] = useState({
   ubicacion: '',
   descripcion: '',
   propietario: '',
-  dni: '',
+
 
 });
 
- //con un solo UseEfect
+ //con un solo UseState
 
 const [errors, setErrors] = useState({
   nombre: '',
@@ -31,7 +31,7 @@ const [errors, setErrors] = useState({
   ubicacion: '',
   descripcion: '',
   propietario: '',
-  dni: '',
+
 
 });
 
@@ -46,7 +46,7 @@ const [errors, setErrors] = useState({
   const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
   const regexDescripcion = /^.{10,}$/; 
   const regexPropietario = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,8}$/; 
-  const regexDni = /^\d{8}[A-Z]$/; 
+   
  
 
    const handleChange = (e) => {
@@ -59,36 +59,38 @@ const [errors, setErrors] = useState({
 const validarCampos=(name,value) =>{
 
     let mensaje = '';
+    let comprobar=true;
 
   if(name==='nombre' && !regexNombre.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
+      comprobar=false;
   }
 
   if(name==='usuario' && !regexUsuario.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
+      comprobar=false;
   }
 
   if(name==='ubicacion' && !regexUbicacion.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
+      comprobar=false;
   }
 
   if(name==='descripcion' && !regexDescripcion.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
+      comprobar=false;
   }
 
    if(name==='propietario' && !regexPropietario.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
+      comprobar=false;
   }
-
-   if(name==='dni' && !regexDni.test(value)){
-      mensaje = 'Solo números,y al final una letra';
-  }
-
- 
-
   
 
   setErrors({ ...errors, [name]: mensaje });
+
+return comprobar;
+
 }
 
 
@@ -96,6 +98,20 @@ const validarCampos=(name,value) =>{
 
   const enviarFormulario = (e) => {
     e.preventDefault();
+//validamos los campos
+    const nombreOk = validarCampos('nombre', formData.nombre);
+    const ubicacionOk = validarCampos('nombre', formData.ubicacion);
+    const usuarioOk = validarCampos('nombre', formData.usuario);
+    const propietarioOk = validarCampos('nombre', formData.propietario);
+    const descripcionOk = validarCampos('nombre', formData.descripcion);
+//validamos que no esten vacios
+    if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk ||
+       formData.nombre !=="" || formData.ubicacion !=="" || formData.usuario !=="" || formData.propietario !==""){
+        
+    }
+    
+
+    
 
   };
 
@@ -152,19 +168,6 @@ const validarCampos=(name,value) =>{
           />
           {errors.propietario && <span className="mensaje-error">{errors.propietario}</span>}
         </div>
-
-         <div className="form-grupo">
-          <label>Dni</label>
-          <input
-            name="dni"
-            placeholder="22345696W"
-            value={formData.dni}
-            onChange={handleChange}
-            className={errors.dni ? 'input-error' : ''} 
-          />
-          {errors.dni && <span className="mensaje-error">{errors.dni}</span>}
-        </div>
-
 
         <div className="form-grupo full-width">
           <label>Descripción</label>
