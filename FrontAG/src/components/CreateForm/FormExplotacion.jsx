@@ -100,14 +100,14 @@ return comprobar;
     e.preventDefault();
 //validamos los campos
     const nombreOk = validarCampos('nombre', formData.nombre);
-    const ubicacionOk = validarCampos('nombre', formData.ubicacion);
-    const usuarioOk = validarCampos('nombre', formData.usuario);
-    const propietarioOk = validarCampos('nombre', formData.propietario);
-    const descripcionOk = validarCampos('nombre', formData.descripcion);
+    const ubicacionOk = validarCampos('ubicacion', formData.ubicacion);
+    const usuarioOk = validarCampos('usuario', formData.usuario);
+    const propietarioOk = validarCampos('propietario', formData.propietario);
+    const descripcionOk = validarCampos('descripcion', formData.descripcion);
 //validamos que no esten vacios
-    if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk ||
-       formData.nombre !=="" || formData.ubicacion !=="" || formData.usuario !=="" || formData.propietario !==""){
-        
+    if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk &&
+       formData.nombre !=="" && formData.ubicacion !=="" && formData.usuario !=="" && formData.propietario !==""){
+
     }
     
 
