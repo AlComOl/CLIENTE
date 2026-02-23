@@ -1,9 +1,34 @@
 import '../Style/formStyles.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import explotacionService from '../../services/explotaciones'
+import { useEffect } from 'react';
+import explotacionService from '../../services/explotaciones';
+import usuariosService from '../../services/usuarios';
+import propietariosService from '../../services/propietarios';
 
 const FormExplotacion = () => {
+
+
+  const [usuarios, setUsers] = useState([]);
+  const [propietario, setPropietario] = useState([]);
+
+
+useEffect(() => {
+      usuariosService.getUsuarios()
+        .then(data => {
+          setUsers(data.usuarios)
+          console.log(usuarios)
+        })
+
+
+      // propietariosService.getPropietario()
+      //   .then(data => {
+      //     setPropietario(data.propietarios)
+
+      //   })
+
+     }, []);
+ 
 
   //ORIGINARIO 
   //  const [nombre, setNombre] = useState('');
@@ -43,7 +68,7 @@ const navigate = useNavigate();
 
 //validar con regex
 
-  const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,20}$/;
+  const regexNombre= /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,25}$/;
   const regexUsuario = /^\d+$/; 
   const regexUbicacion = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,}$/; 
   const regexDescripcion = /^.{10,}$/; 
@@ -64,14 +89,14 @@ const validarCampos=(name,value) =>{
     let comprobar=true;
 
   if(name==='nombre' && !regexNombre.test(value)){
-      mensaje = 'Solo letras, mínimo 3 caracteres';
+      mensaje = 'Más de 3 letras , o menos de 25';
       comprobar=false;
   }
 
-  if(name==='user_id' && !regexUsuario.test(value)){
-      mensaje = 'Solo letras, mínimo 3 caracteres';
-      comprobar=false;
-  }
+  // if(name==='user_id' && !regexUsuario.test(value)){
+  //     mensaje = 'Numeros';
+  //     comprobar=false;
+  // }
 
   if(name==='ubicacion' && !regexUbicacion.test(value)){
       mensaje = 'Solo letras, mínimo 3 caracteres';
@@ -83,10 +108,10 @@ const validarCampos=(name,value) =>{
       comprobar=false;
   }
 
-   if(name==='propietario_id' && !regexPropietario.test(value)){
-      mensaje = 'Solo letras, mínimo 3 caracteres';
-      comprobar=false;
-  }
+  //  if(name==='propietario_id' && !regexPropietario.test(value)){
+  //     mensaje = 'Solo letras, mínimo 3 caracteres';
+  //     comprobar=false;
+  // }
   
 
   setErrors({ ...errors, [name]: mensaje });
@@ -115,7 +140,7 @@ return comprobar;
   console.log('propietarioOk:', propietarioOk);
   console.log('descripcionOk:', descripcionOk);
 //validamos que no esten vacios
-    if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk &&
+    if(nombreOk && ubicacionOk && descripcionOk &&
        formData.nombre !=="" && formData.ubicacion !=="" && formData.user_id !=="" && formData.propietario_id !==""){
         //llamamos al servicio
         explotacionService.postCrear(formData)
@@ -163,27 +188,31 @@ return comprobar;
           />
           {errors.ubicacion && <span className="mensaje-error">{errors.ubicacion}</span>}
         </div>
-
+      {/* Usuario hace otra peticion a la Api para traer los usuarios al igual que lo propietario */}
         <div className="form-grupo">
           <label>Usuario</label>
-          <input
+          <select
             name="user_id"
-            placeholder="L'Alcudia"
             value={formData.user_id}
-            onChange={handleChange}
-            className={errors.usuario ? 'input-error' : ''} 
-          />
-          {errors.usuario && <span className="mensaje-error">{errors.usuario}</span>}
+            onChange={handleChange}>
+
+            <option value="">Selecciona un usuario</option>
+                {usuarios.map(usuario => (
+                  <option key={usuario.id} value={usuario.id}>
+                    {usuario.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="form-grupo">
-          <label>Propietario</label>
+          <label>ID Propietario (campo númerico)</label>
           <input
             name="propietario_id"
             placeholder="Álvaro Comenge"
             value={formData.propietario_id}
             onChange={handleChange}
-            className={errors.propietario ? 'input-error' : ''} 
+            className={errors.id_propietario ? 'input-error' : ''} 
           />
           {errors.propietario && <span className="mensaje-error">{errors.propietario}</span>}
         </div>
