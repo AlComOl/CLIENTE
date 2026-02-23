@@ -107,6 +107,8 @@ return comprobar;
 //validamos que no esten vacios
     if(nombreOk && ubicacionOk && usuarioOk && propietarioOk && descripcionOk &&
        formData.nombre !=="" && formData.ubicacion !=="" && formData.usuario !=="" && formData.propietario !==""){
+        //llamamos al servicio
+        explotacionesService.create(formData)
 
     }
     
