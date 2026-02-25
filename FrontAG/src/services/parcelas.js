@@ -14,8 +14,8 @@ const getResumenP = () => {
 }
 
 const postCrear = (formData) => {
-  const request = axios.post(baseUrl2,formData);
-  return request.then(response=>response.data);
+  const request = axios.post(baseUrl2,formData)
+  return request.then(response=>response.data)
 
 }
 
