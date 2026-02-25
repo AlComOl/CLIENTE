@@ -76,57 +76,48 @@ const FormParcela = () => {
 
      }
     
-  }
+  
    
 
 
    const validarCampos=(name,value) =>{
 
-        let mensaje = '';
-        let comprobar=true;
+          let mensaje = '';
+          let comprobar=true;
 
 
+        if(name==='poligono' && !regexPoligono.test(value)){
+            mensaje = 'Número de 2 cifras';
+            comprobar=false;
+        }
 
+        if(name==='parcela' && !regexParcela.test(value)){
+            mensaje = 'Número de 2 cifras';
+            comprobar=false;
+        }
 
-
-    
-  if(nombreOk && ubicacionOk && descripcionOk &&
-     formData.nombre !=="" && formData.ubicacion !=="" && 
-     formData.user_id !=="" && formData.propietario_id !==""){
-
-
-      if(name==='poligono' && !regexPoligono.test(value)){
-          mensaje = 'Número de 2 cifras';
+        if(name==='variedad' && !regexVariedad.test(value)){
+          mensaje = 'Palabra de 8 letras máximo'; 
           comprobar=false;
-      }
+        }
 
-      if(name==='parcela' && !regexParcela.test(value)){
-          mensaje = 'Número de 2 cifras';
+        if(name==='dimensiones' && !regexDimension.test(value)){
+          mensaje = 'Número decimal ejemplo 2,34 no mas decimáles'; 
           comprobar=false;
-      }
+        }
 
-      if(name==='variedad' && !regexVariedad.test(value)){
-        mensaje = 'Palabra de 8 letras máximo'; 
-        comprobar=false;
-      }
+        if(name==='num_arboles' && !regexNumArboles.test(value)){
+          mensaje = 'Número entero max 3000'; 
+          comprobar=false;
+        }
 
-      if(name==='dimensiones' && !regexDimension.test(value)){
-        mensaje = 'Número decimal ejemplo 2,34 no mas decimáles'; 
-        comprobar=false;
-      }
-
-      if(name==='num_arboles' && !regexNumArboles.test(value)){
-        mensaje = 'Número entero max 3000'; 
-        comprobar=false;
-      }
-
-      if(name==='descripcion' && !regexDescripcion.test(value)){
-        mensaje = 'Mínimo 50 caracteres'; 
-        comprobar=false;
-      }
+        if(name==='descripcion' && !regexDescripcion.test(value)){
+          mensaje = 'Mínimo 50 caracteres'; 
+          comprobar=false;
+        }
 
 
-      setErrors({ ...errors, [name]: mensaje });
+        setErrors({ ...errors, [name]: mensaje });
 
     return comprobar;
 
@@ -140,7 +131,7 @@ const FormParcela = () => {
      <div className="form-container">
       <h1>Nueva Parcela</h1>
       
-      <form  className="form-grid">
+      <form  className="form-grid" onSubmit={enviarFormulario}>
         
         {/* Explotación */}
         <div className="form-grupo">
@@ -225,7 +216,9 @@ const FormParcela = () => {
             onChange={actualizaEstado}
             placeholder="Ej: Rojo Brillante"
             required
+            className={errors.variedad ? 'input-error' : ''}
           />
+          {errors.nombre && <span className="mensaje-error">{errors.variedad}</span>}
         </div>
 
         {/* Dimensión en Hanegadas */}
@@ -289,6 +282,6 @@ const FormParcela = () => {
     </div>
   )
 }
-  
+
 
   export default FormParcela;
