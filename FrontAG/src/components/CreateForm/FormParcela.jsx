@@ -17,6 +17,7 @@ const FormParcela = () => {
     explotacion_id :"",
     propietarios_id : "",
     rol:"manta",
+    poligono:"",
     parcela:"",
     variedad:"",
     dimension_hanegadas:"",
