@@ -23,6 +23,13 @@ const postCrear = (formData) => {
 
 }
 
+//datos select
+// const getExplotaciones = () => {
+//   const request = axios.post(baseUrl2,formData);
+//   return request.then(response=>response.data);
+
+// }
+
 
 export default { getCount, getResumen, postCrear}
 

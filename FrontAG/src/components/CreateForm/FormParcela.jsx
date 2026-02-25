@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import parcelaService from '../../services/parcelas';
+import explotacionesService from "../../services/explotaciones";
+import propietariosService from "../../services/propietarios"
+
 const FormParcela = () => {
+
+  const navigate = useNavigate();
 
   const regexPoligono = /^\d{1,12}$/;
   const regexParcela = /^\d{1,4}$/;
@@ -10,12 +15,30 @@ const FormParcela = () => {
   const regexNumArboles = /^([1-9]\d{0,2}|[12]\d{3}|3000)$/;
   const regexDescripcion = /^(\S+\s*){1,50}$/;
 
+  //datos select
+  const [explotaciones,setExplotaciones] = useState([]);
+  const [propietarios, setPropietario] = useState([]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    explotacionesService.getCount()
+      .then(data => {
+        console.log(data.nom)
+        setExplotaciones(data.nom);
+      })
+  },[])
+
+  useEffect(() => {
+    propietariosService.getPropietarios()
+     .then(data => {
+      setPropietario(data.propietarios)
+})
+  }, []);
+
+  
 
   const [formData,setFormData] = useState ({
     explotacion_id :"",
-    propietarios_id : "",
+    propietarios : "",
     rol:"manta",
     poligono:"",
     parcela:"",
@@ -68,8 +91,6 @@ const FormParcela = () => {
 
        parcelaService.postCrear(formData)
         .then((response) => {
-          
-        console.log('respuesta:', response)
           navigate('/parcelas')
         })
         .catch(err => console.error(err))
@@ -142,10 +163,15 @@ const FormParcela = () => {
             name="explotacion_id"
             value={formData.explotacion_id}
             onChange={actualizaEstado}
-            required
+            
           >
             <option value="">Selecciona una explotación</option>
-            {/* Aquí cargarías las explotaciones desde la API */}
+          {explotaciones.map(explotacion => (
+                  <option key={explotacion} value={explotacion}>
+                    {explotacion}
+              </option>
+            ))}
+
           </select>
         </div>
 
@@ -153,13 +179,18 @@ const FormParcela = () => {
         <div className="form-grupo">
           <label htmlFor="propietario_id">Propietario *</label>
           <select
-            id="propietario_id"
+         
             name="propietario_id"
             value={formData.propietarios_id}
             onChange={actualizaEstado}
-            required
+            
           >
             <option value="">Selecciona un propietario</option>
+             {propietarios.map(propietario => (
+                  <option key={propietario.nombre} value={propietario.nombre}>
+                    {propietario.nombre}
+              </option>
+            ))} 
             
           </select>
         </div>
