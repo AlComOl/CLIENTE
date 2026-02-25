@@ -1,6 +1,7 @@
 import axios from 'axios';
 const baseUrl = 'http://localhost/api/parcelas';
 const baseUrl1 = 'http://localhost/api/parcelas/resumen';
+const baseUrl2 = 'http://localhost/api/parcelas/crear';
 
 const getCount = () => {
   const request = axios.get(baseUrl)
@@ -12,5 +13,12 @@ const getResumenP = () => {
   return request.then(response => response.data)
 }
 
-export default { getCount ,getResumenP }
+const postCrear = () => {
+  const request = axios.post(baseUrl2,formData);
+  return request.then(response=>response.data);
+
+}
+
+
+export default { getCount ,getResumenP,postCrear }
 

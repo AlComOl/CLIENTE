@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import parcelaService from '../../services/parcelas';
 const FormParcela = () => {
 
   const regexPoligono = /^\d{1,12}$/;
@@ -27,6 +27,7 @@ const FormParcela = () => {
   })
 //maneja los errores cuando no hacen regex ok
   const [errors, setErrors] = useState({
+    poligono:"",
     parcela:"",
     variedad:"",
     dimension_hanegadas:"",
@@ -52,18 +53,47 @@ const FormParcela = () => {
   const enviarFormulario = (e) => {
     e.preventDefault();
 
-    parcelaService.postCrear(formData)
-     .then((response) => {
-      navigate('/parcelas')
-     })
-     .catch(err => console.error(err))
-   }
+     const poligonoOk = validarCampos('poligono', formData.poligono);
+     const parcelaOk= validarCampos('parcela', formData.parcela);
+     const variedadOk= validarCampos('variedad', formData.variedad);
+     const dimensionOk= validarCampos('dimension', formData.dimension_hanegadas);
+     const num_arbolesOk = validarCampos('num_arboles', formData.num_arboles);
+     const fecha_plantacionOk = validarCampos('fecha_plantacion', formData.fecha_plantacion);
+     const descripcionOk =  validarCampos('descripcion', formData.descripcion);
+
+     if(poligonoOk && parcelaOk && variedadOk && dimensionOk && num_arbolesOk && fecha_plantacionOk && descripcionOk &&
+        formData.poligono !=="" && formData.parcela !=="" && formData.dimension_hanegadas !== "" &&
+        formData.user_id !=="" && formData.propietarios_id !==""){
+
+       parcelaService.postCrear(formData)
+        .then((response) => {
+          
+        console.log('respuesta:', response)
+          navigate('/parcelas')
+        })
+        .catch(err => console.error(err))
+     }
+
+     }
+    
+  }
+   
 
 
    const validarCampos=(name,value) =>{
 
         let mensaje = '';
         let comprobar=true;
+
+
+
+
+
+    
+  if(nombreOk && ubicacionOk && descripcionOk &&
+     formData.nombre !=="" && formData.ubicacion !=="" && 
+     formData.user_id !=="" && formData.propietario_id !==""){
+
 
       if(name==='poligono' && !regexPoligono.test(value)){
           mensaje = 'Número de 2 cifras';
@@ -190,7 +220,7 @@ const FormParcela = () => {
           <input
             type="text"
             id="variedad"
-            name="caqui"
+            name="variedad"
             value={formData.variedad}
             onChange={actualizaEstado}
             placeholder="Ej: Rojo Brillante"
@@ -259,6 +289,6 @@ const FormParcela = () => {
     </div>
   )
 }
-
+  
 
   export default FormParcela;
