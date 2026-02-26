@@ -166,11 +166,11 @@ const FormParcela = () => {
             
           >
             <option value="">Selecciona una explotación</option>
-          {explotaciones.map(explotacion => (
-                  <option key={explotacion} value={explotacion}>
-                    {explotacion}
-              </option>
-            ))}
+          {explotaciones.map((explotacion) => (
+            <option key={explotacion.id} value={explotacion.id}>
+              {explotacion.nombre}
+            </option>
+          ))}
 
           </select>
         </div>
@@ -180,17 +180,17 @@ const FormParcela = () => {
           <label htmlFor="propietario_id">Propietario *</label>
           <select
          
-            name="propietario_id"
+            name="propietarios_id"
             value={formData.propietarios_id}
             onChange={actualizaEstado}
             
           >
             <option value="">Selecciona un propietario</option>
-             {propietarios.map(propietario => (
-                  <option key={propietario.nombre} value={propietario.nombre}>
-                    {propietario.nombre}
+             {propietarios.map((propietario) => (
+              <option key={propietario.id} value={propietario.id}>
+                {propietario.nombre}
               </option>
-            ))} 
+            ))}
             
           </select>
         </div>
@@ -230,7 +230,7 @@ const FormParcela = () => {
                     type="text"
                     id="parcela"
                     name="parcela"
-                    value={formData.pol_parcela}
+                    value={formData.parcela}
                     onChange={actualizaEstado}
                     placeholder="Ej: 45"
                     required
