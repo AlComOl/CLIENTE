@@ -11,7 +11,7 @@ const FormParcela = () => {
   const regexPoligono = /^\d{1,12}$/;
   const regexParcela = /^\d{1,4}$/;
   const regexVariedad = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{1,10}$/;
-  const regexDimension = /^\d{1,2}(\.\d{1,2})?$/;
+  const regexDimension = /^\d{1,4}(\.\d{1,2})?$/;
   const regexNumArboles = /^([1-9]\d{0,2}|[12]\d{3}|3000)$/;
   const regexDescripcion = /^(\S+\s*){1,50}$/;
 
@@ -67,7 +67,7 @@ const FormParcela = () => {
 
     const {name, value} = e.target
     setFormData({...formData , [name] : value})
-    validarCampos();
+    validarCampos(name, value);
 
   }
 
@@ -80,7 +80,7 @@ const FormParcela = () => {
      const poligonoOk = validarCampos('poligono', formData.poligono);
      const parcelaOk= validarCampos('parcela', formData.parcela);
      const variedadOk= validarCampos('variedad', formData.variedad);
-     const dimensionOk= validarCampos('dimension', formData.dimension_hanegadas);
+     const dimensionOk = validarCampos('dimension_hanegadas', formData.dimension_hanegadas);
      const num_arbolesOk = validarCampos('num_arboles', formData.num_arboles);
      const fecha_plantacionOk = validarCampos('fecha_plantacion', formData.fecha_plantacion);
      const descripcionOk =  validarCampos('descripcion', formData.descripcion);
@@ -101,48 +101,37 @@ const FormParcela = () => {
   
    
 
+  const validarCampos = (name, value) => {
+      let mensaje = '';
+      let comprobar = true;
 
-   const validarCampos=(name,value) =>{
+      if(name === 'poligono' && !regexPoligono.test(value)){
+          mensaje = 'Número de 2 cifras';
+          comprobar = false;
+      }
+      if(name === 'parcela' && !regexParcela.test(value)){
+          mensaje = 'Número de 2 cifras';
+          comprobar = false;
+      }
+      if(name === 'variedad' && !regexVariedad.test(value)){
+          mensaje = 'Palabra de 8 letras máximo';
+          comprobar = false;
+      }
+      if(name === 'dimension_hanegadas' && !regexDimension.test(value)){
+          mensaje = 'Número decimal ejemplo 2.34';
+          comprobar = false;
+      }
+      if(name === 'num_arboles' && !regexNumArboles.test(value)){
+          mensaje = 'Número entero max 3000';
+          comprobar = false;
+      }
+      if(name === 'descripcion' && !regexDescripcion.test(value)){
+          mensaje = 'Mínimo 50 caracteres';
+          comprobar = false;
+      }
 
-          let mensaje = '';
-          let comprobar=true;
-
-
-        if(name==='poligono' && !regexPoligono.test(value)){
-            mensaje = 'Número de 2 cifras';
-            comprobar=false;
-        }
-
-        if(name==='parcela' && !regexParcela.test(value)){
-            mensaje = 'Número de 2 cifras';
-            comprobar=false;
-        }
-
-        if(name==='variedad' && !regexVariedad.test(value)){
-          mensaje = 'Palabra de 8 letras máximo'; 
-          comprobar=false;
-        }
-
-        if(name==='dimensiones' && !regexDimension.test(value)){
-          mensaje = 'Número decimal ejemplo 2,34 no mas decimáles'; 
-          comprobar=false;
-        }
-
-        if(name==='num_arboles' && !regexNumArboles.test(value)){
-          mensaje = 'Número entero max 3000'; 
-          comprobar=false;
-        }
-
-        if(name==='descripcion' && !regexDescripcion.test(value)){
-          mensaje = 'Mínimo 50 caracteres'; 
-          comprobar=false;
-        }
-
-
-        setErrors({ ...errors, [name]: mensaje });
-
-    return comprobar;
-
+      setErrors({...errors, [name]: mensaje});
+      return comprobar;
   }
 
 
@@ -250,7 +239,7 @@ const FormParcela = () => {
             required
             className={errors.variedad ? 'input-error' : ''}
           />
-          {errors.nombre && <span className="mensaje-error">{errors.variedad}</span>}
+          {errors.variedad && <span className="mensaje-error">{errors.variedad}</span>}
         </div>
 
         {/* Dimensión en Hanegadas */}
@@ -265,12 +254,14 @@ const FormParcela = () => {
             onChange={actualizaEstado}
             placeholder="Ej: 2.5"
             required
+            className={errors.hanegadas ? 'input-error' : ''}
           />
+            {errors.hanegadas && <span className="mensaje-error">{errors.hanegadas}</span>}
         </div>
 
         {/* Número de Árboles */}
         <div className="form-grupo">
-          <label htmlFor="num_arboles">Número de Árboles</label>
+          <label htmlFor="num_arboles">Número de Árboles *</label>
           <input
             type="number"
             id="num_arboles"
@@ -278,7 +269,11 @@ const FormParcela = () => {
             value={formData.num_arboles}
             onChange={actualizaEstado}
             placeholder="Ej: 250"
+            required
+            className={errors.hanegadas ? 'input-error' : ''}
           />
+            {errors.num_arboles && <span className="mensaje-error">{errors.num_arboles}</span>}
+
         </div>
 
         {/* Fecha de Plantación */}
@@ -290,7 +285,9 @@ const FormParcela = () => {
             name="fecha_plantacion"
             value={formData.fecha_plantacion}
             onChange={actualizaEstado}
+            required
           />
+            {errors.fecha_plantacion && <span className="mensaje-error">{errors.fecha_plantacion}</span>}
         </div>
 
         {/* Descripción */}

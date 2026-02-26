@@ -1,76 +1,100 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import operacionService from '../../services/operaciones'
-import SubmitButton from '../buttons/SubmitButton'
-import './formStyles.css'
+import axios from 'axios'
+import '../Style/formStyles.css'
+
+const baseUrl = 'http://localhost/api'
 
 const FormOperacion = () => {
   const navigate = useNavigate()
-  
+
+  const [parcelas, setParcelas] = useState([])
+  const [usuarios, setUsuarios] = useState([])
+
   const [formData, setFormData] = useState({
     parcela_id: '',
     usuario_id: '',
     tipo_operacion: 'riego',
-    fecha: '',
     hora_inicio: '',
     duracion_minutos: '',
-    producto: '',
-    dosis: '',
     descripcion: ''
   })
 
+  const [errors, setErrors] = useState({
+    duracion_minutos: '',
+    descripcion: ''
+  })
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/parcelas/lista`)
+      .then(res => setParcelas(res.data))
+      .catch(err => console.error('Error cargando parcelas:', err))
+
+    axios.get(`${baseUrl}/usuarios`)
+      .then(res => setUsuarios(res.data.usuarios))
+      .catch(err => console.error('Error cargando usuarios:', err))
+  }, [])
+
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
-    operacionService
-      .create(formData)
-      .then(() => {
-        navigate('/operaciones')
-      })
-      .catch(err => {
-        console.error('Error al crear operación:', err)
-      })
+
+    if (!formData.parcela_id || !formData.usuario_id || !formData.hora_inicio ||
+        !formData.duracion_minutos || !formData.descripcion) {
+      console.log('Faltan campos obligatorios')
+      return
+    }
+
+    axios.post(`${baseUrl}/operaciones/crear`, formData)
+      .then(() => navigate('/operaciones'))
+      .catch(err => console.error('Error al crear operación:', err))
   }
 
   return (
     <div className="form-container">
       <h1>Nueva Operación</h1>
-      
+
       <form onSubmit={handleSubmit} className="form-grid">
-        
+
         {/* Parcela */}
-        <div className="form-group">
-          <label htmlFor="parcela_id">Parcela</label>
+        <div className="form-grupo">
+          <label htmlFor="parcela_id">Parcela *</label>
           <select
             id="parcela_id"
             name="parcela_id"
             value={formData.parcela_id}
             onChange={handleChange}
+            required
           >
             <option value="">Selecciona una parcela</option>
-            {/* Cargar parcelas desde la API */}
+            {parcelas.map(parcela => (
+              <option key={parcela.id} value={parcela.id}>
+                {parcela.poligono} - {parcela.parcela} ({parcela.variedad})
+              </option>
+            ))}
           </select>
         </div>
 
         {/* Usuario */}
         <div className="form-grupo">
-          <label htmlFor="usuario_id">Usuario</label>
+          <label htmlFor="usuario_id">Usuario *</label>
           <select
             id="usuario_id"
             name="usuario_id"
             value={formData.usuario_id}
             onChange={handleChange}
+            required
           >
             <option value="">Selecciona un usuario</option>
-            {/* Cargar usuarios desde la API */}
+            {usuarios.map(usuario => (
+              <option key={usuario.id} value={usuario.id}>
+                {usuario.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -86,30 +110,16 @@ const FormOperacion = () => {
           >
             <option value="riego">Riego</option>
             <option value="poda">Poda</option>
-            <option value="abonado">Abonado</option>
             <option value="mantenimiento">Mantenimiento</option>
-            <option value="fumigar">Fumigar</option>
+            <option value="pulverizar">Pulverizar</option>
           </select>
-        </div>
-
-        {/* Fecha */}
-        <div className="form-grupo">
-          <label htmlFor="fecha">Fecha *</label>
-          <input
-            type="date"
-            id="fecha"
-            name="fecha"
-            value={formData.fecha}
-            onChange={handleChange}
-            required
-          />
         </div>
 
         {/* Hora de Inicio */}
         <div className="form-grupo">
-          <label htmlFor="hora_inicio">Hora de Inicio *</label>
+          <label htmlFor="hora_inicio">Fecha y Hora de Inicio *</label>
           <input
-            type="time"
+            type="datetime-local"
             id="hora_inicio"
             name="hora_inicio"
             value={formData.hora_inicio}
@@ -118,7 +128,7 @@ const FormOperacion = () => {
           />
         </div>
 
-        {/* Duración en Minutos */}
+        {/* Duración */}
         <div className="form-grupo">
           <label htmlFor="duracion_minutos">Duración (minutos) *</label>
           <input
@@ -128,39 +138,15 @@ const FormOperacion = () => {
             value={formData.duracion_minutos}
             onChange={handleChange}
             placeholder="Ej: 120"
+            min="1"
             required
           />
-        </div>
-
-        {/* Producto */}
-        <div className="form-grupo">
-          <label htmlFor="producto">Producto</label>
-          <input
-            type="text"
-            id="producto"
-            name="producto"
-            value={formData.producto}
-            onChange={handleChange}
-            placeholder="Nombre del producto"
-          />
-        </div>
-
-        {/* Dosis */}
-        <div className="form-grupo">
-          <label htmlFor="dosis">Dosis</label>
-          <input
-            type="text"
-            id="dosis"
-            name="dosis"
-            value={formData.dosis}
-            onChange={handleChange}
-            placeholder="Ej: 2L/ha"
-          />
+          {errors.duracion_minutos && <span className="mensaje-error">{errors.duracion_minutos}</span>}
         </div>
 
         {/* Descripción */}
         <div className="form-grupo full-width">
-          <label htmlFor="descripcion">Descripción</label>
+          <label htmlFor="descripcion">Descripción *</label>
           <textarea
             id="descripcion"
             name="descripcion"
@@ -168,20 +154,23 @@ const FormOperacion = () => {
             onChange={handleChange}
             rows="4"
             placeholder="Detalles de la operación..."
+            required
           />
+          {errors.descripcion && <span className="mensaje-error">{errors.descripcion}</span>}
         </div>
 
         {/* Botones */}
         <div className="form-actions full-width">
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={() => navigate('/operaciones')}
             className="btn-cancel"
           >
             Cancelar
           </button>
-          <SubmitButton texto="Crear Operación" />
+          <button type="submit">Guardar Operación</button>
         </div>
+
       </form>
     </div>
   )

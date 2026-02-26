@@ -6,8 +6,10 @@ import Dashboard from './components/Dashboard.jsx'
 import Explotaciones from './components/explotaciones.jsx'
 import Parcelas from './components/parcelas.jsx'
 import Operaciones from './components/operaciones.jsx'
+import FormOperaciones from './components/CreateForm/FormOperaciones.jsx'
 import Recoleccion from './components/recoleccion.jsx'
 import Almacen from './components/almacen.jsx'
+
 import './App.css'
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
               <Route path="/almacen" element={<Almacen />} />
               <Route path="/nueva-explotacion" element={<FormExplotacion />} />
               <Route path="/nueva-parcela" element={<FormParcela />} />
+              <Route path="/nueva-operacion" element={<FormOperaciones />} />
             </Routes>
           </main>
         </div>
