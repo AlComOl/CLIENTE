@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+
+
 import '../Style/formStyles.css'
 
-const baseUrl = 'http://localhost/api'
+
 
 const FormOperacion = () => {
   const navigate = useNavigate()

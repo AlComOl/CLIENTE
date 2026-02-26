@@ -1,10 +1,13 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const baseUrl = 'http://localhost/api'
+const baseUrl = 'http://localhost/api/operaciones';
 
-const postCrear = (formData) => {
-    return axios.post(`${baseUrl}/operaciones/crear`, formData)
-        .then(res => res.data)
+const getLista = () => {
+    return axios.get(`${baseUrl}`).then(res => res.data);
 }
 
-export default { postCrear }
+const postCrear = (formData) => {
+    return axios.post(`${baseUrl}/crear`, formData).then(res => res.data);
+}
+
+export default { getLista, postCrear };

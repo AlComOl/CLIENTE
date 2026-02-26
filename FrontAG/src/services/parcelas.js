@@ -19,6 +19,12 @@ const postCrear = (formData) => {
 
 }
 
+const getLista = () => {
+    return axios.get('http://localhost/api/parcelas/lista').then(res => res.data);
+}
 
-export default { getCount ,getResumenP,postCrear }
+export default { getCount, getResumenP, postCrear, getLista }
+
+
+
 
