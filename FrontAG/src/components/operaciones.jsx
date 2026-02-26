@@ -1,181 +1,58 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import operacionService from '../../services/operaciones'
-import parcelasService from '../../services/parcelas'
-import usuariosService from '../../services/usuarios'
-import operacionesService from '../../services/operaciones'
-import './formStyles.css'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import operacionService from '../services/operaciones';
+import BtnCrear from './buttons/BtnCrear.jsx';
 
-const FormOperacion = () => {
+const Operaciones = () => {
   const navigate = useNavigate()
-
-  const [parcelas, setParcelas] = useState([])
-  const [usuarios, setUsuarios] = useState([])
-
-  const [formData, setFormData] = useState({
-    parcela_id: '',
-    usuario_id: '',
-    tipo_operacion: 'riego',
-    hora_inicio: '',
-    duracion_minutos: '',
-    descripcion: ''
-  })
-
-  const [errors, setErrors] = useState({
-    duracion_minutos: '',
-    descripcion: ''
-  })
+  const [operaciones, setOperaciones] = useState([])
 
   useEffect(() => {
-    parcelasService.getLista()
-      .then(data => setParcelas(data))
-      .catch(err => console.error('Error cargando parcelas:', err))
-
-    usuariosService.getUsuarios()
-      .then(data => setUsuarios(data.usuarios))
-      .catch(err => console.error('Error cargando usuarios:', err))
+    operacionService.getLista()
+      .then(data => setOperaciones(data))
+      .catch(err => console.error('Error cargando operaciones:', err))
   }, [])
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (!formData.parcela_id || !formData.usuario_id || 
-        !formData.hora_inicio || !formData.duracion_minutos || 
-        !formData.descripcion) {
-      console.log('Faltan campos obligatorios')
-      return
-    }
-
-    operacionService.postCrear(formData)
-      .then(() => navigate('/operaciones'))
-      .catch(err => console.error('Error al crear operación:', err))
-  }
-
   return (
-    <div className="form-container">
-      <h1>Nueva Operación</h1>
-
-      <form onSubmit={handleSubmit} className="form-grid">
-
-        {/* Parcela */}
-        <div className="form-grupo">
-          <label htmlFor="parcela_id">Parcela *</label>
-          <select
-            id="parcela_id"
-            name="parcela_id"
-            value={formData.parcela_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Selecciona una parcela</option>
-            {parcelas.map(parcela => (
-              <option key={parcela.id} value={parcela.id}>
-                {parcela.poligono} - {parcela.parcela} ({parcela.variedad})
-              </option>
-            ))}
-          </select>
+    <div>
+      <div className="menuExplo">
+        <div>
+          <h2>Operaciones</h2>
+          <p>Registra y gestiona las operaciones de campo</p>
         </div>
-
-        {/* Usuario */}
-        <div className="form-grupo">
-          <label htmlFor="usuario_id">Usuario *</label>
-          <select
-            id="usuario_id"
-            name="usuario_id"
-            value={formData.usuario_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Selecciona un usuario</option>
-            {usuarios.map(usuario => (
-              <option key={usuario.id} value={usuario.id}>
-                {usuario.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Tipo de Operación */}
-        <div className="form-grupo">
-          <label htmlFor="tipo_operacion">Tipo de Operación *</label>
-          <select
-            id="tipo_operacion"
-            name="tipo_operacion"
-            value={formData.tipo_operacion}
-            onChange={handleChange}
-            required
-          >
-            <option value="riego">Riego</option>
-            <option value="poda">Poda</option>
-            <option value="mantenimiento">Mantenimiento</option>
-            <option value="pulverizar">Pulverizar</option>
-          </select>
-        </div>
-
-        {/* Fecha y Hora */}
-        <div className="form-grupo">
-          <label htmlFor="hora_inicio">Fecha y Hora de Inicio *</label>
-          <input
-            type="datetime-local"
-            id="hora_inicio"
-            name="hora_inicio"
-            value={formData.hora_inicio}
-            onChange={handleChange}
-            required
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <BtnCrear
+            to="/nueva-operacion"
+            titulo="Nueva Operación"
+            iconIng="./plusNegro.png"
+            className="btn-nueva-explotacion"
+          />
+          <BtnCrear
+            to="/nueva-fumigacion"
+            titulo="Nueva Fumigación"
+            iconIng="./plusNegro.png"
+            className="btn-nueva-explotacion"
           />
         </div>
+      </div>
 
-        {/* Duración */}
-        <div className="form-grupo">
-          <label htmlFor="duracion_minutos">Duración (minutos) *</label>
-          <input
-            type="number"
-            id="duracion_minutos"
-            name="duracion_minutos"
-            value={formData.duracion_minutos}
-            onChange={handleChange}
-            placeholder="Ej: 120"
-            min="1"
-            required
-          />
-          {errors.duracion_minutos && <span className="mensaje-error">{errors.duracion_minutos}</span>}
-        </div>
-
-        {/* Descripción */}
-        <div className="form-grupo full-width">
-          <label htmlFor="descripcion">Descripción *</label>
-          <textarea
-            id="descripcion"
-            name="descripcion"
-            value={formData.descripcion}
-            onChange={handleChange}
-            rows="4"
-            placeholder="Detalles de la operación..."
-            required
-          />
-          {errors.descripcion && <span className="mensaje-error">{errors.descripcion}</span>}
-        </div>
-
-        {/* Botones */}
-        <div className="form-actions full-width">
-          <button
-            type="button"
-            onClick={() => navigate('/operaciones')}
-            className="btn-cancel"
-          >
-            Cancelar
-          </button>
-          <button type="submit">Guardar Operación</button>
-        </div>
-
-      </form>
+      <div className="seccion-explo">
+        {operaciones.length === 0 ? (
+          <p>No hay operaciones registradas.</p>
+        ) : (
+          operaciones.map((op) => (
+            <div key={op.id} className="explotacionCard">
+              <p><strong>Tipo:</strong> {op.tipo_operacion}</p>
+              <p><strong>Parcela:</strong> {op.parcela_id}</p>
+              <p><strong>Inicio:</strong> {op.hora_inicio}</p>
+              <p><strong>Duración:</strong> {op.duracion_minutos} min</p>
+              <p><strong>Descripción:</strong> {op.descripcion}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   )
 }
 
-export default FormOperacion
+export default Operaciones

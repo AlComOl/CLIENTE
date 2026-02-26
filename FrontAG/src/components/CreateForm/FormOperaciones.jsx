@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import usuariosService from '../../services/usuarios'
+import usuariosService from '../../services/parcela'
+import axios from 'axios'
 
 import '../Style/formStyles.css'
 
@@ -27,12 +29,12 @@ const FormOperacion = () => {
   })
 
   useEffect(() => {
-    axios.get(`${baseUrl}/parcelas/lista`)
-      .then(res => setParcelas(res.data))
+    parcelasService.getLista()
+      .then(data => setParcelas(data))
       .catch(err => console.error('Error cargando parcelas:', err))
 
-    axios.get(`${baseUrl}/usuarios`)
-      .then(res => setUsuarios(res.data.usuarios))
+    usuariosService.getUsuarios()
+      .then(data => setUsuarios(data.usuarios))
       .catch(err => console.error('Error cargando usuarios:', err))
   }, [])
 
